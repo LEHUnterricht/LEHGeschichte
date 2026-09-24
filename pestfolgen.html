@@ -1,0 +1,2117 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nach dem großen Sterben – Selbstlerneinheit Folgen der Großen Pest</title>
+<style>
+:root{
+  --paper:#F5F6F4; --paper-2:#FFFFFF; --ink:#1F2B33; --muted:#56646E; --rule:#CCD4DA;
+  --petrol:#3B5169; --petrol-soft:#E3EAF0; --petrol-ink:#FFFFFF;
+  --t-vor:#D7D4CC; --t-vor-ink:#3A3A36;
+  --t-kurz:#EDD8A0; --t-kurz-ink:#3E3108;
+  --t-mittel:#C89A3E; --t-mittel-ink:#231A04;
+  --t-lang:#735515; --t-lang-ink:#FFF8E8;
+  --vt:#584478; --vt-soft:#EEEAF4;
+  --ok:#2E6A45; --ok-soft:#E1F0E6; --no:#983A2D; --no-soft:#F7E4E0;
+  --pest:#8E2F24;
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --sans:-apple-system,BlinkMacSystemFont,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --paper:#141B20; --paper-2:#1B242B; --ink:#E4E8EA; --muted:#A3AFB7; --rule:#34424C;
+    --petrol:#8FB0CC; --petrol-soft:#22313D; --petrol-ink:#0E1419;
+    --t-vor:#4A4843; --t-vor-ink:#EDEBE5;
+    --t-kurz:#E6CF8E; --t-kurz-ink:#2A2006;
+    --t-mittel:#C89A3E; --t-mittel-ink:#1B1403;
+    --t-lang:#9C7A2E; --t-lang-ink:#FFF8E8;
+    --vt:#B9A4DC; --vt-soft:#2A2436;
+    --ok:#7CC49A; --ok-soft:#1D3327; --no:#E89484; --no-soft:#3A221D;
+    --pest:#E07A6A;
+  }
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 3rem);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:1.08rem;line-height:1.62}
+[hidden]{display:none!important}
+a{color:var(--petrol)}
+a:focus-visible,button:focus-visible,textarea:focus-visible,summary:focus-visible,input:focus-visible{outline:3px solid var(--t-mittel);outline-offset:2px}
+button{font:inherit;font-family:var(--sans);font-size:.92rem;cursor:pointer}
+img{max-width:100%}
+
+/* ---------- Layout ---------- */
+.rahmen{display:grid;grid-template-columns:1fr;max-width:1180px;margin:0 auto}
+@media (min-width:1000px){.rahmen{grid-template-columns:250px minmax(0,1fr);gap:2.5rem}}
+main{padding:1.25rem 1.1rem 4rem;min-width:0}
+@media (min-width:700px){main{padding:2rem 2rem 5rem}}
+.spalte{max-width:44rem}
+
+/* ---------- Navigation ---------- */
+nav.toc{font-family:var(--sans);font-size:.9rem;padding:1rem 1.1rem;border-bottom:1px solid var(--rule);background:var(--paper)}
+@media (min-width:1000px){nav.toc{position:sticky;top:calc(env(safe-area-inset-top,0px) + 2rem);align-self:start;height:100vh;overflow-y:auto;border-bottom:0;border-right:1px solid var(--rule);padding:2rem 1.1rem}}
+nav.toc h2{font-size:.95rem;margin:0 0 .6rem;font-weight:600}
+nav.toc ol{list-style:none;margin:0;padding:0}
+nav.toc li{margin:.1rem 0}
+nav.toc .ds{color:var(--muted);font-size:.78rem;margin:.9rem 0 .2rem}
+nav.toc a{display:flex;gap:.55rem;align-items:baseline;padding:.3rem .4rem;border-radius:4px;text-decoration:none;color:var(--ink)}
+nav.toc a small{margin-left:auto;font-size:.75rem;color:var(--muted)}
+nav.toc a:hover{background:var(--petrol-soft)}
+nav.toc .n{font-variant-numeric:tabular-nums;color:var(--petrol);font-weight:600;min-width:1.1rem}
+nav.toc .folgt{display:flex;gap:.55rem;padding:.3rem .4rem;color:var(--muted)}
+nav.toc .folgt small{margin-left:auto;font-size:.75rem}
+.steuer{margin-top:1.2rem;padding-top:1rem;border-top:1px solid var(--rule)}
+.steuer p{margin:.2rem 0 .4rem;font-size:.82rem;color:var(--muted)}
+.seg{display:flex;flex-wrap:wrap;gap:.3rem;margin-bottom:.8rem}
+.seg button{border:1px solid var(--rule);background:var(--paper-2);color:var(--ink);border-radius:999px;padding:.25rem .65rem;font-size:.8rem}
+.seg button[aria-pressed="true"]{background:var(--petrol);border-color:var(--petrol);color:var(--petrol-ink)}
+.schalter{display:flex;align-items:center;gap:.5rem;font-size:.85rem;border:1px solid var(--rule);background:var(--paper-2);color:var(--ink);border-radius:6px;padding:.35rem .6rem}
+.schalter[aria-pressed="false"]{background:var(--vt-soft);border-color:var(--vt)}
+
+/* ---------- Kopf ---------- */
+.kopf{padding-bottom:1.5rem;border-bottom:1px solid var(--rule);margin-bottom:2rem}
+.kopf .kurs{font-family:var(--sans);font-size:.85rem;color:var(--muted);margin:0}
+.kopf h1{font-size:clamp(2rem,5vw,3rem);line-height:1.08;margin:.4rem 0 .3rem;font-weight:600;letter-spacing:-.01em}
+.kopf .unter{font-size:1.15rem;color:var(--muted);margin:0 0 1.2rem}
+.leitfrage{border-left:4px solid var(--pest);padding:.2rem 0 .2rem 1rem;margin:1.2rem 0}
+.leitfrage b{display:block;font-family:var(--sans);font-size:.82rem;color:var(--pest);font-weight:600}
+.leitfrage p{margin:.2rem 0 0;font-size:1.2rem;line-height:1.45}
+
+/* ---------- Zeitband (Kennzeichen der Seite) ---------- */
+.zeitband{margin:1rem 0 1.4rem;font-family:var(--sans)}
+.zb-track{position:relative;height:20px;background:var(--paper-2);border:1px solid var(--rule);border-radius:3px;overflow:hidden}
+.zb-seg{position:absolute;top:0;bottom:0}
+.zb-seg.vor{background:var(--t-vor)} .zb-seg.kurz{background:var(--t-kurz)} .zb-seg.mittel{background:var(--t-mittel)} .zb-seg.lang{background:var(--t-lang)}
+.zb-pest{position:absolute;top:-3px;bottom:-3px;width:3px;margin-left:-1px;background:var(--pest)}
+.zb-ticks{position:relative;height:1.3rem;font-size:.72rem;color:var(--muted)}
+.zb-ticks span{position:absolute;top:.15rem;transform:translateX(-50%);font-variant-numeric:tabular-nums}
+.zb-ticks span:first-child{transform:none}.zb-ticks span:last-child{transform:translateX(-100%)}
+.zb-legende{display:flex;flex-wrap:wrap;gap:.35rem .9rem;font-size:.78rem;color:var(--muted);margin-top:.2rem}
+.zb-legende i{display:inline-block;width:.8rem;height:.8rem;border-radius:2px;vertical-align:-.1rem;margin-right:.25rem}
+
+/* ---------- Etiketten ---------- */
+.etiketten{display:flex;flex-wrap:wrap;gap:.4rem;margin:.1rem 0 .7rem;font-family:var(--sans)}
+.zeit{font-size:.76rem;font-weight:600;border-radius:3px;padding:.1rem .45rem;white-space:nowrap}
+.zeit.vor{background:var(--t-vor);color:var(--t-vor-ink)}
+.zeit.kurz{background:var(--t-kurz);color:var(--t-kurz-ink)}
+.zeit.mittel{background:var(--t-mittel);color:var(--t-mittel-ink)}
+.zeit.lang{background:var(--t-lang);color:var(--t-lang-ink)}
+.mhint{font-size:.76rem;border:1px solid var(--petrol);color:var(--petrol);border-radius:3px;padding:.05rem .45rem}
+.mhint.inaktiv{border-style:dashed;color:var(--muted);border-color:var(--rule)}
+.mhint.inaktiv::after{content:" (Angebot im Buch)"}
+
+/* ---------- Stationen ---------- */
+.station{margin:0 0 4rem;scroll-margin-top:1rem}
+.st-head{border-top:3px solid var(--petrol);padding-top:.9rem}
+.st-nr{font-family:var(--sans);font-size:.85rem;color:var(--petrol);font-weight:600;margin:0}
+.station h2{font-size:1.75rem;line-height:1.2;margin:.2rem 0 .3rem;font-weight:600}
+.st-meta{font-family:var(--sans);font-size:.85rem;color:var(--muted);margin:0}
+.ziel{background:var(--petrol-soft);border-radius:6px;padding:.8rem 1rem;margin:0 0 1.6rem;font-size:1rem}
+.ziel p{margin:0 0 .3rem}.ziel ul{margin:0;padding-left:1.2rem}
+.abschnitt{margin:2.2rem 0 0;scroll-margin-top:1rem}
+.abschnitt h3{font-size:1.3rem;line-height:1.25;margin:0 0 .4rem;font-weight:600}
+.abschnitt h3 .nr{font-family:var(--sans);font-size:.95rem;color:var(--petrol);margin-right:.4rem;font-variant-numeric:tabular-nums}
+.abschnitt p{margin:0 0 .8rem}
+.dt,.sz{font-family:var(--sans);font-size:.7rem;font-weight:600;border-radius:3px;padding:0 .3rem;vertical-align:.12em;white-space:nowrap}
+.dt{border:1px solid var(--muted);color:var(--muted)}
+.sz{border:1px dotted var(--muted);color:var(--muted)}
+a.gl{text-decoration:underline dotted;text-underline-offset:.18em;color:inherit}
+.querverweis{font-family:var(--sans);font-size:.86rem;color:var(--muted)}
+
+/* Zeitleiste */
+.zl{list-style:none;margin:1rem 0;padding:0;border-left:2px solid var(--rule)}
+.zl li{position:relative;padding:.35rem 0 .35rem 1rem;display:grid;grid-template-columns:7.2rem 1fr;gap:.2rem .8rem;font-size:1rem}
+.zl li::before{content:"";position:absolute;left:-6px;top:.85rem;width:10px;height:10px;border-radius:50%;background:var(--paper);border:2px solid var(--muted)}
+.zl li.pest::before{background:var(--pest);border-color:var(--pest)}
+.zl .j{font-family:var(--sans);font-size:.85rem;font-weight:600;font-variant-numeric:tabular-nums}
+.zl .zeit{margin-left:.4rem;font-size:.68rem;vertical-align:.1em}
+@media (max-width:520px){.zl li{grid-template-columns:1fr}}
+
+/* Tabellen */
+.tab-wrap{overflow-x:auto;margin:1rem 0}
+table{border-collapse:collapse;width:100%;font-size:.95rem}
+th,td{text-align:left;vertical-align:top;padding:.45rem .6rem;border-bottom:1px solid var(--rule)}
+th{font-family:var(--sans);font-size:.82rem;color:var(--muted);font-weight:600}
+
+/* Kästen */
+.box{border:1px solid var(--rule);border-radius:6px;padding:.9rem 1rem;margin:1.4rem 0;background:var(--paper-2)}
+.box > .titel{font-family:var(--sans);font-weight:600;font-size:.92rem;margin:0 0 .4rem}
+.methode{border-left:4px solid var(--petrol)}
+.faktencheck{border-left:4px solid var(--pest)}
+.faktencheck dt{font-family:var(--sans);font-weight:600;font-size:.88rem;margin-top:.6rem}
+.faktencheck dd{margin:.15rem 0 0}
+
+/* Aufgaben */
+.task{border:1px solid var(--rule);border-radius:6px;background:var(--paper-2);padding:.9rem 1rem;margin:1.4rem 0}
+.task-kopf{display:flex;flex-wrap:wrap;gap:.4rem;align-items:center;font-family:var(--sans);font-size:.8rem;margin:0 0 .4rem}
+.task-nr{font-weight:700;color:var(--petrol);font-size:.95rem}
+.afb,.form{border:1px solid var(--rule);border-radius:3px;padding:0 .35rem;color:var(--muted)}
+.form.partner{border-color:var(--petrol);color:var(--petrol)}
+.task-text{margin:0 0 .6rem}
+textarea{width:100%;min-height:7.5rem;font-family:var(--sans);font-size:1rem;line-height:1.45;color:var(--ink);background:var(--paper);border:1px solid var(--rule);border-radius:4px;padding:.6rem;resize:vertical}
+.task-bar{display:flex;flex-wrap:wrap;gap:.45rem;align-items:center;margin:.6rem 0 0}
+.btn{border:1px solid var(--petrol);background:var(--paper-2);color:var(--petrol);border-radius:5px;padding:.4rem .8rem}
+.btn.voll{background:var(--petrol);color:var(--petrol-ink)}
+.btn:disabled{opacity:.6;cursor:not-allowed}
+.eh-hinweis{font-family:var(--sans);font-size:.82rem;color:var(--muted);margin:.35rem 0 0;width:100%}
+.eh-hinweis:empty{display:none}
+.bestaetigen{font-family:var(--sans);font-size:.82rem;color:var(--muted);display:flex;gap:.35rem;align-items:center}
+.hilfe{margin:.8rem 0 0;padding:.7rem .9rem;border-radius:5px;background:var(--petrol-soft);font-size:.98rem}
+.hilfe > b{display:block;font-family:var(--sans);font-size:.8rem;color:var(--petrol);margin-bottom:.2rem}
+.hilfe ol,.hilfe ul{margin:.2rem 0 0;padding-left:1.2rem}
+.eh{margin:.8rem 0 0;padding:.8rem .9rem;border-radius:5px;border:1px solid var(--ok);background:var(--ok-soft);font-size:.98rem}
+.eh > b{display:block;font-family:var(--sans);font-size:.8rem;color:var(--ok);margin-bottom:.2rem}
+.eh ul{margin:.2rem 0 0;padding-left:1.2rem}.eh li{margin:.25rem 0}
+
+/* Verständnischeck */
+.mc{margin:1.2rem 0;padding:.8rem 1rem;border-radius:6px;border:1px dashed var(--petrol);background:var(--paper-2)}
+.mc-kopf{font-family:var(--sans);font-size:.78rem;color:var(--petrol);font-weight:600;margin:0 0 .2rem}
+.mc-frage{margin:0 0 .5rem;font-weight:600}
+.mc-opts{display:grid;gap:.4rem}
+.mc-opt{text-align:left;border:1px solid var(--rule);background:var(--paper);color:var(--ink);border-radius:5px;padding:.5rem .7rem;font-size:.95rem;line-height:1.35}
+.mc-opt.ok{border-color:var(--ok);background:var(--ok-soft)}
+.mc-opt.falsch{border-color:var(--no);background:var(--no-soft);text-decoration:line-through}
+.mc-opt:disabled{cursor:default}
+.mc-fb{margin:.5rem 0 0;font-size:.95rem}
+.mc-fb:empty{display:none}
+
+/* Zuordnung */
+.zuord-pool,.zuord-feld{display:flex;flex-wrap:wrap;gap:.35rem;min-height:2.6rem}
+.zuord-pool{padding:.5rem;border:1px dashed var(--rule);border-radius:5px;margin:.4rem 0 .8rem}
+.zuord-spalten{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.5rem}
+@media (min-width:760px){.zuord-spalten{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.zuord-spalte{border:1px solid var(--rule);border-radius:5px;padding:.4rem;background:var(--paper)}
+.zuord-ziel{width:100%;border:0;border-radius:3px;padding:.3rem;font-weight:600;font-size:.8rem;margin-bottom:.35rem}
+.zuord-ziel.vor{background:var(--t-vor);color:var(--t-vor-ink)}.zuord-ziel.kurz{background:var(--t-kurz);color:var(--t-kurz-ink)}
+.zuord-ziel.mittel{background:var(--t-mittel);color:var(--t-mittel-ink)}.zuord-ziel.lang{background:var(--t-lang);color:var(--t-lang-ink)}
+.chip{border:1px solid var(--rule);background:var(--paper-2);color:var(--ink);border-radius:5px;padding:.3rem .5rem;font-size:.84rem;text-align:left;line-height:1.3}
+.chip.aktiv{outline:3px solid var(--petrol);outline-offset:1px}
+.chip.ok{border-color:var(--ok);background:var(--ok-soft)}.chip.falsch{border-color:var(--no);background:var(--no-soft)}
+.zuord-meldung{font-family:var(--sans);font-size:.9rem;margin:.5rem 0 0}
+
+/* Zusätzliche Zuordnungskategorien */
+.zuord-ziel.gew{background:var(--ok-soft);color:var(--ink);border:1px solid var(--ok)}
+.zuord-ziel.verl{background:var(--no-soft);color:var(--ink);border:1px solid var(--no)}
+.zuord-ziel.lage,.zuord-ziel.grafik{background:var(--petrol-soft);color:var(--ink);border:1px solid var(--petrol)}
+.zuord-ziel.quelle{background:var(--t-kurz);color:var(--t-kurz-ink)}
+.zuord-ziel.darst{background:var(--vt-soft);color:var(--ink);border:1px solid var(--vt)}
+.zuord-spalten.drei{grid-template-columns:1fr}
+@media (min-width:600px){.zuord-spalten.drei{grid-template-columns:repeat(3,minmax(0,1fr))}}
+/* Matrix */
+table.mx th{font-family:var(--sans);font-size:.8rem;vertical-align:top}
+table.mx td{padding:.25rem;min-width:9.5rem}
+table.mx textarea{min-height:5rem;font-size:.85rem;padding:.4rem}
+table.mx thead th.vor{border-bottom:4px solid var(--t-vor)} table.mx thead th.kurz{border-bottom:4px solid var(--t-kurz)}
+table.mx thead th.mittel{border-bottom:4px solid var(--t-mittel)} table.mx thead th.lang{border-bottom:4px solid var(--t-lang)}
+/* Kriterienliste */
+.vh-liste{margin:.2rem 0 .8rem;padding-left:1.4rem}
+.vh-liste li{margin:.2rem 0}
+table.kr th{font-family:var(--sans);font-size:.85rem;width:34%;vertical-align:top}
+table.kr textarea{min-height:4.5rem;font-size:.9rem}
+/* Test */
+.test .tq .mc-kopf{color:var(--muted)}
+.test-aus{border:2px solid var(--petrol);border-radius:6px;padding:.9rem 1rem;margin:1.4rem 0}
+.test-aus .ergebnis{font-size:1.1rem;font-weight:600;margin:.6rem 0 .3rem}
+.test-aus ul{margin:.3rem 0 0;padding-left:1.2rem}
+.loesung li{margin:.5rem 0}
+
+/* Das Wichtigste */
+.wichtig{border:2px solid var(--petrol);border-radius:6px;padding:.9rem 1rem;margin:2rem 0 1rem}
+.wichtig .titel{font-family:var(--sans);font-weight:700;font-size:.95rem;color:var(--petrol);margin:0 0 .4rem}
+.wichtig ul{margin:0 0 .7rem;padding-left:1.2rem}.wichtig li{margin:.3rem 0}
+
+/* Vertiefung */
+.vertiefung{border:1px solid var(--vt);border-radius:6px;margin:1.6rem 0;background:var(--vt-soft)}
+.vertiefung > summary{list-style:none;cursor:pointer;padding:.8rem 1rem;font-family:var(--sans)}
+.vertiefung > summary::-webkit-details-marker{display:none}
+.vertiefung .vt-titel{font-weight:700;color:var(--vt);font-size:.98rem}
+.vertiefung .vt-titel::before{content:"◆ ";}
+.vertiefung .vt-unter{display:block;font-size:.8rem;color:var(--muted);margin-top:.15rem}
+.vertiefung .vt-unter::after{content:" Antippen zum Öffnen."}
+.vertiefung[open] .vt-unter::after{content:""}
+.vt-inhalt{padding:0 1rem 1rem}
+.vt-marker{font-family:var(--sans);font-size:.72rem;font-weight:700;color:var(--vt);border:1px solid var(--vt);border-radius:3px;padding:0 .35rem;margin-right:.3rem}
+body.ohne-vertiefung .vertiefung{display:none}
+
+/* Ampel */
+.ampel{font-family:var(--sans);font-size:.88rem;margin:1rem 0;display:flex;flex-wrap:wrap;gap:.4rem;align-items:center}
+.ampel .frage{width:100%;color:var(--muted);margin:0}
+.ampel button{border:1px solid var(--rule);background:var(--paper-2);color:var(--ink);border-radius:999px;padding:.3rem .8rem}
+.ampel button[aria-pressed="true"].g{background:var(--ok-soft);border-color:var(--ok)}
+.ampel button[aria-pressed="true"].y{background:var(--t-kurz);border-color:var(--t-mittel);color:var(--t-kurz-ink)}
+.ampel button[aria-pressed="true"].r{background:var(--no-soft);border-color:var(--no)}
+.ampel .rat{width:100%;margin:.2rem 0 0;color:var(--ink)}
+
+/* Belege, Details allgemein */
+details.belege{font-family:var(--sans);font-size:.85rem;margin:1rem 0;color:var(--muted)}
+details.belege summary{cursor:pointer;font-weight:600}
+details.belege ul{padding-left:1.1rem}
+details.info{border:1px solid var(--rule);border-radius:6px;background:var(--paper-2);padding:.6rem 1rem;margin:1rem 0}
+details.info summary{cursor:pointer;font-family:var(--sans);font-weight:600;font-size:.95rem}
+.weiter{font-family:var(--sans);font-size:.92rem;display:inline-block;margin-top:.4rem}
+
+/* Fortschrittsanzeige */
+#fortschritt{position:fixed;top:0;left:0;right:0;z-index:20;background:var(--paper-2);border-bottom:1px solid var(--rule);padding-top:env(safe-area-inset-top,0px)}
+#fortschritt .fs-bar{height:4px;background:var(--rule)}
+#fortschritt .fs-fill{height:100%;width:0;background:var(--petrol);transition:width .15s linear}
+#fortschritt .fs-label{font-family:var(--sans);font-size:.75rem;color:var(--muted);padding:.15rem .8rem .2rem;text-align:center}
+.rahmen{margin-top:1.9rem}
+nav.toc a .pct{margin-left:auto;font-size:.72rem;font-variant-numeric:tabular-nums;color:var(--muted);border:1px solid var(--rule);border-radius:999px;padding:0 .35rem}
+nav.toc a .pct.voll{border-color:var(--ok);color:var(--ok)}
+@media print{#fortschritt{display:none}}
+
+/* Filterhinweis */
+.zf-hinweis{position:sticky;top:calc(env(safe-area-inset-top,0px) + 2rem);z-index:5;background:var(--t-kurz);color:var(--t-kurz-ink);font-family:var(--sans);font-size:.88rem;padding:.5rem 1rem;border-radius:0 0 6px 6px;margin:0 0 1rem;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.zf-hinweis button{border:1px solid currentColor;background:transparent;color:inherit;border-radius:4px;padding:.15rem .5rem}
+body[data-zf="vor"] .abschnitt[data-zeit]:not([data-zeit~="vor"]),
+body[data-zf="kurz"] .abschnitt[data-zeit]:not([data-zeit~="kurz"]),
+body[data-zf="mittel"] .abschnitt[data-zeit]:not([data-zeit~="mittel"]),
+body[data-zf="lang"] .abschnitt[data-zeit]:not([data-zeit~="lang"]){display:none}
+
+/* Glossar, Export */
+dl.glossar dt{font-weight:700;margin-top:.8rem;scroll-margin-top:1rem}
+dl.glossar dd{margin:.1rem 0 0}
+dl.glossar dt:target{background:var(--t-kurz);color:var(--t-kurz-ink)}
+#glossar-details summary{font-size:1rem}
+#export-text{min-height:12rem;font-size:.85rem}
+.gefahr{border-color:var(--no);color:var(--no)}
+.fuss{font-family:var(--sans);font-size:.8rem;color:var(--muted);border-top:1px solid var(--rule);padding-top:1rem;margin-top:3rem}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+@media print{nav.toc,.task-bar,.ampel,.zf-hinweis{display:none}.vertiefung{display:block}}
+</style>
+</head>
+<body>
+<div id="fortschritt" role="status" aria-live="off">
+  <div class="fs-bar"><div class="fs-fill" id="fs-fill"></div></div>
+  <p class="fs-label" id="fs-label">Fortschritt</p>
+</div>
+<div class="rahmen">
+
+<!-- ================= NAVIGATION ================= -->
+<nav class="toc" aria-label="Stationen">
+  <h2>Stationen</h2>
+  <ol>
+    <li class="ds">Doppelstunde 1</li>
+    <li><a href="#s1"><span class="n">1</span>Orientierung</a></li>
+    <li><a href="#s2"><span class="n">2</span>Demografie</a></li>
+    <li><a href="#s3"><span class="n">3</span>Religion, Mentalität, Kirche</a></li>
+    <li class="ds">Doppelstunde 2</li>
+    <li><a href="#s4"><span class="n">4</span>Judenverfolgungen</a></li>
+    <li><a href="#s5"><span class="n">5</span>Gesellschaft</a></li>
+    <li class="ds">Doppelstunde 3</li>
+    <li><a href="#s6"><span class="n">6</span>Wirtschaft, Agrarkrise</a></li>
+    <li><a href="#s7"><span class="n">7</span>Synthese</a></li>
+    <li class="ds">Freiwillig</li>
+    <li><a href="#s8"><span class="n">8</span>Selbsttest<small>optional</small></a></li>
+  </ol>
+  <ol style="margin-top:.8rem">
+    <li><a href="#kompass">Materialkompass</a></li>
+    <li><a href="#glossar">Glossar</a></li>
+    <li><a href="#sichern">Ergebnisse sichern</a></li>
+  </ol>
+  <div class="steuer">
+    <p>Nur einen Zeitraum anzeigen</p>
+    <div class="seg" role="group" aria-label="Zeitfilter">
+      <button type="button" data-zf="alle" aria-pressed="true">alle</button>
+      <button type="button" data-zf="vor" aria-pressed="false">Vorgeschichte</button>
+      <button type="button" data-zf="kurz" aria-pressed="false">kurzfristig</button>
+      <button type="button" data-zf="mittel" aria-pressed="false">mittelfristig</button>
+      <button type="button" data-zf="lang" aria-pressed="false">langfristig</button>
+    </div>
+    <button type="button" class="schalter" id="vt-schalter" aria-pressed="true">Vertiefungen sichtbar</button>
+  </div>
+</nav>
+
+<main>
+<div class="zf-hinweis" id="zf-hinweis" hidden><span id="zf-text"></span><button type="button" id="zf-aus">Alle Abschnitte zeigen</button></div>
+<div class="spalte">
+
+<!-- ================= KOPF ================= -->
+<header class="kopf">
+  <p class="kurs">Geschichte, Leistungskurs 12 – Wahlmodul „Die Große Pest und die Folgen“ – Selbstlerneinheit</p>
+  <h1>Nach dem großen Sterben</h1>
+  <p class="unter">Religiöse, soziale und wirtschaftliche Folgen der Großen Pest, 1347 bis um 1500</p>
+  <div class="zeitband" data-spans="1300-1347:vor,1347-1351:kurz,1351-1400:mittel,1400-1500:lang" data-label="Zeitband 1300 bis 1500 mit Vorgeschichte, kurzfristigen, mittelfristigen und langfristigen Folgen" data-legende="1"></div>
+  <div class="leitfrage">
+    <b>Leitfrage der Einheit</b>
+    <p>Welche Folgen hatte die Große Pest – und war sie ein Bruch, oder verstärkte sie Entwicklungen, die schon vorher begonnen hatten?</p>
+  </div>
+  <details class="info">
+    <summary>So arbeitest du mit dieser Seite</summary>
+    <p><b>Wozu die Seite dient.</b> Du erarbeitest einen Überblick über die Folgen der Pest. Auf dieser Grundlage bearbeitest du anschließend Materialien aus dem Buch (M1–M13). Die Abschnitte sind nummeriert, damit du später darauf verweisen kannst, etwa „vgl. Lernseite 2.1“.</p>
+    <p><b>Aufbau.</b> Jede Station behandelt einen Bereich (z. B. Religion) und geht darin zeitlich vor. Die Farbetiketten zeigen, wann eine Folge vor allem wirkte:</p>
+    <p class="etiketten"><span class="zeit vor">Vorgeschichte</span> vor 1347 <span class="zeit kurz">kurzfristig</span> 1347–1351 <span class="zeit mittel">mittelfristig</span> bis ca. 1400 <span class="zeit lang">langfristig</span> 15. Jahrhundert</p>
+    <p>Die Etiketten markieren Schwerpunkte, keine scharfen Grenzen. Mit dem Zeitfilter in der Navigation kannst du einen Zeitraum quer durch alle Stationen lesen.</p>
+    <p><b>Materialhinweise</b> wie <span class="mhint">📖 später: M8</span> zeigen, zu welchem Buchmaterial ein Abschnitt hinführt. Sie verraten nicht, was darin steht.</p>
+    <p><b>Kennzeichnungen im Text.</b> <span class="dt">Deutung</span> heißt: Interpretation der Forschung, nicht gesicherter Befund. <span class="sz">Schätzung</span> heißt: Die Zahl ist nicht gezählt, sondern geschätzt oder hochgerechnet. Unmarkierte Aussagen gelten als gesichert.</p>
+    <p><b>Aufgaben.</b> Alle bearbeiten alle Aufgaben ohne Kennzeichnung. Den Erwartungshorizont kannst du erst öffnen, wenn du eine eigene Antwort geschrieben oder bestätigt hast, dass du sie in GoodNotes notiert hast. Bei schwierigen Aufgaben gibt es Hilfen in zwei Stufen: erst einen Denkanstoß, dann eine Gliederung.</p>
+    <p><b>Vertiefungen</b> (◆) am Ende jeder Station sind freiwillig. Sie gehen über den Erwartungshorizont hinaus und werden nicht abgefragt. Wer sich auf den Kern konzentrieren will, blendet sie in der Navigation aus.</p>
+    <p><b>Speichern.</b> Deine Eingaben bleiben nur auf diesem iPad und in diesem Browser. Übertrage am Ende jeder Doppelstunde Merksätze und Antworten in deinen GoodNotes-Ordner. Dafür gibt es Kopierknöpfe und unten den Bereich „Ergebnisse sichern“.</p>
+  </details>
+  <details class="info">
+    <summary>Ablauf der drei Doppelstunden</summary>
+    <div class="tab-wrap"><table>
+      <thead><tr><th>Doppelstunde</th><th>Stationen</th><th>Zeit</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>1 Orientierung, 2 Demografie, 3 Religion, Mentalität, Kirche</td><td>ca. 15 + 35 + 40 Min.</td></tr>
+        <tr><td>2</td><td>4 Judenverfolgungen (mit Einstiegsquiz), 5 Gesellschaft</td><td>ca. 45 + 40 Min.</td></tr>
+        <tr><td>3</td><td>6 Wirtschaft und Agrarkrise (mit Einstiegsquiz), 7 Synthese</td><td>ca. 45 + 40 Min.</td></tr>
+        <tr><td>freiwillig</td><td>8 Selbsttest: Wissen und Materialeinordnung</td><td>ca. 10 + 15 Min.</td></tr>
+      </tbody>
+    </table></div>
+    <p>Was du in der Stunde nicht schaffst, erledigst du als Hausaufgabe.</p>
+  </details>
+</header>
+
+<!-- ================= STATION 1 ================= -->
+<section class="station" id="s1">
+  <header class="st-head">
+    <p class="st-nr">Station 1</p>
+    <h2>Orientierung: Folgen ordnen</h2>
+    <p class="st-meta">ca. 15 Minuten, Doppelstunde 1</p>
+    <div class="zeitband" data-spans="1300-1347:vor,1347-1351:kurz,1351-1400:mittel,1400-1500:lang" data-label="Zeitband der gesamten Einheit"></div>
+  </header>
+  <div class="ziel">
+    <p><b>Ziel dieser Station.</b> Du kannst …</p>
+    <ul>
+      <li>Folgen der Pest zeitlich als kurz-, mittel- oder langfristig einordnen,</li>
+      <li>Quellen und Darstellungen unterscheiden.</li>
+    </ul>
+  </div>
+
+  <article class="abschnitt" id="s1-0">
+    <h3><span class="nr">1.0</span>Aufwärmen: Was weißt du noch?</h3>
+    <p>Beantworte die Fragen <b>ohne</b> nachzusehen. Das Abrufen aus dem Gedächtnis festigt Wissen stärker als erneutes Lesen.</p>
+    <div class="mc" data-q="q1a"></div>
+    <div class="mc" data-q="q1b"></div>
+  </article>
+
+  <article class="abschnitt" id="s1-1">
+    <h3><span class="nr">1.1</span>Bereiche und Zeiträume</h3>
+    <p>Die erste Pestwelle erfasste Europa zwischen 1347 und 1351. Ihre Folgen reichten weit darüber hinaus. Diese Einheit ordnet sie in fünf Bereiche, die du nacheinander bearbeitest: Demografie (Station 2), Religion und Kirche (3), Judenverfolgungen (4), Gesellschaft (5) und Wirtschaft (6). In Station 7 führst du die Bereiche zusammen.</p>
+    <p>Innerhalb jedes Bereichs gehst du zeitlich vor. Manche Folgen zeigten sich sofort, etwa Massengräber, Bußzüge oder Pogrome. Andere entwickelten sich über Jahrzehnte, wie die Verschiebungen zwischen Stadt und Land. Einige Entwicklungen hatten schon <b>vor</b> der Pest begonnen. Für diese Fälle ist die Frage wichtig, ob die Pest sie auslöste oder nur beschleunigte.</p>
+    <p>Die folgende Zeitleiste gibt einen Überblick. Rot markiert sind die Pestwellen.</p>
+    <ol class="zl">
+      <li><span class="j">1309–1377</span><span>Die Päpste residieren in Avignon unter starkem Einfluss der französischen Krone.<span class="zeit vor">Vorgeschichte</span></span></li>
+      <li><span class="j">1315–1317</span><span>Große Hungersnot in weiten Teilen Nord- und Mitteleuropas<span class="zeit vor">Vorgeschichte</span></span></li>
+      <li class="pest"><span class="j">Herbst 1347</span><span>Handelsschiffe bringen die Pest nach Messina auf Sizilien.<span class="zeit kurz">kurzfristig</span></span></li>
+      <li><span class="j">1348</span><span>Pest in Italien, Frankreich und England; erste Gewalt gegen Juden in Südfrankreich. Papst Clemens VI. verbietet sie in zwei Bullen (Juli und September).<span class="zeit kurz">kurzfristig</span></span></li>
+      <li><span class="j">Oktober 1348</span><span>Gutachten der Pariser medizinischen Fakultät zu den Ursachen der Seuche<span class="zeit kurz">kurzfristig</span></span></li>
+      <li><span class="j">1348/49</span><span>Geißlerzüge ziehen vom Alpenraum durch das Reich.<span class="zeit kurz">kurzfristig</span></span></li>
+      <li><span class="j">14.2.1349</span><span>Pogrom in Straßburg<span class="zeit kurz">kurzfristig</span></span></li>
+      <li><span class="j">20.10.1349</span><span>Clemens VI. verbietet die Geißlerzüge.<span class="zeit kurz">kurzfristig</span></span></li>
+      <li><span class="j">1349/1351</span><span>England: Gesetze sollen die Löhne auf dem Stand vor der Pest halten.<span class="zeit kurz">kurzfristig</span></span></li>
+      <li><span class="j">1358</span><span>Bauernaufstand in Frankreich (Jacquerie)<span class="zeit mittel">mittelfristig</span></span></li>
+      <li class="pest"><span class="j">1361–1363</span><span>Zweite große Pestwelle; danach kehrt die Pest in Abständen immer wieder.<span class="zeit mittel">mittelfristig</span></span></li>
+      <li><span class="j">1378–1417</span><span>Großes Abendländisches Schisma: zwei, zeitweise drei Päpste<span class="zeit mittel">mittelfristig</span></span></li>
+      <li><span class="j">1381</span><span>Bauernaufstand in England<span class="zeit mittel">mittelfristig</span></span></li>
+      <li><span class="j">ca. 1370–1470</span><span>Getreidepreise fallen, Siedlungen werden aufgegeben (Agrarkrise).<span class="zeit lang">langfristig</span></span></li>
+      <li><span class="j">1463</span><span>Totentanz in der Lübecker Marienkirche<span class="zeit lang">langfristig</span></span></li>
+      <li><span class="j">um 1500</span><span>Die Bevölkerung erreicht wieder etwa den Stand vor 1347 <span class="sz">Schätzung</span>.<span class="zeit lang">langfristig</span></span></li>
+    </ol>
+  </article>
+
+  <div class="task" data-id="1.1">
+    <p class="task-kopf"><span class="task-nr">1.1</span><span class="afb">AFB I</span></p>
+    <p class="task-text"><b>Ordne</b> die Ereignisse den Zeiträumen <b>zu</b>. Tippe zuerst ein Ereignis an und dann die passende Spalte. Versuche es zunächst ohne Blick auf die Zeitleiste.</p>
+    <div class="zuord" data-z="z1"></div>
+  </div>
+
+  <article class="abschnitt" id="s1-2">
+    <h3><span class="nr">1.2</span>Quelle oder Darstellung?</h3>
+    <div class="box methode">
+      <p class="titel">Methode</p>
+      <p><a class="gl" href="#gl-quelle">Quellen</a> stammen aus der untersuchten Zeit: Chroniken, Urkunden, Bilder, Gesetze. <a class="gl" href="#gl-darstellung">Darstellungen</a> blicken mit zeitlichem Abstand zurück und deuten die Vergangenheit, etwa Texte von Historikern, Schulbücher oder Erklärvideos.</p>
+      <p>Auch diese Lernseite ist eine Darstellung, ebenso dein Buchtext S. 56–61. Im Materialteil des Buches (S. 62–69) stehen Quellen <b>und</b> Darstellungen nebeneinander. Prüfe deshalb bei jedem Material zuerst: Wer schreibt, wann und mit welchem Abstand?</p>
+      <p>Ein Grenzfall sind Bilder, die später entstanden als das, was sie zeigen. Ein Gemälde von 1898 über die Pest ist keine Quelle für das 14. Jahrhundert, wohl aber eine Quelle dafür, wie man die Pest im 19. Jahrhundert sah.</p>
+    </div>
+    <div class="mc" data-q="q1c"></div>
+  </article>
+
+  <aside class="wichtig" data-station="1">
+    <p class="titel">Das Wichtigste für deinen GoodNotes-Ordner</p>
+    <ul>
+      <li>Die Folgen der Pest lassen sich nach Bereichen (Demografie, Religion, Judenverfolgungen, Gesellschaft, Wirtschaft) und nach Zeit ordnen: kurzfristig (1347–1351), mittelfristig (bis ca. 1400), langfristig (15. Jahrhundert).</li>
+      <li>Manche Entwicklungen begannen schon vor 1347, etwa die Hungersnot von 1315–1317 oder die Kritik an den Päpsten in Avignon. Hier ist zu prüfen, ob die Pest Ursache oder Verstärker war.</li>
+      <li>Quellen stammen aus der untersuchten Zeit, Darstellungen blicken später zurück. Diese Lernseite und der Buchtext sind Darstellungen.</li>
+    </ul>
+  </aside>
+
+  <details class="vertiefung">
+    <summary><span class="vt-titel">Vertiefung: Seit wann heißt die Pest „Schwarzer Tod“?</span><span class="vt-unter">Freiwillig, geht über den Erwartungshorizont hinaus, ca. 8 Minuten.</span></summary>
+    <div class="vt-inhalt">
+      <p><span class="vt-marker">Hintergrund</span>Die Zeitgenossen sprachen vom „großen Sterben“, von der „Pestilenz“ oder schlicht von der Seuche. Die Bezeichnung „Schwarzer Tod“ kommt im 14. Jahrhundert nicht vor. Sie taucht erst in skandinavischen Chroniken des 16. Jahrhunderts auf. Ins Deutsche gelangte sie im 18. Jahrhundert und wurde dann auf die Welle von 1347–1351 bezogen.</p>
+      <p><span class="vt-marker">Forschung</span>Durchgesetzt hat den Begriff vor allem der Berliner Medizinhistoriker Justus Hecker mit seinem Buch „Der schwarze Tod im vierzehnten Jahrhundert“ (1832). Die neuere Forschung kritisiert, dass Hecker damit die Welle von 1347–1351 als einmaliges Ereignis von späteren Pestausbrüchen abgrenzte und sie mit einer dramatisierenden Schreibweise versah.</p>
+      <div class="task" data-id="1.V">
+        <p class="task-kopf"><span class="task-nr">1.V</span><span class="afb">AFB II</span><span class="form">freiwillig</span></p>
+        <p class="task-text"><b>Erläutere</b>, was die späte Entstehung des Begriffs „Schwarzer Tod“ für die Arbeit mit Quellen bedeutet. Beziehe Kosellecks begriffsgeschichtlichen Ansatz ein.</p>
+        <textarea aria-label="Antwort zu Aufgabe 1.V"></textarea>
+        <div class="eh" hidden><b>Erwartungshorizont</b><ul>
+          <li>Wer in Quellen des 14. Jahrhunderts nach „Schwarzer Tod“ sucht, findet nichts. Zeitgenössische Begriffe sind „großes Sterben“, „Pestilenz“, lateinisch etwa <i>mortalitas magna</i>.</li>
+          <li>Begriffe tragen die Deutung ihrer Entstehungszeit. „Schwarzer Tod“ spiegelt die Sicht späterer Jahrhunderte, die das Ereignis als einzigartige Katastrophe fassten.</li>
+          <li>Bezug zu Koselleck: Die Begriffsgeschichte fragt, wann und wie ein Wort verwendet wurde. Der Befund zeigt, dass die Einordnung als herausgehobene Epochenkatastrophe selbst eine spätere Deutung ist.</li>
+        </ul></div>
+      </div>
+    </div>
+  </details>
+
+  <div class="ampel" data-station="1"></div>
+
+  <details class="belege">
+    <summary>Belege zu dieser Station</summary>
+    <ul>
+      <li>Avignon, Rückkehr nach Rom Januar 1377; Pariser Gutachten Oktober 1348: siehe Belege zu Station 3</li>
+      <li>Bullen Clemens’ VI. vom 6. Juli und 26. September 1348: <a href="https://jewishcurrents.org/july-6-clement-vi-and-the-black-plague">Jewish Currents</a>; „Quamvis perfidiam“ (1348): <a href="https://www.jewishvirtuallibrary.org/jsource/judaica/ejud_0002_0004_0_03728.html">Encyclopaedia Judaica</a></li>
+      <li>Geißlerverbot 20.10.1349: <a href="https://ccel.org/s/schaff/encyc/encyc04/htm/0341=325.htm">Schaff-Herzog Encyclopedia</a></li>
+      <li>Straßburg, Valentinstag 1349: Buch S. 63 f. (M4)</li>
+      <li>Totentanz Lübeck 1463: <a href="https://st-marien-luebeck.de/en/discover/items-objects/dance-of-death">St. Marien zu Lübeck</a></li>
+      <li>Bevölkerung um 1500: Buch S. 61; andere Darstellungen nennen das 16. Jahrhundert</li>
+      <li>Begriff „Schwarzer Tod“, Hecker 1832: <a href="https://link.springer.com/chapter/10.1007/978-3-030-72304-0_2">Springer, Kapitel zur Historiografie des Schwarzen Todes</a>; skandinavische Chroniken des 16. Jh.: <a href="https://www.etymonline.com/de/word/Black%20Death">Etymonline</a></li>
+    </ul>
+  </details>
+  <a class="weiter" href="#s2">Weiter zu Station 2: Demografie</a>
+</section>
+
+<!-- ================= STATION 2 ================= -->
+<section class="station" id="s2">
+  <header class="st-head">
+    <p class="st-nr">Station 2</p>
+    <h2>Demografie: das große Sterben und seine Nachwirkungen</h2>
+    <p class="st-meta">ca. 35 Minuten, Doppelstunde 1</p>
+    <div class="zeitband" data-spans="1300-1347:vor,1347-1351:kurz,1351-1400:mittel,1400-1500:lang" data-label="Diese Station reicht von der Vorgeschichte bis um 1500"></div>
+  </header>
+  <div class="ziel">
+    <p><b>Ziel dieser Station.</b> Du kannst …</p>
+    <ul>
+      <li>erläutern, warum Opferzahlen der Pest unsicher sind und wie die Forschung sie ermittelt,</li>
+      <li>die Bevölkerungsentwicklung bis um 1500 in Grundzügen beschreiben.</li>
+    </ul>
+  </div>
+
+  <article class="abschnitt" id="s2-1" data-zeit="kurz">
+    <h3><span class="nr">2.1</span>Wie viele Menschen starben?</h3>
+    <div class="etiketten"><span class="zeit kurz">kurzfristig</span><span class="mhint" data-m="S60">📖 später: Tabelle Buch S. 60</span><span class="mhint" data-m="M9">📖 später: M9, Darstellung, 2014</span></div>
+    <p>Chronisten berichten von ausgestorbenen Familien, verlassenen Dörfern und Massengräbern. Sie nennen gewaltige Zahlen. Der Florentiner Dichter Giovanni Boccaccio spricht von 100.000 Toten in Florenz. Das wäre der weitaus größte Teil der Stadtbevölkerung. Die Forschung hält solche Angaben für deutlich überhöht <span class="dt">Deutung</span>.</p>
+    <p>Die Chronisten zählten nicht, sie schätzten. Große Zahlen dienten auch dazu, das Unfassbare auszudrücken. Volkszählungen gab es nicht. Belastbarer sind Verwaltungsquellen, die Einzelfälle regelmäßig festhielten: Steuerlisten, Testamente, grundherrliche Abgabenlisten und die Register der Bischöfe, in denen neu besetzte Pfarrstellen verzeichnet wurden. Jede dieser Quellen erfasst aber nur einen Teil der Bevölkerung. Wer arm war, zahlte keine Steuern und hinterließ kein Testament.</p>
+    <p>Um auf ganz Europa zu schließen, rechnen Historiker aus lokalen Studien hoch. Die Ergebnisse gehen weit auseinander. Vorsichtige Schätzungen nennen etwa ein Drittel der Bevölkerung, diese Zahl findest du auch in vielen Schulbüchern. Der Historiker Ole Benedictow kommt auf rund 60 Prozent <span class="sz">Schätzung</span>.</p>
+    <div class="mc" data-q="q2a"></div>
+  </article>
+
+  <article class="abschnitt" id="s2-2" data-zeit="kurz">
+    <h3><span class="nr">2.2</span>Nicht überall gleich</h3>
+    <div class="etiketten"><span class="zeit kurz">kurzfristig</span></div>
+    <p>Die meisten Zahlen stammen aus Städten, denn dort wurde mehr aufgeschrieben. Ob das Land ähnlich betroffen war, lässt sich aus Schriftquellen oft nicht sagen.</p>
+    <p>Eine Studie von 2022 nutzte deshalb einen anderen Zugang: Pollen aus Seen und Mooren. Wo weniger Menschen lebten, wurden Felder aufgegeben, der Getreidepollen nahm ab und Wald kehrte zurück. Ein internationales Team um Adam Izdebski wertete 1.634 Proben von 261 Orten in 19 Ländern aus. Das Ergebnis: Skandinavien, Frankreich, Südwestdeutschland, Griechenland und Mittelitalien zeigen einen scharfen Einbruch der Landwirtschaft. Weite Teile Mittel- und Osteuropas, Irland und die Iberische Halbinsel zeigen dagegen Kontinuität oder sogar Wachstum.</p>
+    <p>Die Studie widerspricht damit der Vorstellung, die Pest habe überall gleich stark gewütet <span class="dt">Deutung</span>. Sie misst allerdings nicht die Toten selbst, sondern Veränderungen der Landnutzung.</p>
+    <div class="mc" data-q="q2b"></div>
+  </article>
+
+  <div class="task" data-id="2.1">
+    <p class="task-kopf"><span class="task-nr">2.1</span><span class="afb">AFB III</span></p>
+    <p class="task-text"><b>Beurteile</b> die Aussagekraft der Tabelle „Todesopfer in ausgewählten Städten Europas um die Mitte des 14. Jahrhunderts“ im Buch (S. 60).</p>
+    <textarea aria-label="Antwort zu Aufgabe 2.1"></textarea>
+    <div class="hilfe" data-titel="Denkanstoß" hidden><b>Hilfe 1: Denkanstoß</b>Woher stammen die Zahlen? Was bräuchtest du, um 14.000 Tote in Basel einzuordnen? Vergleiche mit der Einwohnerzahl Straßburgs, die das Buch in der Einleitung zu M4 (S. 63) nennt.</div>
+    <div class="hilfe" data-titel="Gliederung" hidden><b>Hilfe 2: Gliederung</b><ol><li>Herkunft der Zahlen (Nachweis unter der Tabelle)</li><li>Fehlende Bezugsgröße</li><li>Form der Zahlen</li><li>Plausibilität im Vergleich</li><li>Urteil: Wozu taugt die Tabelle, wozu nicht?</li></ol></div>
+    <div class="eh" hidden><b>Erwartungshorizont</b><ul>
+      <li><b>Herkunft:</b> Die Tabelle beruht laut Nachweis auf einer Darstellung (Rolf Walter, 2006). Aus welchen Quellen die Zahlen ursprünglich stammen, etwa Chroniken oder Steuerlisten, bleibt offen.</li>
+      <li><b>Bezugsgröße fehlt:</b> Ohne Einwohnerzahlen lässt sich nicht sagen, welchen Anteil der Bevölkerung die Toten ausmachten. Die Städte sind so nicht vergleichbar.</li>
+      <li><b>Form:</b> Runde Tausenderzahlen deuten auf Schätzungen hin, nicht auf Zählungen.</li>
+      <li><b>Plausibilität:</b> Straßburg, eine der großen Städte des Reichs, hatte laut Buch etwa 20.000 Einwohner. 14.000 Tote in Basel oder 12.000 in Erfurt wären daran gemessen extrem hoch. Möglich ist, dass die Zahlen überhöhte Chronistenangaben übernehmen oder mehr als eine Pestwelle erfassen <span class="dt">Deutung</span>.</li>
+      <li><b>Urteil:</b> Die Tabelle veranschaulicht die Wahrnehmung eines Massensterbens. Als Beleg für genaue Opferzahlen taugt sie nicht.</li>
+    </ul></div>
+  </div>
+
+  <div class="task" data-id="2.2">
+    <p class="task-kopf"><span class="task-nr">2.2</span><span class="afb">AFB II</span></p>
+    <p class="task-text"><b>Erläutere</b>, warum Historiker die Sterblichkeit in Europa so unterschiedlich schätzen – zwischen etwa einem Drittel und rund 60 Prozent.</p>
+    <textarea aria-label="Antwort zu Aufgabe 2.2"></textarea>
+    <div class="eh" hidden><b>Erwartungshorizont</b><ul>
+      <li>Es gibt keine Gesamtzählung. Jede Zahl für Europa ist eine Hochrechnung aus lokalen Studien.</li>
+      <li>Die Quellen erfassen nur Teile der Bevölkerung (Steuerzahler, Erblasser, Geistliche). Wer Arme oder Kinder mitrechnet, muss Annahmen treffen.</li>
+      <li>Die Überlieferung stammt überwiegend aus Städten. Wer städtische Werte auf das Land überträgt, kommt zu hohen Zahlen.</li>
+      <li>Die Pest wirkte regional sehr unterschiedlich (Pollenstudie 2022). Welche Regionen man als typisch ansieht, verändert das Ergebnis.</li>
+      <li>Auch die Ausgangsgröße, die Bevölkerung vor 1347, ist nur geschätzt.</li>
+    </ul></div>
+  </div>
+
+  <article class="abschnitt" id="s2-3" data-zeit="mittel">
+    <h3><span class="nr">2.3</span>Die Pest kehrt wieder</h3>
+    <div class="etiketten"><span class="zeit mittel">mittelfristig</span></div>
+    <p>Mit dem Ende der ersten Welle 1351 war die Pest nicht verschwunden. 1361–1363 folgte die zweite große Welle, danach brach sie in Abständen von etwa einem Jahrzehnt immer wieder aus. Mehrere Chronisten berichten, dass die späteren Wellen besonders Kinder und junge Menschen trafen <span class="dt">Deutung</span>.</p>
+    <p>Die Folge war dauerhaft: Wer als Kind starb, gründete später keine Familie. Die späteren Wellen töteten zwar weniger Menschen als die erste, verhinderten aber, dass die Bevölkerung wieder wuchs. Nach dem Buch erreichte die Bevölkerung Europas um 1400 ihren Tiefstand <span class="sz">Schätzung</span>.</p>
+    <div class="mc" data-q="q2c"></div>
+  </article>
+
+  <article class="abschnitt" id="s2-4" data-zeit="vor lang">
+    <h3><span class="nr">2.4</span>Vorgeschichte und langer Weg zur Erholung</h3>
+    <div class="etiketten"><span class="zeit vor">Vorgeschichte</span><span class="zeit lang">langfristig</span><span class="mhint" data-m="M10">📖 später: M10, Grafik mit Schätzwerten</span></div>
+    <p>Die Bevölkerung Europas war seit etwa 1000 stark gewachsen. Schon vor der Pest stieß dieses Wachstum an Grenzen. Die Große Hungersnot von 1315–1317 kostete in Nord- und Mitteleuropa viele Menschenleben. Ob Europa um 1300 „überbevölkert“ war und die Pest deshalb so verheerend wirkte, ist in der Forschung umstritten <span class="dt">Deutung</span>.</p>
+    <p>Den Stand vor 1347 erreichte die Bevölkerung erst wieder um 1500, nach anderen Darstellungen im 16. Jahrhundert <span class="sz">Schätzung</span>. Endgültig verschwand die Pest aus Mitteleuropa erst im 18. Jahrhundert. Das Buch nennt spätere Ausbrüche etwa in London 1665 und Hamburg 1712/13 (S. 60, Fußnote).</p>
+    <div class="box methode">
+      <p class="titel">Methode: Diagramme zur Bevölkerung lesen</p>
+      <p>Bevölkerungszahlen des Mittelalters sind immer Schätzungen. Prüfe bei jedem Diagramm drei Dinge: Wer hat die Werte geschätzt? Sind die Abstände auf der Zeitachse gleich groß? Wo fehlen Zwischenwerte, die den Verlauf verändern könnten?</p>
+    </div>
+  </article>
+
+  <aside class="wichtig" data-station="2">
+    <p class="titel">Das Wichtigste für deinen GoodNotes-Ordner</p>
+    <ul>
+      <li>Zeitgenössische Opferzahlen sind Schätzungen und oft überhöht. Verlässlicher sind Verwaltungsquellen wie Steuerlisten oder Register. Sie erfassen aber nur Teile der Bevölkerung.</li>
+      <li>Die Forschung schätzt die Sterblichkeit in Europa auf ein Drittel bis rund 60 Prozent (Benedictow). Die Pest traf die Regionen sehr unterschiedlich.</li>
+      <li>Ab 1361 kehrte die Pest in Abständen wieder. Die Bevölkerung erreichte den Stand vor 1347 erst um 1500 oder im 16. Jahrhundert.</li>
+      <li>Schon vor der Pest gab es Krisen, etwa die Hungersnot von 1315–1317.</li>
+    </ul>
+  </aside>
+
+  <details class="vertiefung">
+    <summary><span class="vt-titel">Vertiefung: Wie misst man ein Massensterben?</span><span class="vt-unter">Freiwillig, geht über den Erwartungshorizont hinaus, ca. 10 Minuten.</span></summary>
+    <div class="vt-inhalt">
+      <p><span class="vt-marker">Forschung</span>Ole Benedictow wertete Studien zu Regionen aus, für die es brauchbare Zahlen gibt, und rechnete hoch: Bei rund 80 Millionen Einwohnern vor der Pest seien etwa 50 Millionen gestorben. Kritiker wenden ein, dass die gut dokumentierten Regionen nicht repräsentativ sein müssen.</p>
+      <p><span class="vt-marker">Forschung</span>Die Pollenstudie von 2022 setzt genau hier an. Sie bestätigt hohe Verluste dort, wo auch die Schriftquellen sie nahelegen. Für andere Regionen zeigt sie keinen Einbruch. Ihre Grenze: Pollen zeigen Landnutzung, keine Toten. Aufgegebene Felder können auch andere Ursachen haben, und in dicht besiedelten Regionen konnten Überlebende frei gewordenes Land übernehmen, ohne dass es brach fiel.</p>
+      <p><span class="vt-marker">Hintergrund</span>Benedictow betont außerdem, dass die späteren Wellen die Bevölkerung weniger stark verringerten als die erste. Sie hätten vor allem das Wachstum gebremst.</p>
+      <div class="task" data-id="2.V">
+        <p class="task-kopf"><span class="task-nr">2.V</span><span class="afb">AFB III</span><span class="form">freiwillig</span></p>
+        <p class="task-text"><b>Erörtere</b>, ob naturwissenschaftliche Daten wie Pollen die Frage nach der Sterblichkeit besser beantworten können als schriftliche Quellen.</p>
+        <textarea aria-label="Antwort zu Aufgabe 2.V"></textarea>
+        <div class="eh" hidden><b>Kriterien für eine gute Erörterung</b><ul>
+          <li>Du nennst Stärken der Pollendaten: flächendeckend, unabhängig von städtischer Schriftlichkeit, auch für das Land aussagekräftig.</li>
+          <li>Du nennst Grenzen: indirekter Schluss von Landnutzung auf Bevölkerung, andere mögliche Ursachen, zeitliche Unschärfe.</li>
+          <li>Du wägst ab und kommst zu einem begründeten Urteil, etwa: Beide Zugänge ergänzen sich; belastbar wird ein Befund, wenn sie übereinstimmen.</li>
+        </ul></div>
+      </div>
+    </div>
+  </details>
+
+  <div class="ampel" data-station="2"></div>
+
+  <details class="belege">
+    <summary>Belege zu dieser Station</summary>
+    <ul>
+      <li>Chronistenzahlen, Boccaccio, Abgleich mit Steuerlisten; Sterblichkeit ca. ein Drittel: Schulbuchdarstellungen (Buchner S. 60; Cornelsen S. 68)</li>
+      <li>Benedictow, rund 60 %, ca. 50 Mio. Tote: <a href="https://boydellandbrewer.com/9781783275168">Boydell &amp; Brewer: The Complete History of the Black Death (2021)</a>; <a href="https://www.michaeljournal.no/article/2005/07/Book-review-Black-Death-and-hard-facts">Rezension in Michael (2005)</a>, dort auch zur Wirkung der späteren Wellen</li>
+      <li>Pollenstudie: A. Izdebski u. a., Nature Ecology &amp; Evolution 2022, <a href="https://doi.org/10.1038/s41559-021-01652-4">doi:10.1038/s41559-021-01652-4</a>; Zusammenfassung: <a href="https://shh.mpg.de/2099614/black-death-mortality-lower-than-believed">Max-Planck-Institut</a></li>
+      <li>Tiefstand um 1400, Erholung um 1500, spätere Ausbrüche: Buch S. 60 f.; Erholung im 16. Jh.: Cornelsen S. 68</li>
+      <li>Straßburg ca. 20.000 Einwohner: Buch S. 63 (Einleitung zu M4)</li>
+    </ul>
+  </details>
+  <a class="weiter" href="#s3">Weiter zu Station 3: Religion, Mentalität, Kirche</a>
+</section>
+
+<!-- ================= STATION 3 ================= -->
+<section class="station" id="s3">
+  <header class="st-head">
+    <p class="st-nr">Station 3</p>
+    <h2>Religion, Mentalität, Kirche</h2>
+    <p class="st-meta">ca. 40 Minuten, Doppelstunde 1</p>
+    <div class="zeitband" data-spans="1300-1347:vor,1347-1351:kurz,1351-1400:mittel,1400-1500:lang" data-label="Diese Station reicht von der Vorgeschichte bis ins 15. Jahrhundert"></div>
+  </header>
+  <div class="ziel">
+    <p><b>Ziel dieser Station.</b> Du kannst …</p>
+    <ul>
+      <li>zeitgenössische Deutungen der Pest beschreiben,</li>
+      <li>die Geißlerbewegung charakterisieren und das Verbot durch den Papst erklären,</li>
+      <li>erläutern, warum die Pest die Kritik an der Kirche verstärkte, aber nicht auslöste.</li>
+    </ul>
+  </div>
+
+  <article class="abschnitt" id="s3-1" data-zeit="kurz">
+    <h3><span class="nr">3.1</span>Strafe Gottes oder Stand der Sterne?</h3>
+    <div class="etiketten"><span class="zeit kurz">kurzfristig</span></div>
+    <p>Für die meisten Menschen war die Pest eine Strafe Gottes für die Sünden der Menschen. Viele lebten in <a class="gl" href="#gl-endzeit">Endzeiterwartung</a>. Naturereignisse wie das schwere Erdbeben vom Januar 1348 in den Ostalpen galten als Vorzeichen.</p>
+    <p>Die gelehrte Medizin suchte ebenfalls nach Ursachen. Im Oktober 1348 legte die medizinische Fakultät der Universität Paris im Auftrag König Philipps VI. ein Gutachten vor. Als ferne Ursache nannte sie eine <a class="gl" href="#gl-konjunktion">Konjunktion</a> von Saturn, Jupiter und Mars am 20. März 1345. Diese habe die Luft verdorben. Die verdorbene Luft, das <a class="gl" href="#gl-miasma">Miasma</a>, sei die nahe Ursache der Krankheit. Die Ärzte empfahlen daher, die Luft mit Duftstoffen zu reinigen und betroffene Orte zu meiden.</p>
+    <p>Beide Erklärungen schlossen sich nicht aus: Nach mittelalterlichem Verständnis konnte Gott durch die Gestirne wirken <span class="dt">Deutung</span>. Dass Flöhe die Krankheit übertragen, erkannte man erst Ende des 19. Jahrhunderts.</p>
+    <p class="querverweis">Die Suche nach Schuldigen führte zu Gewalt gegen Juden: → Station 4.</p>
+    <div class="mc" data-q="q3a"></div>
+  </article>
+
+  <article class="abschnitt" id="s3-2" data-zeit="kurz">
+    <h3><span class="nr">3.2</span>Frömmigkeit in der Krise</h3>
+    <div class="etiketten"><span class="zeit kurz">kurzfristig</span><span class="mhint" data-m="S57">📖 später: Bild Buch S. 57</span></div>
+    <p>Die Menschen reagierten mit gesteigerter Frömmigkeit: Prozessionen, Messen und Gebete sollten Gott versöhnen. Sterbende vermachten Kirchen und Klöstern große Teile ihres Vermögens für ihr Seelenheil. Die Kirche gehörte damit auch zu den wirtschaftlichen Gewinnern der Pest.</p>
+    <p>Man rief <a class="gl" href="#gl-pestheilige">Pestheilige</a> an. Der heilige Sebastian wurde der Legende nach von Pfeilen getroffen und überlebte; Pfeile galten als Bild für plötzlich hereinbrechende Seuchen. Papst Gregor der Große hatte der Überlieferung nach 590 in Rom eine Bittprozession gegen eine Seuche angeführt. Die Buchmalerei auf S. 57 zeigt diese Prozession. Sie entstand im 15. Jahrhundert, also über 800 Jahre nach dem Ereignis.</p>
+    <div class="box faktencheck">
+      <p class="titel">Faktencheck zum Schulbuch</p>
+      <dl>
+        <dt>S. 57: Gregor der Große sei 1295 „heiliggesprochen“ worden.</dt>
+        <dd>Gregor wurde schon unmittelbar nach seinem Tod (604) als Heiliger verehrt; ein förmliches Heiligsprechungsverfahren gab es damals noch nicht. Papst Bonifaz VIII. erhob ihn Ende des 13. Jahrhunderts zusammen mit Ambrosius, Augustinus und Hieronymus zum <a class="gl" href="#gl-kirchenlehrer">Kirchenlehrer</a>. Darstellungen datieren das auf 1295 oder 1298.</dd>
+        <dt>S. 58: 1376 habe das Papsttum nach Rom zurückkehren dürfen.</dt>
+        <dd>Papst Gregor XI. verließ Avignon im September 1376 und zog im Januar 1377 in Rom ein.</dd>
+      </dl>
+    </div>
+  </article>
+
+  <article class="abschnitt" id="s3-3" data-zeit="kurz">
+    <h3><span class="nr">3.3</span>Die Geißler</h3>
+    <div class="etiketten"><span class="zeit kurz">kurzfristig</span><span class="mhint" data-m="M8">📖 später: M8, Chronik, Straßburg, 1362</span></div>
+    <p>Die auffälligste Reaktion waren die Geißlerzüge. Die Bewegung war nicht neu: Schon 1260 waren von Perugia aus Büßer durch Italien und über die Alpen gezogen. Im Herbst 1348 formierten sich die Geißler im Alpenraum neu. 1349 zogen sie durch das Reich, die Niederlande und bis nach Polen.</p>
+    <p>Die Geißler schlossen sich zu Bruderschaften zusammen. Wer beitrat, verpflichtete sich zu einer Bußfahrt von 33½ Tagen, nach der Zahl der Lebensjahre Christi. In den Städten geißelten sie sich öffentlich mit Peitschen, sangen Bußlieder und predigten. Sie wollten Gott durch das eigene Leiden versöhnen und das Ende der Seuche erreichen. Wie viele Menschen mitzogen, ist unklar. Chronisten nennen Tausende, teils Zehntausende <span class="sz">Schätzung</span>.</p>
+    <p>Für die Amtskirche war die Bewegung eine Herausforderung. Die Züge wurden von <a class="gl" href="#gl-laien">Laien</a> geleitet, nicht von Priestern. Die Geißler beanspruchten, aus eigener Kraft Buße zu leisten und Heil zu erlangen, und entzogen sich damit der kirchlichen Kontrolle. Am 20. Oktober 1349 verbot Papst Clemens VI. die Züge in einer <a class="gl" href="#gl-bulle">Bulle</a>. Anfang der 1350er-Jahre war die Bewegung im Reich weitgehend verschwunden.</p>
+    <p>Umstritten ist, wie eng Geißler und Judenverfolgungen zusammenhingen. Vielerorts begannen die Pogrome vor dem Eintreffen der Geißler. An anderen Orten heizte ihr Auftreten die Stimmung an <span class="dt">Deutung</span>. → Station 4</p>
+    <div class="box methode">
+      <p class="titel">Methode: Wann entstand das Bild?</p>
+      <p>Der Holzschnitt mit zwei Geißlern auf S. 59 stammt aus der Schedelschen Weltchronik von 1493. Er entstand also rund 140 Jahre nach den Geißlerzügen von 1349. Er zeigt, wie man sich am Ende des 15. Jahrhunderts Geißler vorstellte. Ein Augenzeugenbild ist er nicht.</p>
+    </div>
+    <div class="mc" data-q="q3b"></div>
+  </article>
+
+  <div class="task" data-id="3.1">
+    <p class="task-kopf"><span class="task-nr">3.1</span><span class="afb">AFB II</span></p>
+    <p class="task-text"><b>Erläutere</b>, warum die Amtskirche die Geißlerbewegung als Herausforderung ansah, obwohl sich die Geißler als fromme Christen verstanden.</p>
+    <textarea aria-label="Antwort zu Aufgabe 3.1"></textarea>
+    <div class="eh" hidden><b>Erwartungshorizont</b><ul>
+      <li>Die Geißler verstanden sich als Büßer im Rahmen des christlichen Glaubens. Buße, Gebet und Prozessionen waren auch kirchlich gebilligte Formen der Frömmigkeit.</li>
+      <li>Die Bewegung wurde jedoch von Laien organisiert und geleitet. Sie entzog sich der Aufsicht von Bischöfen und Priestern.</li>
+      <li>Die Geißler beanspruchten, durch eigene Buße Heil zu erlangen. Damit stellten sie die Rolle der Kirche als Vermittlerin zwischen Gott und den Menschen in Frage (Sakramente, Beichte, Ablass).</li>
+      <li>Die Massenbewegung gefährdete die öffentliche Ordnung. In manchen Orten verband sie sich mit Gewalt.</li>
+      <li>Folge: Verbot durch Clemens VI. am 20. Oktober 1349.</li>
+    </ul></div>
+  </div>
+
+  <article class="abschnitt" id="s3-4" data-zeit="vor mittel">
+    <h3><span class="nr">3.4</span>Die Kirche unter Druck</h3>
+    <div class="etiketten"><span class="zeit vor">Vorgeschichte</span><span class="zeit mittel">mittelfristig</span></div>
+    <p>Priester, Mönche und Nonnen pflegten Kranke und spendeten Sterbenden die Sakramente. Viele von ihnen starben. Die Kirche litt unter Priestermangel und weihte in den folgenden Jahren auch jüngere und weniger gut ausgebildete Kandidaten. Das Buch berichtet zudem, Priester hätten vielfach nur noch gegen hohe Bezahlung die Häuser der Reichen aufgesucht (S. 56). Solche Berichte stehen neben anderen über Geistliche, die starben, weil sie bei ihren Gemeinden blieben. Das Bild ist uneinheitlich <span class="dt">Deutung</span>.</p>
+    <p>Kritik an der Kirche gab es schon vor der Pest. Seit 1309 residierten die Päpste in Avignon unter starkem Einfluss der französischen Könige. Im Armutsstreit verurteilte Papst Johannes XXII. 1323 die Lehre, Christus und die Apostel hätten kein Eigentum besessen. Das richtete sich gegen Teile der Franziskaner, die ein armes Papsttum forderten. Nach der Rückkehr nach Rom kam es 1378 zum Großen Abendländischen <a class="gl" href="#gl-schisma">Schisma</a>: Zwei, zeitweise drei Päpste beanspruchten das Amt, bis das Konzil von Konstanz 1417 die Spaltung beendete.</p>
+    <p>Die Pest löste diese Kritik also nicht aus. Sie verstärkte aber Zweifel, ob die Kirche ihre Aufgabe erfüllte, die Menschen mit Gott zu versöhnen <span class="dt">Deutung</span>.</p>
+    <div class="mc" data-q="q3c"></div>
+  </article>
+
+  <article class="abschnitt" id="s3-5" data-zeit="lang">
+    <h3><span class="nr">3.5</span>Tod und Sterben im Bild</h3>
+    <div class="etiketten"><span class="zeit lang">langfristig</span><span class="mhint" data-m="S56">📖 später: Gemälde Buch S. 56</span></div>
+    <p>Im 15. Jahrhundert verbreiteten sich Bilder und Texte, die den Tod ins Zentrum stellten. In <a class="gl" href="#gl-totentanz">Totentänzen</a> holt der Tod Menschen aller Stände, vom Papst bis zum Kind. Der älteste bekannte entstand 1424/25 auf dem Friedhof der Unschuldigen Kinder in Paris. 1463 malte Bernt Notke den Totentanz der Lübecker Marienkirche. In Lübeck rechnete man damals mit der Pest, die die Stadt Ostern 1464 tatsächlich erreichte. Sterbebüchlein (<a class="gl" href="#gl-ars">Ars moriendi</a>) leiteten dazu an, gut vorbereitet zu sterben.</p>
+    <p>Ob diese Bildwelt eine direkte Folge der Pest ist, ist umstritten <span class="dt">Deutung</span>. Motive, die an den Tod mahnen, gab es schon vorher. Die wiederkehrenden Pestwellen hielten den Tod aber über Generationen gegenwärtig.</p>
+    <div class="box methode">
+      <p class="titel">Methode: Rezeption statt Quelle</p>
+      <p>Arnold Böcklins Gemälde „Die Pest“ (S. 56) entstand 1898. Es ist keine Quelle für das 14. Jahrhundert. Es zeigt, wie ein Künstler des 19. Jahrhunderts die Pest deutete.</p>
+    </div>
+  </article>
+
+  <div class="task" data-id="3.2">
+    <p class="task-kopf"><span class="task-nr">3.2</span><span class="afb">AFB III</span></p>
+    <p class="task-text">Das Buch nennt im Abschnitt „Religiöse Folgen“ (S. 57, erster Absatz) die erste öffentliche Turmuhr (Padua 1344), erste Feuerwaffen und den Humanismus. <b>Überprüfe</b>, ob sich diese Neuerungen als Folgen der Pest begründen lassen.</p>
+    <textarea aria-label="Antwort zu Aufgabe 3.2"></textarea>
+    <div class="hilfe" data-titel="Denkanstoß" hidden><b>Hilfe 1: Denkanstoß</b>Vergleiche die Jahreszahlen mit dem Beginn der Pest 1347. Unterscheide: Geschah etwas <i>gleichzeitig</i> oder <i>wegen</i> der Pest? Lies außerdem genau, was der Buchtext tatsächlich behauptet.</div>
+    <div class="hilfe" data-titel="Gliederung" hidden><b>Hilfe 2: Gliederung</b><ol><li>Turmuhr: Datierung</li><li>Feuerwaffen: Datierung, Begriff „Pistolen“</li><li>Humanismus: Beginn, zum Beispiel Petrarca</li><li>Was behauptet der Text genau (Folge oder Beschleunigung)?</li><li>Urteil: Gleichzeitigkeit und Kausalität</li></ol></div>
+    <div class="eh" hidden><b>Erwartungshorizont</b><ul>
+      <li><b>Turmuhr 1344:</b> Sie entstand vor der Pest und kann keine Folge sein.</li>
+      <li><b>Feuerwaffen:</b> Einfache Handbüchsen gab es schon im 14. Jahrhundert. Einhändig bedienbare Pistolen wurden erst im 16. Jahrhundert möglich, als das Radschloss aufkam; das Wort „Pistole“ ist seit etwa 1550 belegt. Die Formulierung des Buches ist also anachronistisch, und ein Zusammenhang mit der Pest ist nicht erkennbar.</li>
+      <li><b>Humanismus:</b> Er setzte vor der Pest ein; Petrarca war schon vor 1348 tätig. Er verlor seine Geliebte Laura 1348 an die Pest.</li>
+      <li><b>Genaue Lektüre:</b> Der Text behauptet, die Pest habe den Zerfall des alten Weltbildes „beschleunigt“. Vertretbar ist das für religiöse Zweifel, etwa die Frage nach Gottes Gerechtigkeit, nicht für technische Neuerungen.</li>
+      <li><b>Urteil:</b> Die Darstellung verbindet Gleichzeitiges zu einem Zusammenhang. Unter der Überschrift „Religiöse Folgen“ sind die Beispiele irreführend. Nur die These von der Beschleunigung religiöser Zweifel lässt sich begründet diskutieren <span class="dt">Deutung</span>.</li>
+    </ul></div>
+  </div>
+
+  <div class="task" data-id="3.3">
+    <p class="task-kopf"><span class="task-nr">3.3</span><span class="afb">AFB II</span><span class="form partner">Partnerarbeit, freiwillig</span></p>
+    <p class="task-text"><b>Vergleiche</b>, wie die Buchmalerei zur Prozession Gregors (S. 57) und Böcklins Gemälde (S. 56) die Pest deuten. Berücksichtige die Entstehungszeit beider Bilder.</p>
+    <textarea aria-label="Antwort zu Aufgabe 3.3"></textarea>
+    <div class="eh" hidden><b>Erwartungshorizont</b><ul>
+      <li><b>Prozession (15. Jh.):</b> Die Seuche erscheint als Prüfung oder Strafe, auf die die Gemeinschaft unter Führung von Papst und Klerus mit Gebet und Buße antwortet. Rettung ist möglich, die Kirche ordnet die Reaktion.</li>
+      <li><b>Böcklin (1898):</b> Die Pest erscheint als übermächtige, dämonische Gestalt. Die Menschen sind ihr ausgeliefert, eine religiöse Rettung ist nicht zu sehen.</li>
+      <li><b>Entstehungszeit:</b> Keines der Bilder ist eine Quelle für 1348. Die Buchmalerei zeigt ein Ereignis des 6. Jahrhunderts aus der Sicht des 15. Jahrhunderts, Böcklin die Sicht des späten 19. Jahrhunderts.</li>
+      <li><b>Fazit:</b> Gemeinsam ist die Wahrnehmung der Pest als Macht über den Menschen. Verschieden ist die Antwort: gemeinschaftliche Buße unter kirchlicher Führung oder Ausgeliefertsein ohne Ausweg.</li>
+    </ul></div>
+  </div>
+
+  <aside class="wichtig" data-station="3">
+    <p class="titel">Das Wichtigste für deinen GoodNotes-Ordner</p>
+    <ul>
+      <li>Die meisten Zeitgenossen deuteten die Pest als Strafe Gottes. Die gelehrte Medizin erklärte sie mit einer Planetenkonjunktion von 1345 und verdorbener Luft (Pariser Gutachten, Oktober 1348).</li>
+      <li>Die Geißlerzüge 1348/49 waren eine Bußbewegung von Laien. Clemens VI. verbot sie am 20. Oktober 1349, weil sie sich der kirchlichen Kontrolle entzogen.</li>
+      <li>Priestermangel und Vertrauensverlust verstärkten eine ältere Kritik an der Kirche (Avignon, Armutsstreit). Das Schisma 1378–1417 vertiefte sie.</li>
+      <li>Totentänze und Sterbebüchlein des 15. Jahrhunderts zeigen, wie gegenwärtig der Tod blieb. Ob sie eine direkte Pestfolge sind, ist umstritten.</li>
+    </ul>
+  </aside>
+
+  <details class="vertiefung">
+    <summary><span class="vt-titel">Vertiefung: Totentanz und Pest</span><span class="vt-unter">Freiwillig, geht über den Erwartungshorizont hinaus, ca. 10 Minuten.</span></summary>
+    <div class="vt-inhalt">
+      <p><span class="vt-marker">Hintergrund</span>Der Lübecker Totentanz war ein etwa 26 Meter langes Leinwandbild in der Beichtkapelle der Marienkirche. 24 fast lebensgroße Paare aus Lebenden und Toten tanzten darauf, darunter ein niederdeutscher Dialogtext. Das Bild wurde 1942 bei einem Luftangriff zerstört. Ein Fragment eines zweiten Totentanzes von Notke ist in Tallinn erhalten.</p>
+      <p><span class="vt-marker">Forschung</span>Gegen eine einfache Ableitung aus der Pest spricht, dass ähnliche Motive älter sind. Schon seit dem 13. Jahrhundert gab es Bilder der Legende von den drei Lebenden und den drei Toten, im 14. Jahrhundert Darstellungen eines „Triumphs des Todes“. Der Totentanz selbst ist erst 75 Jahre nach der ersten Pestwelle belegt. Der Pariser Totentanz von 1424/25 hatte zudem vermutlich auch eine politische Botschaft.</p>
+      <div class="task" data-id="3.V">
+        <p class="task-kopf"><span class="task-nr">3.V</span><span class="afb">AFB III</span><span class="form">freiwillig</span></p>
+        <p class="task-text"><b>Erörtere</b>, ob die Totentänze des 15. Jahrhunderts als Folge der Pest gelten können.</p>
+        <textarea aria-label="Antwort zu Aufgabe 3.V"></textarea>
+        <div class="eh" hidden><b>Kriterien für eine gute Erörterung</b><ul>
+          <li>Für einen Zusammenhang: Die wiederkehrenden Pestwellen machten plötzlichen Tod zur Erfahrung jeder Generation. Der Lübecker Totentanz entstand in Erwartung einer neuen Welle.</li>
+          <li>Dagegen: ältere Todesmotive, der zeitliche Abstand zur ersten Welle, andere Einflüsse (Predigtliteratur, politische Botschaften).</li>
+          <li>Urteil: eher Verstärkung und Verbreitung eines vorhandenen Motivs als Neuschöpfung. Das passt zur Leitfrage „Bruch oder Verstärkung?“.</li>
+        </ul></div>
+      </div>
+    </div>
+  </details>
+
+  <div class="ampel" data-station="3"></div>
+
+  <details class="belege">
+    <summary>Belege zu dieser Station</summary>
+    <ul>
+      <li>Pariser Gutachten, Oktober 1348, Konjunktion 20.3.1345: englische Übersetzung nach R. Horrox, The Black Death, Manchester 1994, <a href="https://sites.uwm.edu/carlin/?p=1011">Auszug</a>; Auftrag Philipps VI.: <a href="https://webhelper.brown.edu/decameron/plague/causes/treatise.php">Brown University, Decameron Web</a></li>
+      <li>Geißler: Anfänge 1260 in Perugia: <a href="https://www.catholic.com/encyclopedia/flagellants">Catholic Encyclopedia (1909)</a>; 33½ Tage, Bulle vom 20.10.1349, Rückgang in den frühen 1350er-Jahren: <a href="https://ccel.org/s/schaff/encyc/encyc04/htm/0341=325.htm">Schaff-Herzog Encyclopedia</a>. Beides sind ältere Nachschlagewerke; die Daten sind in der Forschung unstrittig.</li>
+      <li>Geißler im Herbst 1348 im Alpenraum; keine antijüdischen Inhalte in Geißlertexten: Cornelsen S. 69 f.</li>
+      <li>Gregor als Kirchenlehrer, Verehrung seit seinem Tod: <a href="https://en.wikipedia.org/wiki/Doctor_of_the_Church">Wikipedia: Doctor of the Church</a> (nennt 1298; andere Angaben 1295)</li>
+      <li>Priestermangel, Stiftungen, Avignon, Armutsstreit: Buch S. 56–58</li>
+      <li>Totentanz Paris 1424/25, ältere Motive: <a href="https://en.wikipedia.org/wiki/Danse_Macabre">Wikipedia: Danse Macabre</a>; Lübeck 1463, Pest Ostern 1464, Maße, Tallinn: <a href="https://st-marien-luebeck.de/en/discover/items-objects/dance-of-death">St. Marien zu Lübeck</a></li>
+    </ul>
+  </details>
+  <a class="weiter" href="#s4">Weiter zu Station 4: Judenverfolgungen</a>
+</section>
+
+<!-- ================= STATION 4 ================= -->
+<section class="station" id="s4">
+  <header class="st-head">
+    <p class="st-nr">Station 4</p>
+    <h2>Judenverfolgungen</h2>
+    <p class="st-meta">ca. 45 Minuten, Doppelstunde 2</p>
+    <div class="zeitband" data-spans="1300-1347:vor,1347-1351:kurz,1351-1400:mittel,1400-1500:lang" data-label="Diese Station reicht von der Vorgeschichte bis ins 15. Jahrhundert, Schwerpunkt 1348 bis 1350"></div>
+  </header>
+  <div class="ziel">
+    <p><b>Ziel dieser Station.</b> Du kannst …</p>
+    <ul>
+      <li>die Lage der jüdischen Minderheit vor 1348 beschreiben,</li>
+      <li>Verlauf, Akteure und Motive der Pestpogrome erläutern,</li>
+      <li>die These beurteilen, die Pogrome seien spontane Panikreaktionen gewesen.</li>
+    </ul>
+  </div>
+
+  <article class="abschnitt" id="s4-0">
+    <h3><span class="nr">4.0</span>Einstieg Doppelstunde 2: Was weißt du noch?</h3>
+    <p>Beantworte die Fragen zu den Stationen 1–3 <b>ohne</b> nachzusehen. Erst danach vergleichst du mit deinen Merksätzen.</p>
+    <div class="mc" data-q="e2a"></div>
+    <div class="mc" data-q="e2b"></div>
+    <div class="mc" data-q="e2c"></div>
+  </article>
+
+  <article class="abschnitt" id="s4-1" data-zeit="vor">
+    <h3><span class="nr">4.1</span>Eine gefährdete Minderheit</h3>
+    <div class="etiketten"><span class="zeit vor">Vorgeschichte</span><span class="mhint" data-m="S63">📖 später: Bild Buch S. 63</span></div>
+    <p>Jüdische Gemeinden lebten seit dem Frühmittelalter in den Städten des Reichs, besonders am Rhein. Rechtlich galten sie seit 1236, als Kaiser Friedrich II. sie reichsweit seinem Schutz unterstellte, als „<a class="gl" href="#gl-kammerknechte">Kammerknechte</a>“: geschützt vom König, ihm abgabepflichtig und persönlich unfrei. Dieses Schutzrecht, das <a class="gl" href="#gl-judenregal">Judenregal</a>, konnte der König verpfänden oder verkaufen, etwa an Fürsten und Städte. Schutz wurde so zu einer Einnahmequelle.</p>
+    <p>Aus vielen Berufen waren Juden verdrängt. Weil die Kirche Christen das Zinsnehmen verbot, blieben sie oft auf die Geldleihe verwiesen. Unter ihren Schuldnern waren Adlige, Städte und Handwerker. Das 4. Laterankonzil schrieb 1215 vor, dass sich Juden durch ihre Kleidung von Christen unterscheiden mussten.</p>
+    <p>Die Judenfeindschaft des Mittelalters war religiös begründet. Legenden unterstellten Juden Ritualmorde an christlichen Kindern und die Schändung geweihter Hostien. Schon vor der Pest kam es zu Pogromen: 1096 während des Ersten Kreuzzugs, 1298 (Rintfleisch-Verfolgung, ausgehend von Röttingen in Franken) und 1336–1339 (Armleder-Verfolgung in Franken und im Elsass).</p>
+    <div class="box methode">
+      <p class="titel">Methode: Wann entstand das Bild?</p>
+      <p>Der Holzschnitt auf S. 63 stammt aus der Schedelschen Weltchronik von 1493. Er zeigt die angebliche Ermordung des Kindes Simon in Trient im Jahr 1475, also eine Ritualmordlegende, die über 120 Jahre nach der Pest entstand. Das Bild belegt, dass solche Vorwürfe am Ende des 15. Jahrhunderts weiter verbreitet wurden. Über die Ereignisse von 1349 sagt es nichts.</p>
+    </div>
+    <div class="mc" data-q="q4a"></div>
+  </article>
+
+  <article class="abschnitt" id="s4-2" data-zeit="kurz">
+    <h3><span class="nr">4.2</span>Vom Gerücht zur Vernichtung, 1348–1350</h3>
+    <div class="etiketten"><span class="zeit kurz">kurzfristig</span><span class="mhint" data-m="M4">📖 später: M4, Chronik, Straßburg, um 1400</span><span class="mhint" data-m="M5">📖 später: M5, Buchmalerei, um 1349</span></div>
+    <p>Der Vorwurf der Brunnenvergiftung war nicht neu, verbreitete sich mit der Pest aber rasend schnell. Die Verfolgungen zogen, ähnlich wie die Seuche, von Süden nach Norden:</p>
+    <ol class="zl">
+      <li><span class="j">April 1348</span><span>Toulon: das erste Massaker, das direkt mit der Pest zusammenhängt; danach Gewalt in Katalonien und Südfrankreich</span></li>
+      <li><span class="j">Herbst 1348</span><span>Am Genfer See werden Juden gefoltert, bis sie Brunnenvergiftung „gestehen“. Die Protokolle gelangen in andere Städte.</span></li>
+      <li><span class="j">November 1348</span><span>Mit Solothurn erreicht die Welle die erste deutschsprachige Stadt.</span></li>
+      <li><span class="j">Januar 1349</span><span>Juden werden in Basel und Freiburg im Breisgau verbrannt.</span></li>
+      <li><span class="j">14.2.1349</span><span>Pogrom in Straßburg</span></li>
+      <li><span class="j">1349</span><span>Speyer, Worms, Erfurt, Mainz, Köln und viele weitere Gemeinden werden vernichtet.</span></li>
+      <li><span class="j">5.12.1349</span><span>Nürnberg: mindestens 562 Tote</span></li>
+    </ol>
+    <p>Auffällig ist: Mehrere Pogrome fanden statt, <b>bevor</b> die Pest die jeweilige Stadt erreicht hatte, so auch in Straßburg. Manche Verfolgungen waren als Gerichtsverfahren gegen ganze Gemeinden organisiert, mit „Geständnissen“ unter der Folter. Andere waren Mordaktionen, bei denen Menschen in Häuser getrieben und verbrannt wurden. In Mainz wehrten sich die Verfolgten, in Speyer wählten viele den Tod in ihren Häusern, um der Zwangstaufe oder der Ermordung zu entgehen.</p>
+    <p>Das Ergebnis: Fast alle bedeutenden jüdischen Gemeinden im Reich wurden ausgelöscht. Nach dem Buch fielen etwa zwei Drittel der über 300 Gemeinden in Mitteleuropa den Verfolgungen zum Opfer <span class="sz">Schätzung</span>. Viele Überlebende flohen nach Osten, vor allem nach Polen.</p>
+    <div class="mc" data-q="q4b"></div>
+  </article>
+
+  <article class="abschnitt" id="s4-3" data-zeit="kurz">
+    <h3><span class="nr">4.3</span>Akteure und Motive</h3>
+    <div class="etiketten"><span class="zeit kurz">kurzfristig</span><span class="mhint" data-m="M6">📖 später: M6, Urkunde, Wildeshausen 1350</span><span class="mhint" data-m="M7">📖 später: M7, Darstellung, 1994</span></div>
+    <div class="tab-wrap"><table>
+      <thead><tr><th>Akteur</th><th>Handeln</th></tr></thead>
+      <tbody>
+        <tr><td>Papst Clemens VI.</td><td>Zwei Bullen (Juli und September 1348) verbieten die Gewalt. Sein Argument: Die Juden sterben selbst an der Pest, und die Seuche wütet auch dort, wo keine Juden leben. Wirkung hatte das kaum, außer in Avignon.</td></tr>
+        <tr><td>König Karl IV.</td><td>Er verpfändete sein Schutzrecht an Städte. Urkunden vom Juni 1349 für Frankfurt, Nürnberg und Rothenburg legten fest, was mit jüdischem Besitz geschehen solle, falls die Juden „erschlagen“ würden, und sicherten Straffreiheit zu. In Nürnberg erlaubte er, auf dem Gelände des Judenviertels einen Markt anzulegen; über der zerstörten Synagoge entstand die Frauenkirche.</td></tr>
+        <tr><td>Städtische Obrigkeiten, Zünfte, Bürger</td><td>Sie waren meist die Haupttäter. In Straßburg versuchten Rat und Meister zunächst, die Juden zu schützen. Kurz vor dem Pogrom wurden sie gestürzt; der neue Rat ließ die Verfolgung zu.</td></tr>
+        <tr><td>Schützende Herrscher</td><td>Herzog Albrecht II. von Österreich, Pfalzgraf Ruprecht I., König Peter IV. von Aragón und König Kasimir III. von Polen verhinderten Pogrome oder nahmen Flüchtlinge auf.</td></tr>
+      </tbody>
+    </table></div>
+    <p>Die Motive lagen oft nicht in der Angst allein. Wer bei Juden verschuldet war, wurde durch ihren Tod schuldenfrei. Städte und Herren übernahmen ihren Besitz. In Straßburg hing das Pogrom mit einem Machtkampf in der Stadtregierung zusammen. Die Pestangst lieferte den Vorwand und steigerte die Gewaltbereitschaft <span class="dt">Deutung</span>.</p>
+    <p>Im Nachhinein wurden viele Pogrome als spontane Ausbrüche des „Pöbels“ dargestellt, gegen die man machtlos gewesen sei. Die Forschung sieht darin oft eine Schutzbehauptung der Verantwortlichen <span class="dt">Deutung</span>. Auch die Rolle der Geißler (→ 3.3) ist umstritten und war von Stadt zu Stadt verschieden.</p>
+    <div class="mc" data-q="q4c"></div>
+  </article>
+
+  <div class="task" data-id="4.1">
+    <p class="task-kopf"><span class="task-nr">4.1</span><span class="afb">AFB II</span></p>
+    <p class="task-text"><b>Erläutere</b> den Zusammenhang zwischen der Pest und den Judenverfolgungen. Unterscheide dabei Ursachen, Anlass und Motive.</p>
+    <textarea aria-label="Antwort zu Aufgabe 4.1"></textarea>
+    <div class="eh" hidden><b>Erwartungshorizont</b><ul>
+      <li><b>Langfristige Ursachen:</b> religiös begründete Judenfeindschaft (Ritualmord- und Hostienfrevellegenden), Sonderstellung und Rechtsunsicherheit, Beschränkung auf die Geldleihe, frühere Pogrome (1096, 1298, 1336–1339).</li>
+      <li><b>Anlass:</b> die Pest und das Gerücht der Brunnenvergiftung, verstärkt durch erfolterte „Geständnisse“.</li>
+      <li><b>Motive der Täter:</b> Angst und Schuldsuche, aber auch Schuldentilgung, Aneignung von Besitz, Machtkämpfe in den Städten. Obrigkeiten und der König förderten die Gewalt teils aktiv.</li>
+      <li><b>Beleg für die Unterscheidung:</b> Pogrome fanden auch statt, bevor die Pest einen Ort erreichte. Die Pest erklärt also den Zeitpunkt, nicht allein die Gewalt.</li>
+    </ul></div>
+  </div>
+
+  <div class="task" data-id="4.2">
+    <p class="task-kopf"><span class="task-nr">4.2</span><span class="afb">AFB III</span></p>
+    <p class="task-text"><b>Beurteile</b> die These: „Die Pestpogrome waren spontane Ausbrüche der Panik einfacher Leute.“</p>
+    <textarea aria-label="Antwort zu Aufgabe 4.2"></textarea>
+    <div class="hilfe" data-titel="Denkanstoß" hidden><b>Hilfe 1: Denkanstoß</b>Prüfe die drei Teile der These einzeln: „spontan“, „Panik“, „einfache Leute“. Welche Befunde aus 4.2 und 4.3 stützen oder widerlegen jeden Teil?</div>
+    <div class="hilfe" data-titel="Gliederung" hidden><b>Hilfe 2: Gliederung</b><ol><li>„spontan“: Zeitpunkt und Planung (Pogrome vor der Pest, Gerichtsverfahren, Urkunden Karls IV.)</li><li>„Panik“: Rolle der Angst, andere Motive</li><li>„einfache Leute“: Wer handelte? Wer schützte?</li><li>Warum entstand die These überhaupt?</li><li>Urteil</li></ol></div>
+    <div class="eh" hidden><b>Erwartungshorizont</b><ul>
+      <li><b>„spontan“:</b> Widerlegt durch Pogrome vor Ankunft der Pest, durch organisierte Verfahren mit Folter und durch die Urkunden Karls IV., die den Umgang mit dem Besitz der Opfer vorab regelten.</li>
+      <li><b>„Panik“:</b> Angst spielte eine Rolle und steigerte die Gewaltbereitschaft. Sie erklärt aber nicht allein, warum Schulden getilgt und Besitz verteilt wurden.</li>
+      <li><b>„einfache Leute“:</b> Haupttäter waren oft städtische Obrigkeiten, Zünfte und Bürger. Umgekehrt schützten einzelne Herrscher die Juden erfolgreich. Es gab also Handlungsspielräume.</li>
+      <li><b>Entstehung der These:</b> Sie geht teils auf die Verantwortlichen selbst zurück, die die Schuld nachträglich dem „Pöbel“ zuschoben.</li>
+      <li><b>Urteil:</b> Die These greift zu kurz und entlastet die Verantwortlichen. Angemessener ist: Die Pest bot Anlass und Klima für eine Gewalt, die von religiösem Judenhass getragen und oft von Obrigkeiten aus politischen und wirtschaftlichen Interessen gelenkt oder geduldet wurde.</li>
+    </ul></div>
+  </div>
+
+  <article class="abschnitt" id="s4-4" data-zeit="mittel lang">
+    <h3><span class="nr">4.4</span>Nach den Pogromen</h3>
+    <div class="etiketten"><span class="zeit mittel">mittelfristig</span><span class="zeit lang">langfristig</span></div>
+    <p>In vielen Städten durften sich Juden nach einigen Jahren wieder ansiedeln, meist gegen hohe Abgaben und mit geringerer Rechtssicherheit. Im 15. Jahrhundert folgten erneut Vertreibungen, etwa aus Heilbronn 1438, wo viele Bürger bei jüdischen Geldverleihern verschuldet waren, oder aus Württemberg 1498. Das Zentrum jüdischen Lebens verlagerte sich langfristig nach Osteuropa, vor allem nach Polen <span class="dt">Deutung</span>.</p>
+    <div class="box methode">
+      <p class="titel">Methode: Zahlen in Chroniken prüfen</p>
+      <p>Chronisten nennen oft runde, große Opferzahlen. Vergleiche solche Angaben immer mit anderen Informationen, zum Beispiel mit den Einleitungen zu den Materialien, die Größe einer Stadt oder einer Gemeinde nennen. Wo Angaben nicht zusammenpassen, frag dich: Was wollte der Chronist mit seiner Zahl ausdrücken?</p>
+    </div>
+  </article>
+
+  <aside class="wichtig" data-station="4">
+    <p class="titel">Das Wichtigste für deinen GoodNotes-Ordner</p>
+    <ul>
+      <li>Schon vor 1348 war die jüdische Minderheit durch religiöse Judenfeindschaft, rechtliche Sonderstellung und frühere Pogrome gefährdet. Ihr Schutz war ein verpfändbares Recht des Königs.</li>
+      <li>1348–1350 zog eine Verfolgungswelle von Südfrankreich bis ins Reich. Anlass war der Vorwurf der Brunnenvergiftung. Fast alle bedeutenden jüdischen Gemeinden im Reich wurden vernichtet.</li>
+      <li>Einige Pogrome fanden statt, bevor die Pest den Ort erreichte. Neben Angst spielten Schuldentilgung, Besitzgier und städtische Machtkämpfe eine Rolle. Karl IV. förderte die Gewalt, Clemens VI. verbot sie ohne Wirkung.</li>
+      <li>Die Darstellung als spontane Tat des „Pöbels“ entlastete oft die eigentlich Verantwortlichen.</li>
+    </ul>
+  </aside>
+
+  <details class="vertiefung">
+    <summary><span class="vt-titel">Vertiefung: Reicht die Sündenbocktheorie?</span><span class="vt-unter">Freiwillig, geht über den Erwartungshorizont hinaus, ca. 10 Minuten.</span></summary>
+    <div class="vt-inhalt">
+      <p><span class="vt-marker">Hintergrund</span>Die Sündenbocktheorie der Sozialpsychologie erklärt Gewalt gegen Minderheiten so: In einer Krise, die Menschen nicht verstehen oder beeinflussen können, verschieben sie Angst und Wut auf eine schwache, bereits ausgegrenzte Gruppe.</p>
+      <p><span class="vt-marker">Forschung</span>Die Historiker František Graus (1987) und Alfred Haverkamp (1981) haben gezeigt, dass die Pogrome eng mit den Machtverhältnissen in den einzelnen Städten zusammenhingen: mit Konflikten zwischen Rat und Zünften, mit Schulden und mit den Interessen der Stadtherren. Eine rein psychologische Erklärung übersieht diese Unterschiede. Warum es in einer Stadt zu Mord kam, in einer anderen zu Vertreibung und in einer dritten zu nichts, erklärt sie nicht.</p>
+      <div class="task" data-id="4.V">
+        <p class="task-kopf"><span class="task-nr">4.V</span><span class="afb">AFB III</span><span class="form">freiwillig</span></p>
+        <p class="task-text"><b>Erörtere</b>, inwieweit die Sündenbocktheorie die Pestpogrome erklären kann.</p>
+        <textarea aria-label="Antwort zu Aufgabe 4.V"></textarea>
+        <div class="eh" hidden><b>Kriterien für eine gute Erörterung</b><ul>
+          <li>Du zeigst, was die Theorie erklärt: die Wahl einer bereits ausgegrenzten Gruppe, die emotionale Dynamik, die schnelle Verbreitung des Gerüchts.</li>
+          <li>Du zeigst ihre Grenzen: Pogrome vor der Pest, geplantes Vorgehen, wirtschaftliche und politische Motive, unterschiedlicher Verlauf je nach Stadt, erfolgreicher Schutz in manchen Herrschaften.</li>
+          <li>Du kommst zu einem begründeten Urteil, etwa: Die Theorie beschreibt eine Voraussetzung, erklärt aber nicht, wer wann und warum handelte.</li>
+        </ul></div>
+      </div>
+    </div>
+  </details>
+
+  <div class="ampel" data-station="4"></div>
+
+  <details class="belege">
+    <summary>Belege zu dieser Station</summary>
+    <ul>
+      <li>Laterankonzil 1215, Geldleihe, Anteil zerstörter Gemeinden, Flucht nach Osteuropa: Buch S. 58 f.</li>
+      <li>Verlauf 1348–1351, Pogrome vor Ankunft der Pest, Solothurn, Basel, Freiburg, Nürnberg, Rolle der Obrigkeiten und Karls IV., schützende Herrscher, nachträgliche Schuldverschiebung, Wiederansiedlung: <a href="https://de.wikipedia.org/wiki/Judenverfolgungen_zur_Zeit_des_Schwarzen_Todes">Wikipedia: Judenverfolgungen zur Zeit des Schwarzen Todes</a>, dort nach J. R. Müller, A. Weber: <a href="http://www.medieval-ashkenaz.org/fileadmin/user_upload/online-publikationen/Mueller___Weber__Karl_IV..pdf">Karl IV. und die Juden</a>, und M. Toch, Die Juden im mittelalterlichen Reich, 1998</li>
+      <li>Toulon April 1348: <a href="https://en.wikipedia.org/wiki/Persecution_of_Jews_during_the_Black_Death">Wikipedia (engl.): Persecution of Jews during the Black Death</a></li>
+      <li>Straßburg: Schutzpolitik von Rat und Meistern, Umsturz, Schulden der Beteiligten: <a href="https://de.wikipedia.org/wiki/Judenpogrom_in_Stra%C3%9Fburg_1349">Wikipedia: Judenpogrom in Straßburg 1349</a> (nach Graus und Haverkamp)</li>
+      <li>Bullen Clemens’ VI.: siehe Station 1; Argumentation und Wirkung: Wikipedia (s. o.)</li>
+      <li>Mainz, Speyer; Sündenbocktheorie: Cornelsen S. 67, 70 f.</li>
+      <li>F. Graus: Pest – Geißler – Judenmorde. Das 14. Jahrhundert als Krisenzeit, Göttingen 1987; A. Haverkamp: Die Judenverfolgungen zur Zeit des Schwarzen Todes im Gesellschaftsgefüge deutscher Städte, 1981</li>
+      <li>Kammerknechtschaft seit 1236, Verpfändung des Judenregals: <a href="https://journals.wlb-stuttgart.de/ojs/index.php/rb/article/download/5119/5064">Württembergische Landesbibliothek</a>; Rintfleisch 1298 (Röttingen, 20.4.1298): <a href="https://hdbg.eu/juedisches_leben/pdf/783">Haus der Bayerischen Geschichte</a>; Armleder 1336–1339: <a href="https://en.wikipedia.org/wiki/Armleder_persecutions">Wikipedia (engl.), nach F. Lotter</a>; Vertreibungen Heilbronn 1438, Württemberg 1498: <a href="https://www.schule-bw.de/faecher-und-schularten/gesellschaftswissenschaftliche-und-philosophische-faecher/landeskunde-landesgeschichte/module/epochen/juden_in_bw/affaltrach/ab5a.pdf">Landesbildungsserver Baden-Württemberg</a></li>
+    </ul>
+  </details>
+  <a class="weiter" href="#s5">Weiter zu Station 5: Gesellschaft</a>
+</section>
+
+<!-- ================= STATION 5 ================= -->
+<section class="station" id="s5">
+  <header class="st-head">
+    <p class="st-nr">Station 5</p>
+    <h2>Gesellschaft: Gewinner, Verlierer, Unruhen</h2>
+    <p class="st-meta">ca. 40 Minuten, Doppelstunde 2</p>
+    <div class="zeitband" data-spans="1347-1351:kurz,1351-1400:mittel" data-label="Diese Station umfasst die kurz- und mittelfristigen Folgen bis um 1400"></div>
+  </header>
+  <div class="ziel">
+    <p><b>Ziel dieser Station.</b> Du kannst …</p>
+    <ul>
+      <li>erklären, warum Arbeitskraft nach der Pest knapp und wertvoll wurde,</li>
+      <li>Reaktionen der Obrigkeiten und Konflikte der Zeit nach 1350 beschreiben,</li>
+      <li>Gewinner und Verlierer der Pest begründet unterscheiden.</li>
+    </ul>
+  </div>
+
+  <article class="abschnitt" id="s5-1" data-zeit="kurz">
+    <h3><span class="nr">5.1</span>Erben, fliehen, verdienen</h3>
+    <div class="etiketten"><span class="zeit kurz">kurzfristig</span><span class="mhint" data-m="M3">📖 später: M3, Darstellung, 2006</span></div>
+    <p>Die Pest traf alle Schichten, aber nicht alle gleich. Wohlhabende Familien lebten in geräumigen Häusern oder zogen sich auf ihre Landgüter zurück. Die Armen lebten beengt und konnten nicht fliehen.</p>
+    <p>Wer überlebte, erbte oft. Herrenlose Häuser und Grundstücke gingen an entfernte Verwandte; Vermögen sammelten sich in wenigen Händen. Wo Notare und Ratsherren starben, fehlten Testamente und Entscheidungen. Kurzfristig verdienten diejenigen gut, die jetzt gebraucht wurden: Totengräber, Krankenpfleger, Ärzte, Apotheker. Kirchen und Klöster erhielten reiche Stiftungen (→ 3.2).</p>
+  </article>
+
+  <article class="abschnitt" id="s5-2" data-zeit="kurz mittel">
+    <h3><span class="nr">5.2</span>Arbeit wird knapp und teuer</h3>
+    <div class="etiketten"><span class="zeit kurz">kurzfristig</span><span class="zeit mittel">mittelfristig</span><span class="mhint" data-m="M2">📖 später: M2, Chronik, Florenz</span></div>
+    <p>Die Zahl der Menschen war stark gesunken, das Land und die Werkstätten waren geblieben. Arbeitskräfte wurden knapp. Knechte, Tagelöhner und Handwerksgesellen verlangten höhere Löhne. Grundherren warben sich gegenseitig Arbeiter ab, und viele Menschen vom Land zogen in die Städte. Dort lockten freie Stellen und oft ein erleichterter Erwerb des Bürgerrechts.</p>
+    <p>Die Obrigkeiten versuchten, die alte Ordnung festzuhalten. In England befahl König Eduard III. am 18. Juni 1349: Wer unter 60 und arbeitsfähig ist, muss arbeiten, und zwar zu den Löhnen von 1346. Das Parlament bekräftigte dies 1351 im <i>Statute of Labourers</i> mit Strafen. Die Gesetze wurden vielfach umgangen <span class="dt">Deutung</span>.</p>
+    <p>Ähnliche Ziele hatten <a class="gl" href="#gl-kleiderordnung">Kleiderordnungen</a> und Luxusverbote, die viele Städte und Herrscher nach der Pest erließen. Sie legten fest, wer welche Stoffe, Farben und welchen Schmuck tragen durfte. Die Standesunterschiede sollten sichtbar bleiben, auch wenn einfache Leute nun mehr Geld hatten.</p>
+    <div class="mc" data-q="q5a"></div>
+  </article>
+
+  <div class="task" data-id="5.1">
+    <p class="task-kopf"><span class="task-nr">5.1</span><span class="afb">AFB II</span></p>
+    <p class="task-text"><b>Erläutere</b>, warum Obrigkeiten nach der Pest Lohngesetze und Kleiderordnungen erließen.</p>
+    <textarea aria-label="Antwort zu Aufgabe 5.1"></textarea>
+    <div class="eh" hidden><b>Erwartungshorizont</b><ul>
+      <li><b>Ausgangslage:</b> Arbeitskräftemangel verschob die Verhandlungsmacht zugunsten von Knechten, Tagelöhnern und Handwerkern. Löhne stiegen, Menschen wechselten den Arbeitgeber oder zogen in die Städte.</li>
+      <li><b>Lohngesetze:</b> Grundherren und Arbeitgeber wollten ihre Kosten begrenzen und Arbeitskräfte an sich binden. Beispiel England 1349/1351: Arbeitspflicht und Löhne auf dem Stand von 1346.</li>
+      <li><b>Kleiderordnungen:</b> Die mittelalterliche Ordnung beruhte auf sichtbaren Standesunterschieden. Wenn Aufsteiger sich wie Vornehme kleideten, galt das als Unordnung. Die Vorschriften sollten die Stände wieder erkennbar trennen.</li>
+      <li><b>Gemeinsamer Kern:</b> Beide Maßnahmen versuchten, eine durch die Pest veränderte Wirklichkeit auf den alten Zustand zurückzuschreiben. Dauerhaft erfolgreich waren sie nicht.</li>
+    </ul></div>
+  </div>
+
+  <article class="abschnitt" id="s5-3" data-zeit="mittel">
+    <h3><span class="nr">5.3</span>Neue Eliten, alte Macht, offene Konflikte</h3>
+    <div class="etiketten"><span class="zeit mittel">mittelfristig</span></div>
+    <p>In den Städten stiegen reich gewordene Handwerker und Gewinner der Pestjahre in die Oberschichten auf. Die politische Führung blieb aber oft beim <a class="gl" href="#gl-patriziat">Patriziat</a>, den alteingesessenen Familien. Wirtschaftliches Gewicht und politische Macht passten immer weniger zusammen.</p>
+    <p>In den Jahrzehnten nach der Pest kam es daher zu Aufständen:</p>
+    <ul>
+      <li><b>Städte:</b> In vielen Städten des Reichs forderten die <a class="gl" href="#gl-zunft">Zünfte</a> Anteil am Rat, etwa in Braunschweig 1374 oder in Köln, wo 1396 der Verbundbrief die Herrschaft der alten Geschlechter beendete. In Florenz erhoben sich 1378 die Wollarbeiter (Ciompi-Aufstand).</li>
+      <li><b>Land:</b> In Frankreich brach 1358 die Jacquerie aus, in England 1381 ein großer Bauernaufstand. In England richtete er sich gegen eine neue Kopfsteuer, gegen die Durchsetzung der Lohngesetze und gegen die Leibeigenschaft.</li>
+    </ul>
+    <p>Die Pest war dabei nicht die einzige Ursache. Kriegssteuern, etwa im Hundertjährigen Krieg zwischen England und Frankreich, und ältere Konflikte spielten mit. Die Pest hatte aber die Kräfteverhältnisse verschoben und Erwartungen geweckt, die die Obrigkeiten nicht erfüllen wollten <span class="dt">Deutung</span>.</p>
+    <div class="mc" data-q="q5b"></div>
+  </article>
+
+  <div class="task" data-id="5.2">
+    <p class="task-kopf"><span class="task-nr">5.2</span><span class="afb">AFB I–II</span></p>
+    <p class="task-text"><b>Ordne</b> die Gruppen <b>zu</b>: Waren sie eher Gewinner oder eher Verlierer der Pest, oder hing das von ihrer Lage ab? Tippe zuerst eine Gruppe an und dann die Spalte.</p>
+    <div class="zuord" data-z="z5"></div>
+  </div>
+
+  <div class="task" data-id="5.3">
+    <p class="task-kopf"><span class="task-nr">5.3</span><span class="afb">AFB III</span></p>
+    <p class="task-text"><b>Beurteile</b>, ob die Pest die mittelalterliche Gesellschaft durchlässiger machte.</p>
+    <textarea aria-label="Antwort zu Aufgabe 5.3"></textarea>
+    <div class="hilfe" data-titel="Denkanstoß" hidden><b>Hilfe 1: Denkanstoß</b>„Durchlässig“ heißt: Man kann seinen Stand oder seine Schicht wechseln. Suche Belege für Aufstieg und für Versuche, ihn zu verhindern.</div>
+    <div class="hilfe" data-titel="Gliederung" hidden><b>Hilfe 2: Gliederung</b><ol><li>Belege für mehr Durchlässigkeit: Löhne, Erbschaften, Zuzug in die Städte, Aufsteiger</li><li>Gegenbelege: Lohngesetze, Kleiderordnungen, Macht des Patriziats</li><li>Konflikte als Anzeichen: Zunftkämpfe, Aufstände</li><li>Urteil mit Zeitdimension: kurz- und mittelfristig</li></ol></div>
+    <div class="eh" hidden><b>Erwartungshorizont</b><ul>
+      <li><b>Dafür:</b> Höhere Löhne und Erbschaften gaben Überlebenden neue Möglichkeiten. Landbewohner fanden in Städten Arbeit und Bürgerrecht. Aufsteiger gelangten in die Oberschichten.</li>
+      <li><b>Dagegen:</b> Obrigkeiten versuchten, den Aufstieg zu bremsen (Lohngesetze, Kleiderordnungen). Die politische Macht blieb vielerorts beim Patriziat. Die jüdische Minderheit wurde nicht integriert, sondern vernichtet.</li>
+      <li><b>Konflikte:</b> Zunftkämpfe und Aufstände zeigen, dass der wirtschaftliche Aufstieg politische Forderungen nach sich zog. Sie waren teils erfolgreich (Köln 1396), teils scheiterten sie (England 1381).</li>
+      <li><b>Urteil:</b> Wirtschaftlich wurde die Gesellschaft durchlässiger, rechtlich und politisch nur begrenzt und gegen Widerstand. Die Pest öffnete Spielräume, die erst erkämpft werden mussten.</li>
+    </ul></div>
+  </div>
+
+  <aside class="wichtig" data-station="5">
+    <p class="titel">Das Wichtigste für deinen GoodNotes-Ordner</p>
+    <ul>
+      <li>Nach der Pest war Arbeitskraft knapp. Löhne stiegen, viele zogen vom Land in die Städte, Überlebende erbten Besitz.</li>
+      <li>Obrigkeiten versuchten, die alte Ordnung zu halten: Lohngesetze (England 1349/1351) und Kleiderordnungen.</li>
+      <li>Aufsteiger gewannen wirtschaftlich an Gewicht, die politische Macht blieb oft beim Patriziat. Zunftkämpfe (Köln 1396) und Aufstände (Jacquerie 1358, Ciompi 1378, England 1381) folgten. Die Pest war dafür eine wichtige, aber nicht die einzige Ursache.</li>
+    </ul>
+  </aside>
+
+  <details class="vertiefung">
+    <summary><span class="vt-titel">Vertiefung: Ein goldenes Zeitalter der Lohnarbeit?</span><span class="vt-unter">Freiwillig, geht über den Erwartungshorizont hinaus, ca. 8 Minuten.</span></summary>
+    <div class="vt-inhalt">
+      <p><span class="vt-marker">Forschung</span>Für England haben Wirtschaftshistoriker das 15. Jahrhundert teils als „goldenes Zeitalter“ der Lohnarbeiter bezeichnet: Die Reallöhne, also das, was man sich für seinen Lohn kaufen konnte, lagen hoch, weil Löhne stiegen und Getreide billig war (→ Station 6). Einwände: Das galt nicht für alle Gruppen und Regionen. Hohe Tageslöhne sagen wenig über das Jahreseinkommen, wenn nicht das ganze Jahr Arbeit vorhanden war <span class="dt">Deutung</span>.</p>
+      <div class="task" data-id="5.V">
+        <p class="task-kopf"><span class="task-nr">5.V</span><span class="afb">AFB II</span><span class="form">freiwillig</span></p>
+        <p class="task-text"><b>Erkläre</b>, warum ein hoher Tageslohn allein nicht belegt, dass es Lohnarbeitern besser ging.</p>
+        <textarea aria-label="Antwort zu Aufgabe 5.V"></textarea>
+        <div class="eh" hidden><b>Erwartungshorizont</b><ul>
+          <li>Entscheidend ist die Kaufkraft: Was kosteten Brot, Fleisch, Kleidung? Ein hoher Lohn nützt wenig, wenn die Preise ebenso steigen.</li>
+          <li>Entscheidend ist auch die Zahl der Arbeitstage. Saisonarbeit und Arbeitslosigkeit senken das Jahreseinkommen.</li>
+          <li>Durchschnittswerte verdecken Unterschiede zwischen Regionen, Berufen, Männern und Frauen.</li>
+        </ul></div>
+      </div>
+    </div>
+  </details>
+
+  <div class="ampel" data-station="5"></div>
+
+  <details class="belege">
+    <summary>Belege zu dieser Station</summary>
+    <ul>
+      <li>Flucht der Reichen, Verdienste von Ärzten, Apothekern, Totengräbern; Erben; Aufsteiger; Verordnungen gegen Aufwand; Bürgerrecht: Buch S. 56 f., 60</li>
+      <li>Ordinance of Labourers, 18.6.1349: <a href="https://en.wikipedia.org/wiki/Ordinance_of_Labourers_1349">Wikipedia (engl.)</a>; Löhne von 1346, Statute of Labourers Februar 1351: <a href="https://www.umsl.edu/~gradyf/medieval/statute.htm">Statute of Labourers, 1351 (Quellentext mit Einleitung)</a></li>
+      <li>Aufstand 1381 und Lohngesetze: <a href="https://publish.obsidian.md/worldhistory1/Chapter+13/13.7+-+End+of+Feudalism">World History Textbook, Kap. 13.7</a></li>
+      <li>Braunschweig 1374, Köln 1396, Ciompi 1378, Jacquerie 1358: Standardwissen der Forschung, hier ohne eigenen Online-Beleg</li>
+      <li>Reallöhne im 15. Jahrhundert: Forschungsdiskussion, hier nur als Deutung wiedergegeben</li>
+    </ul>
+  </details>
+  <a class="weiter" href="#s6">Weiter zu Station 6: Wirtschaft und Agrarkrise</a>
+</section>
+
+<!-- ================= STATION 6 ================= -->
+<section class="station" id="s6">
+  <header class="st-head">
+    <p class="st-nr">Station 6</p>
+    <h2>Wirtschaft und Agrarkrise</h2>
+    <p class="st-meta">ca. 45 Minuten, Doppelstunde 3</p>
+    <div class="zeitband" data-spans="1300-1347:vor,1347-1351:kurz,1351-1400:mittel,1400-1500:lang" data-label="Diese Station reicht von der Vorgeschichte bis um 1500, Schwerpunkt 15. Jahrhundert"></div>
+  </header>
+  <div class="ziel">
+    <p><b>Ziel dieser Station.</b> Du kannst …</p>
+    <ul>
+      <li>die Entwicklung von Preisen und Löhnen nach der Pest erklären,</li>
+      <li>Merkmale und Erklärungen der spätmittelalterlichen Agrarkrise erläutern,</li>
+      <li>beurteilen, inwieweit die Agrarkrise eine Folge der Pest war.</li>
+    </ul>
+  </div>
+
+  <article class="abschnitt" id="s6-0">
+    <h3><span class="nr">6.0</span>Einstieg Doppelstunde 3: Was weißt du noch?</h3>
+    <p>Beantworte die Fragen zu den Stationen 4 und 5 <b>ohne</b> nachzusehen.</p>
+    <div class="mc" data-q="e3a"></div>
+    <div class="mc" data-q="e3b"></div>
+    <div class="mc" data-q="e3c"></div>
+  </article>
+
+  <article class="abschnitt" id="s6-1" data-zeit="kurz">
+    <h3><span class="nr">6.1</span>Kurzfristig: Knappheit</h3>
+    <div class="etiketten"><span class="zeit kurz">kurzfristig</span><span class="mhint" data-m="M1">📖 später: M1, Chronik, Florenz</span></div>
+    <p>Während der ersten Welle brach vieles zusammen: Ernten wurden nicht eingebracht, Handel und Handwerk stockten. Was gebraucht wurde, war knapp und teuer, von Arznei und Wachs bis zu Begräbnisdiensten. Gleichzeitig stiegen die Löhne (→ 5.2). Chronisten beschreiben die Pestjahre deshalb als Zeit der Teuerung.</p>
+    <div class="box faktencheck">
+      <p class="titel">Faktencheck zum Schulbuch</p>
+      <dl>
+        <dt>S. 62, Einleitung zu M1: Die Florentiner Chronik sei „in Latein verfasst“.</dt>
+        <dd>Die Chronik des Marchionne di Coppo Stefani ist in italienischer Volkssprache geschrieben. Die Angabe beruht vermutlich auf einem Übersetzungsfehler: Englische Darstellungen nennen die Volkssprache mitunter „vulgar Latin“. Der Chronist schrieb sein Werk seit den späten 1370er-Jahren, also rund 30 Jahre nach der Pest.</dd>
+      </dl>
+    </div>
+  </article>
+
+  <article class="abschnitt" id="s6-2" data-zeit="mittel lang">
+    <h3><span class="nr">6.2</span>Die Preisschere</h3>
+    <div class="etiketten"><span class="zeit mittel">mittelfristig</span><span class="zeit lang">langfristig</span><span class="mhint" data-m="M12">📖 später: M12, Grafik nach Abel</span></div>
+    <p>Nach der ersten Welle änderte sich die Lage grundlegend. Weil viel weniger Menschen lebten, sank die Nachfrage nach Getreide, dem wichtigsten Nahrungsmittel. Etwa ab 1370/80 fielen die Getreidepreise und blieben bis weit ins 15. Jahrhundert niedrig. Die Löhne dagegen blieben hoch, weil Arbeitskräfte knapp waren.</p>
+    <p>Diese gegenläufige Entwicklung nennt man <a class="gl" href="#gl-preisschere">Preisschere</a>. Sie hatte unterschiedliche Folgen:</p>
+    <div class="tab-wrap"><table>
+      <thead><tr><th>Gruppe</th><th>Folge</th></tr></thead>
+      <tbody>
+        <tr><td>Lohnarbeiter</td><td>Für ihren Lohn konnten sie mehr Getreide kaufen. Der Fleischverbrauch stieg.</td></tr>
+        <tr><td>Bauern, die Getreide verkauften</td><td>Sie erhielten weniger für ihre Ernte, mussten aber Knechte teurer bezahlen.</td></tr>
+        <tr><td>Grundherren</td><td>Ihre Einnahmen aus Abgaben und Getreideverkauf sanken.</td></tr>
+        <tr><td>Städte</td><td>Sie kauften billiges Getreide und legten Vorräte in Kornhäusern an, als Schutz vor Hungersnöten.</td></tr>
+      </tbody>
+    </table></div>
+    <div class="box methode">
+      <p class="titel">Methode: Diagramme mit zwei Achsen lesen</p>
+      <p>Wenn ein Diagramm zwei Größen zugleich zeigt, etwa Preise und Löhne, hat es oft zwei senkrechte Achsen mit verschiedenen Einheiten. Prüfe: Welche Linie gehört zu welcher Achse? In welcher Einheit wird gemessen? Welcher Zeitraum ist dargestellt, und beginnt er vor oder nach dem Ereignis, um das es geht?</p>
+    </div>
+    <div class="mc" data-q="q6a"></div>
+  </article>
+
+  <div class="task" data-id="6.1">
+    <p class="task-kopf"><span class="task-nr">6.1</span><span class="afb">AFB II</span></p>
+    <p class="task-text"><b>Erkläre</b>, wie es zur Preisschere kam und warum sie Bauern und Grundherren belastete, Lohnarbeiter dagegen begünstigte.</p>
+    <textarea aria-label="Antwort zu Aufgabe 6.1"></textarea>
+    <div class="eh" hidden><b>Erwartungshorizont</b><ul>
+      <li><b>Getreidepreise:</b> Die Bevölkerung war stark geschrumpft, die Nachfrage nach Getreide sank. Das Angebot sank weniger stark, also fielen die Preise.</li>
+      <li><b>Löhne:</b> Arbeitskräfte blieben wegen der wiederkehrenden Pestwellen knapp. Die Löhne blieben hoch.</li>
+      <li><b>Bauern und Grundherren:</b> Wer vom Getreideverkauf lebte, nahm weniger ein und zahlte mehr für Arbeitskräfte. Grundherren verloren Abgaben, weil Höfe leer standen oder Abgaben gesenkt werden mussten.</li>
+      <li><b>Lohnarbeiter:</b> Ihr Lohn hatte mehr Kaufkraft, Nahrung war billiger.</li>
+    </ul></div>
+  </div>
+
+  <article class="abschnitt" id="s6-3" data-zeit="vor lang">
+    <h3><span class="nr">6.3</span>Wüstungen und die Theorie der Agrarkrise</h3>
+    <div class="etiketten"><span class="zeit vor">Vorgeschichte</span><span class="zeit lang">langfristig</span><span class="mhint" data-m="M11">📖 später: M11, Karte</span><span class="mhint" data-m="M13">📖 später: M13, Darstellung, 1989</span></div>
+    <p>Im Spätmittelalter wurden viele Dörfer und Felder aufgegeben. Solche verlassenen Siedlungen und Fluren heißen <a class="gl" href="#gl-wuestung">Wüstungen</a>. Äcker, die erst im Hochmittelalter gerodet worden waren, verwaldeten wieder. Die heutige Verteilung von Wald und Ackerland in Deutschland geht teilweise auf diese Zeit zurück. Wie stark ein Gebiet betroffen war, war regional sehr unterschiedlich.</p>
+    <p>Der Göttinger Wirtschaftshistoriker Wilhelm Abel erklärte dies 1935 mit einer <a class="gl" href="#gl-agrarkrise">Agrarkrise</a>: Bevölkerungsrückgang, Preisverfall und sinkende Einnahmen machten den Ackerbau vielerorts unrentabel. Auf ihn geht auch der Begriff der „Krise des Spätmittelalters“ zurück. Die Forschung kennt weitere Erklärungen für Wüstungen:</p>
+    <ul>
+      <li><b>Fehlsiedlungstheorie:</b> Im Hochmittelalter hatte man auch schlechte Böden besiedelt. Diese gab man zuerst wieder auf.</li>
+      <li><b>Kriegstheorie:</b> Kriege und Fehden zerstörten Dörfer.</li>
+      <li><b>Konzentration:</b> Menschen zogen aus kleinen Weilern in größere Dörfer oder Städte. Wüstung bedeutete dann nicht Verfall, sondern Umbau.</li>
+      <li><b>Klima:</b> Seit dem 14. Jahrhundert wurde das Klima in Europa zeitweise kühler und feuchter. Die neuere Forschung bezieht das stärker ein.</li>
+    </ul>
+    <p>Umstritten ist auch der Zeitpunkt: Krisenzeichen gab es schon vor 1348, etwa die Hungersnot von 1315–1317 (→ 2.4). Die Pest verstärkte eine Entwicklung, die schon eingesetzt hatte <span class="dt">Deutung</span>.</p>
+    <div class="mc" data-q="q6b"></div>
+  </article>
+
+  <article class="abschnitt" id="s6-4" data-zeit="lang">
+    <h3><span class="nr">6.4</span>Umbau statt Niedergang</h3>
+    <div class="etiketten"><span class="zeit lang">langfristig</span></div>
+    <p>Viele Betroffene passten sich an. Bauern gaben unrentable Böden auf und bauten Gewinnbringenderes an: Gemüse, Obst und Wein in der Nähe der Städte, Flachs für Leinen. Ackerland wurde zu Weideland, die Viehwirtschaft wuchs. In Spanien und England entstand eine große Schafhaltung für die Wollproduktion. Daraus entwickelten sich neue Gewerbe, etwa die Leinenherstellung in Süddeutschland und der Schweiz.</p>
+    <p>Auch die Grundherrschaft veränderte sich, aber in verschiedene Richtungen:</p>
+    <ul>
+      <li>Im Westen und Süden mussten viele Grundherren die Abgaben senken und Bauern bessere Bedingungen bieten, um ihre Höfe besetzt zu halten.</li>
+      <li>In Ostmitteleuropa, etwa östlich der Elbe, banden Grundherren die Bauern dagegen stärker an das Land (<a class="gl" href="#gl-gutsherrschaft">Gutsherrschaft</a>). Diese Entwicklung setzte sich vor allem im 15. und 16. Jahrhundert durch.</li>
+    </ul>
+    <p>Insgesamt wuchs die Wirtschaft nach der Krise allmählich über die bloße Selbstversorgung hinaus. Wer überlebte, gehörte oft zu den wirtschaftlichen Gewinnern, vor allem in der unteren Hälfte der Gesellschaft <span class="dt">Deutung</span>.</p>
+  </article>
+
+  <div class="task" data-id="6.2">
+    <p class="task-kopf"><span class="task-nr">6.2</span><span class="afb">AFB III</span></p>
+    <p class="task-text"><b>Beurteile</b>, inwieweit die spätmittelalterliche Agrarkrise eine Folge der Pest war.</p>
+    <textarea aria-label="Antwort zu Aufgabe 6.2"></textarea>
+    <div class="hilfe" data-titel="Denkanstoß" hidden><b>Hilfe 1: Denkanstoß</b>Trenne drei Fragen: Was geschah schon vor 1348? Was lässt sich direkt mit dem Bevölkerungsrückgang erklären? Welche anderen Erklärungen gibt es?</div>
+    <div class="hilfe" data-titel="Gliederung" hidden><b>Hilfe 2: Gliederung</b><ol><li>Merkmale der Agrarkrise</li><li>Zusammenhang mit der Pest (Abel)</li><li>Vorläufer vor 1348</li><li>Andere Erklärungen: Fehlsiedlung, Krieg, Konzentration, Klima</li><li>Regionale Unterschiede</li><li>Urteil: Ursache, Verstärker oder Anlass?</li></ol></div>
+    <div class="eh" hidden><b>Erwartungshorizont</b><ul>
+      <li><b>Merkmale:</b> Preisverfall beim Getreide, hohe Löhne, sinkende Einnahmen, Wüstungen.</li>
+      <li><b>Für einen engen Zusammenhang:</b> Der Bevölkerungsverlust durch die Pest und ihre Folgewellen senkte die Nachfrage und verknappte die Arbeitskraft. Das erklärt die Preisschere direkt (Abel).</li>
+      <li><b>Einschränkungen:</b> Krisenzeichen gab es schon vor 1348 (Hungersnot 1315–1317). Wüstungen haben auch andere Ursachen: schlechte Böden, Kriege, Umsiedlung, Klima. Das Ausmaß war regional sehr verschieden.</li>
+      <li><b>Urteil:</b> Die Pest war ein zentraler Verstärker und machte aus Schwierigkeiten eine langanhaltende Krise. Als alleinige Ursache lässt sie sich nicht belegen.</li>
+    </ul></div>
+  </div>
+
+  <aside class="wichtig" data-station="6">
+    <p class="titel">Das Wichtigste für deinen GoodNotes-Ordner</p>
+    <ul>
+      <li>Kurzfristig herrschten Knappheit und Teuerung. Mittel- und langfristig fielen die Getreidepreise, während die Löhne hoch blieben (Preisschere).</li>
+      <li>Die Preisschere belastete Bauern, die Getreide verkauften, und Grundherren. Lohnarbeiter profitierten.</li>
+      <li>Wilhelm Abel erklärte die Wüstungen 1935 mit einer Agrarkrise. Andere Erklärungen sind Fehlsiedlung, Kriege, Konzentration und Klima. Krisenzeichen gab es schon vor 1348.</li>
+      <li>Die Landwirtschaft baute um: Viehwirtschaft, Sonderkulturen, Schafhaltung. Im Westen verbesserte sich die Lage vieler Bauern, im Osten entstand die Gutsherrschaft.</li>
+    </ul>
+  </aside>
+
+  <details class="vertiefung">
+    <summary><span class="vt-titel">Vertiefung: Eine Krise oder viele Krisen?</span><span class="vt-unter">Freiwillig, geht über den Erwartungshorizont hinaus, ca. 8 Minuten.</span></summary>
+    <div class="vt-inhalt">
+      <p><span class="vt-marker">Forschung</span>Das Historische Lexikon der Schweiz hält Abels Theorie für die Wüstungen im Schweizer Raum für kaum anwendbar. Dort seien Siedlungen oft im Zuge von Umstrukturierung und sogar Wachstum aufgegeben worden, nicht wegen einer Krise. Es empfiehlt außerdem, von „Krisen des Spätmittelalters“ im Plural zu sprechen. Die neuere Forschung untersucht nicht nur Agrar- und Bevölkerungskrisen, sondern auch Krisen der Kirche, die Judenverfolgungen und das Klima.</p>
+      <p><span class="vt-marker">Hintergrund</span>Die Sicht auf das Spätmittelalter als Zeit des Niedergangs geht auch auf den niederländischen Historiker Johan Huizinga zurück („Herbst des Mittelalters“, 1919).</p>
+      <div class="task" data-id="6.V">
+        <p class="task-kopf"><span class="task-nr">6.V</span><span class="afb">AFB II</span><span class="form">freiwillig</span></p>
+        <p class="task-text"><b>Erläutere</b>, welche Vorteile es hat, von „Krisen“ im Plural statt von „der Krise des Spätmittelalters“ zu sprechen.</p>
+        <textarea aria-label="Antwort zu Aufgabe 6.V"></textarea>
+        <div class="eh" hidden><b>Erwartungshorizont</b><ul>
+          <li>Der Plural vermeidet den Eindruck, alle Entwicklungen hätten eine einzige Ursache und verliefen gleichzeitig.</li>
+          <li>Er erlaubt regionale Unterschiede und unterschiedliche Zeitverläufe, etwa zwischen Agrarkrise, Kirchenkrise und Judenverfolgungen.</li>
+          <li>Er schützt vor einem Epochenbild des bloßen Niedergangs, das Anpassung und Umbau übersieht.</li>
+        </ul></div>
+      </div>
+    </div>
+  </details>
+
+  <div class="ampel" data-station="6"></div>
+
+  <details class="belege">
+    <summary>Belege zu dieser Station</summary>
+    <ul>
+      <li>Getreidepreise, Löhne, Wüstungen, Umstrukturierung, Gutsherrschaft, Vorratspolitik der Städte, Fleischverbrauch: Buch S. 60 f.; Preisverlauf und Abel: Cornelsen S. 68 f.</li>
+      <li>M1 in italienischer Volkssprache, Entstehung ab den späten 1370er-Jahren: <a href="https://webhelper.brown.edu/decameron/plague/perspectives/marchionne.php">Brown University, Decameron Web</a>; <a href="https://sourcebooks.web.fordham.edu/med/marchione.asp">Internet Medieval Sourcebook</a></li>
+      <li>Abel 1935, „Krise des Spätmittelalters“, Plural „Krisen“, Huizinga: <a href="https://hls-dhs-dss.ch/de/articles/026215/2007-10-29/">Historisches Lexikon der Schweiz: Krise des Spätmittelalters</a></li>
+      <li>Wüstungen im Schweizer Raum, Umstrukturierung, Klima: <a href="https://hls-dhs-dss.ch/de/articles/007954">Historisches Lexikon der Schweiz: Wüstungen</a></li>
+      <li>Kriegs-, Fehlsiedlungs- und Agrarkrisentheorie: Rezension zu W. Abel, Die Wüstungen des ausgehenden Mittelalters, 2. Aufl. 1955, <a href="https://journals.wlb-stuttgart.de/index.php/wfr/article/download/13707/13743/26478">Württembergisch Franken</a></li>
+    </ul>
+  </details>
+  <a class="weiter" href="#s7">Weiter zu Station 7: Synthese</a>
+</section>
+
+<!-- ================= STATION 7 ================= -->
+<section class="station" id="s7">
+  <header class="st-head">
+    <p class="st-nr">Station 7</p>
+    <h2>Synthese: Bruch oder Verstärkung?</h2>
+    <p class="st-meta">ca. 40 Minuten, Doppelstunde 3</p>
+    <div class="zeitband" data-spans="1300-1347:vor,1347-1351:kurz,1351-1400:mittel,1400-1500:lang" data-label="Die Synthese umfasst den gesamten Zeitraum"></div>
+  </header>
+  <div class="ziel">
+    <p><b>Ziel dieser Station.</b> Du kannst …</p>
+    <ul>
+      <li>die Folgen der Pest bereichs- und zeitübergreifend verknüpfen,</li>
+      <li>die Materialien des Buches als Quellen oder Darstellungen einordnen,</li>
+      <li>die Pest begründet als Krise, Teilkrise oder Zäsur einordnen.</li>
+    </ul>
+  </div>
+
+  <article class="abschnitt" id="s7-1">
+    <h3><span class="nr">7.1</span>Die Wirkungsmatrix</h3>
+    <p>Trage in jedes Feld eine Folge oder Entwicklung in Stichworten ein. Nutze die Merksätze der Stationen 2–6, aber formuliere selbst. Leere Felder sind erlaubt und selbst ein Ergebnis: Sie zeigen, wo die Pest keine oder kaum Folgen hatte.</p>
+    <div class="task"><div class="matrix" data-id="mx"></div></div>
+    <details class="info">
+      <summary>Beispiellösung aufklappen (erst nach eigener Bearbeitung)</summary>
+      <div class="tab-wrap"><table>
+        <thead><tr><th></th><th>Vorgeschichte</th><th>kurzfristig</th><th>mittelfristig</th><th>langfristig</th></tr></thead>
+        <tbody>
+          <tr><th>Demografie</th><td>Wachstum bis um 1300, Hungersnot 1315–1317</td><td>Tod von ⅓ bis 60 % der Bevölkerung, regional sehr verschieden</td><td>Pestwellen ab 1361, keine Erholung</td><td>Stand vor 1347 erst um 1500 oder im 16. Jh.</td></tr>
+          <tr><th>Religion und Kirche</th><td>Avignon, Armutsstreit</td><td>Strafe Gottes, Prozessionen, Stiftungen, Geißler</td><td>Priestermangel, Kritik, Schisma 1378</td><td>Totentänze, Ars moriendi</td></tr>
+          <tr><th>Judenverfolgungen</th><td>Ritualmordlegenden, Pogrome 1298, 1336–1339</td><td>Pogromwelle 1348–1350, Vernichtung der Gemeinden</td><td>Wiederansiedlung unter schlechteren Bedingungen</td><td>neue Vertreibungen, Verlagerung nach Osteuropa</td></tr>
+          <tr><th>Gesellschaft</th><td>–</td><td>Erbschaften, Flucht der Reichen, Lohnanstieg</td><td>Lohngesetze, Kleiderordnungen, Aufstände, Zunftkämpfe</td><td>unterschiedliche Lage der Bauern in West und Ost</td></tr>
+          <tr><th>Wirtschaft</th><td>erste Krisenzeichen</td><td>Knappheit, Teuerung</td><td>Getreidepreise fallen, Löhne hoch</td><td>Wüstungen, Viehwirtschaft, Sonderkulturen, Gutsherrschaft</td></tr>
+        </tbody>
+      </table></div>
+    </details>
+  </article>
+
+  <div class="task" data-id="7.1">
+    <p class="task-kopf"><span class="task-nr">7.1</span><span class="afb">AFB II</span></p>
+    <p class="task-text"><b>Erläutere</b> zwei Wirkungsketten, die über Bereichsgrenzen hinweg verlaufen. Beispiel: Bevölkerungsverlust → Arbeitskräftemangel → Lohnanstieg → Kleiderordnungen.</p>
+    <textarea aria-label="Antwort zu Aufgabe 7.1"></textarea>
+    <div class="eh" hidden><b>Mögliche Wirkungsketten</b><ul>
+      <li>Pest → Angst und Deutung als Strafe Gottes → Suche nach Schuldigen → Brunnenvergiftungsvorwurf → Pogrome, begünstigt durch Schulden bei jüdischen Geldverleihern.</li>
+      <li>Bevölkerungsverlust → sinkende Nachfrage nach Getreide → Preisverfall → Einnahmeverluste der Grundherren → unrentable Höfe werden aufgegeben (Wüstungen) → Zuzug in die Städte.</li>
+      <li>Tod vieler Priester → Priestermangel und schlechter ausgebildete Nachfolger → Vertrauensverlust → Verstärkung älterer Kirchenkritik.</li>
+      <li>Arbeitskräftemangel → Lohnanstieg → Lohngesetze → Widerstand → Aufstand 1381 in England.</li>
+    </ul></div>
+  </div>
+
+  <article class="abschnitt" id="s7-2">
+    <h3><span class="nr">7.2</span>Das Buchmaterial einordnen</h3>
+    <p>In der Quellenarbeit musst du jedes Material zuerst einordnen. Übe das jetzt an den Angaben des Buches.</p>
+  </article>
+
+  <div class="task" data-id="7.2">
+    <p class="task-kopf"><span class="task-nr">7.2</span><span class="afb">AFB I</span></p>
+    <p class="task-text"><b>Ordne</b> die Materialien <b>zu</b>: Quelle, Darstellung oder von der Forschung erstellte Grafik oder Karte? Nutze die Angaben im Buch (S. 62–69).</p>
+    <div class="zuord" data-z="z7"></div>
+  </div>
+
+  <article class="abschnitt" id="s7-3">
+    <h3><span class="nr">7.3</span>Krise, Teilkrise oder Zäsur?</h3>
+    <p>Ob die Pest ein Bruch war, beantworten Historiker unterschiedlich. Drei Positionen lassen sich unterscheiden:</p>
+    <div class="tab-wrap"><table>
+      <thead><tr><th>Position</th><th>Kernaussage</th></tr></thead>
+      <tbody>
+        <tr><td>Zäsur</td><td>Die Pest veränderte nahezu alle Lebensbereiche so tiefgreifend, dass sie eine Epochengrenze markiert. <span class="mhint" data-m="M3">📖 vgl. M3</span></td></tr>
+        <tr><td>Verstärker</td><td>Viele Entwicklungen begannen vor 1348: Agrarprobleme, Kirchenkritik, Judenfeindschaft. Die Pest beschleunigte und verschärfte sie. Der Blick fällt auf Kontinuitäten.</td></tr>
+        <tr><td>Krisen im Plural</td><td>Statt einer „Krise des Spätmittelalters“ gab es mehrere Krisen mit eigenen Ursachen, Zeitverläufen und regionalen Unterschieden.</td></tr>
+      </tbody>
+    </table></div>
+    <p>Aus der Theoriestunde kennst du zwei Werkzeuge für diese Frage. <b>Koselleck</b> unterscheidet drei Verwendungsweisen des Krisenbegriffs: Dauerkrise, Epochenschwelle und Endkrise. <b>Vierhaus</b> nennt Merkmale, an denen man eine historische Krise erkennt:</p>
+    <div class="box methode" id="vierhaus">
+      <p class="titel">Merkmale historischer Krisen nach Rudolf Vierhaus (1922–2011)</p>
+      <p class="querverweis" style="margin-top:0">Übersicht nach dem Tafelbild der Theoriestunde</p>
+      <p><b>Historische Krisen sind …</b></p>
+      <ol class="vh-liste">
+        <li>prinzipiell datierbar (Anfang, Höhepunkt, Ende),</li>
+        <li>ergebnisoffen: Sie können <a class="gl" href="#gl-systemimmanent">systemimmanent</a> oder systemzerstörend gelöst werden,</li>
+        <li>nicht zwangsläufig,</li>
+        <li>keine Naturprozesse wie Dürre, Flut oder Epidemien. Sie können aber durch solche Ereignisse entstehen, etwa wenn eine schwache Verwaltung sie nicht bewältigt,</li>
+        <li>objektiv belegbar: Ein Krisengefühl allein reicht nicht aus,</li>
+        <li>das Ergebnis bewusster und unbewusster menschlicher Handlungen,</li>
+        <li>nur schwer auf einzelne Ursachen zurückzuführen.</li>
+      </ol>
+      <p><b>Definition.</b> Von einer Krise kann man sprechen, wenn ein stabiler, funktionierender Zustand nach einer Störung nicht mit den althergebrachten Mitteln wiederhergestellt werden kann, sondern Reformen oder eine Revolution erforderlich werden und erfolgen. Wird die Krise nicht überwunden, beginnt ein Prozess des Zerfalls oder der Auflösung.</p>
+      <p><b>Arten.</b> Man kann kurzfristige politische, gesellschaftliche und ökonomische Krisen von langfristigen Kulturkrisen unterscheiden. Innerhalb einer Gesamt- oder Systemkrise können verschiedene Teilkrisen bestehen.</p>
+      <p><b>Verweise.</b> Jacob Burckhardt beschreibt Krisen als „beschleunigte Prozesse“, Karl W. Deutsch als „Prozesse unter Zeitdruck“.</p>
+      <div class="task-bar"><button type="button" class="btn" data-kopiere="#vierhaus">Übersicht kopieren</button></div>
+    </div>
+    <p>Beachte den Unterschied: Viele Zeitgenossen erlebten die Pest als Endkrise, als Vorzeichen des Weltendes (→ 3.1). Die Forschung fragt dagegen, ob sie eine Epochenschwelle war oder Teil einer länger andauernden Krisenzeit.</p>
+    <div class="mc" data-q="q7a"></div>
+    <div class="mc" data-q="q7b"></div>
+  </article>
+
+  <div class="task">
+    <p class="task-kopf"><span class="task-nr">7.3</span><span class="afb">AFB II</span></p>
+    <p class="task-text"><b>Überprüfe</b> die Pest und ihre Folgen anhand der Merkmale nach Vierhaus. Notiere zu jedem Merkmal einen Beleg aus den Stationen 2–6 mit Abschnittsnummer, oder begründe, warum es nur eingeschränkt oder nicht zutrifft.</p>
+    <div class="kriterien" data-id="vh"></div>
+    <details class="info">
+      <summary>Beispiellösung aufklappen (erst nach eigener Bearbeitung)</summary>
+      <div class="tab-wrap"><table>
+        <thead><tr><th>Merkmal</th><th>Beleg oder Einschränkung</th></tr></thead>
+        <tbody>
+          <tr><th>1 datierbar</th><td>Beginn Herbst 1347 (Messina), Höhepunkt 1348–1350, Ende der ersten Welle um 1351 (→ 1.1). Eingeschränkt: Folgewellen ab 1361 und die Agrarkrise bis ins 15. Jahrhundert machen das Ende schwer bestimmbar (→ 2.3, 6.3).</td></tr>
+          <tr><th>2 ergebnisoffen</th><td>Die Ordnung aus Grundherrschaft, Ständen und Kirche blieb im Kern bestehen; sie passte sich an (Abgabensenkung, Umbau der Landwirtschaft, → 6.4). Das spricht für eine systemimmanente Lösung. Systemzerstörend waren die Folgen für die jüdischen Gemeinden im Reich (→ 4.2).</td></tr>
+          <tr><th>3 nicht zwangsläufig</th><td>Es gab Handlungsspielräume: Pogrome fanden nicht überall statt, einzelne Herrscher schützten Juden (→ 4.3). Grundherren im Westen und im Osten reagierten gegensätzlich (→ 6.4).</td></tr>
+          <tr><th>4 kein Naturprozess</th><td>Die Seuche selbst war ein Naturprozess und nach Vierhaus keine Krise. Zur Krise wurde sie durch die gesellschaftlichen Folgen: Arbeitskräftemangel, Versagen der Seelsorge, Gewalt. Schwache Verwaltung: keine wirksamen Schutzmaßnahmen, fehlende Notare und Ratsherren (→ 3.1, 5.1).</td></tr>
+          <tr><th>5 objektiv belegbar</th><td>Bevölkerungsverlust (Schätzungen, → 2.1), Wüstungen, Preis- und Lohndaten (→ 6.2, 6.3). Das Krisengefühl der Zeitgenossen, etwa die Endzeiterwartung, ist ein zusätzlicher, aber kein ausreichender Beleg.</td></tr>
+          <tr><th>6 bewusste und unbewusste Handlungen</th><td>Bewusst: Lohngesetze, Kleiderordnungen, Pogrome, Geißlerzüge, päpstliche Verbote (→ 3.3, 4.3, 5.2). Unbewusst: Landflucht, sinkende Nachfrage und dadurch Preisverfall (→ 5.2, 6.2).</td></tr>
+          <tr><th>7 nicht monokausal</th><td>Agrarkrise: Pest, Fehlsiedlung, Kriege, Klima (→ 6.3). Pogrome: Judenhass, Schulden, Machtkämpfe (→ 4.3). Kirchenkritik: Avignon, Armutsstreit (→ 3.4).</td></tr>
+          <tr><th>Definition</th><td>Die alten Mittel reichten nicht: Lohngesetze und Kleiderordnungen scheiterten (→ 5.2). Es folgten Anpassungen wie gesenkte Abgaben und neue Anbauformen, also Reformen im weiten Sinn. Revolutionäre Versuche (1358, 1378, 1381) scheiterten meist; Zunftkämpfe waren teils erfolgreich (→ 5.3). Ein Zerfall der Gesamtordnung trat nicht ein <span class="dt">Deutung</span>.</td></tr>
+          <tr><th>Teilkrisen</th><td>Demografische Krise, Agrarkrise, Kirchenkrise, Verfolgungswelle. Ob man sie zu einer Gesamtkrise des Spätmittelalters zusammenfasst, ist die Frage von 7.4 (→ 6.V).</td></tr>
+        </tbody>
+      </table></div>
+    </details>
+  </div>
+
+  <div class="task" data-id="7.4">
+    <p class="task-kopf"><span class="task-nr">7.4</span><span class="afb">AFB III</span></p>
+    <p class="task-text"><b>Beurteile</b>, ob die Große Pest und ihre Folgen als Krise, als Teilkrise oder als Zäsur zu bezeichnen sind. Begründe deine Begriffswahl.</p>
+    <textarea aria-label="Antwort zu Aufgabe 7.4"></textarea>
+    <div class="hilfe" data-titel="Denkanstoß" hidden><b>Hilfe 1: Denkanstoß</b>Kläre zuerst deine Begriffe: Was unterscheidet eine Krise (Zuspitzung mit offenem Ausgang) von einer Zäsur (dauerhafter Einschnitt)? Nutze dann die Matrix: In welchen Bereichen gab es einen Bruch, in welchen Kontinuität? Beachte bei Vierhaus die Aussagen zu Naturprozessen und zu Teilkrisen.</div>
+    <div class="hilfe" data-titel="Gliederung" hidden><b>Hilfe 2: Gliederung</b><ol><li>Begriffsklärung (Koselleck, Vierhaus)</li><li>Argumente für eine Zäsur</li><li>Argumente für Kontinuität und Verstärkung</li><li>Regionale und zeitliche Einschränkungen</li><li>Urteil mit Begriffswahl</li></ol></div>
+    <div class="eh" hidden><b>Kriterien für ein gutes Urteil</b><ul>
+      <li>Du klärst die Begriffe und verwendest sie trennscharf.</li>
+      <li>Du führst Argumente für eine Zäsur an: das Ausmaß des Sterbens, die Vernichtung der jüdischen Gemeinden im Reich, die Verschiebung von Löhnen und Preisen, die Wüstungen.</li>
+      <li>Du führst Argumente für Kontinuität an: Krisenzeichen vor 1348, ältere Kirchenkritik und Judenfeindschaft, Anpassung und Umbau statt Zusammenbruch, regionale Unterschiede.</li>
+      <li>Du unterscheidest nach Bereichen. Möglich ist etwa: eine Zäsur für die jüdischen Gemeinden im Reich, eine Verstärkung bestehender Entwicklungen in Kirche und Landwirtschaft.</li>
+      <li>Du nutzt Vierhaus: Die Epidemie selbst ist ein Naturprozess; die Krise liegt in ihren gesellschaftlichen Folgen. Innerhalb einer Gesamtkrise lassen sich Teilkrisen unterscheiden, etwa Agrar-, Kirchen- und Verfolgungskrise. Burckhardts Formel vom „beschleunigten Prozess“ stützt die Position „Verstärker“.</li>
+      <li>Du begründest deine Begriffswahl ausdrücklich. Jede der drei Bezeichnungen ist vertretbar, wenn sie gut begründet ist.</li>
+    </ul></div>
+  </div>
+
+  <aside class="wichtig" data-station="7">
+    <p class="titel">Das Wichtigste für deinen GoodNotes-Ordner</p>
+    <ul>
+      <li>Die Folgen der Pest hängen über Bereichsgrenzen hinweg zusammen, zum Beispiel Bevölkerungsverlust, Preisverfall und Wüstungen.</li>
+      <li>Ob die Pest eine Zäsur war oder vor allem vorhandene Entwicklungen verstärkte, ist in der Forschung umstritten. Viele sprechen heute von „Krisen des Spätmittelalters“ im Plural.</li>
+      <li>Zeitgenossen deuteten die Pest oft als Endkrise, die Forschung fragt nach Epochenschwelle oder länger andauernder Krisenzeit.</li>
+      <li>Nach Vierhaus ist die Epidemie selbst ein Naturprozess und keine Krise. Zur Krise wurde sie durch ihre gesellschaftlichen Folgen, die sich mit den alten Mitteln nicht bewältigen ließen. Innerhalb der Gesamtkrise lassen sich Teilkrisen unterscheiden.</li>
+    </ul>
+  </aside>
+
+  <details class="vertiefung">
+    <summary><span class="vt-titel">Vertiefung: Das 14. Jahrhundert als Krisenzeit</span><span class="vt-unter">Freiwillig, geht über den Erwartungshorizont hinaus, ca. 5 Minuten.</span></summary>
+    <div class="vt-inhalt">
+      <p><span class="vt-marker">Forschung</span>František Graus gab seinem grundlegenden Buch von 1987 den Titel „Pest – Geißler – Judenmorde. Das 14. Jahrhundert als Krisenzeit“. Schon der Titel verbindet drei Bereiche, die diese Seite in getrennten Stationen behandelt. Graus fragte, wie Menschen die Krise wahrnahmen und wie sie reagierten. Damit rückte er die Deutungen der Zeitgenossen neben die messbaren Folgen.</p>
+      <p><span class="vt-marker">Hintergrund</span>Für deine Urteilsaufgabe bedeutet das: Eine Krise besteht nicht nur aus Zahlen. Wie die Zeitgenossen sie erlebten und deuteten, gehört dazu.</p>
+    </div>
+  </details>
+
+  <div class="ampel" data-station="7"></div>
+
+  <details class="belege">
+    <summary>Belege zu dieser Station</summary>
+    <ul>
+      <li>Positionen und Plural „Krisen“: <a href="https://hls-dhs-dss.ch/de/articles/026215/2007-10-29/">Historisches Lexikon der Schweiz</a>; Kontinuität statt Bruch: Cornelsen S. 71</li>
+      <li>Koselleck und Vierhaus: Materialien der Theoriestunde dieser Reihe; Vierhaus-Übersicht nach dem Tafelbild der Theoriestunde, sprachlich geglättet</li>
+      <li>F. Graus, Pest – Geißler – Judenmorde, Göttingen 1987</li>
+      <li>Angaben zu den Materialien: Buch S. 62–69</li>
+    </ul>
+  </details>
+  <a class="weiter" href="#s8">Weiter zu Station 8: Selbsttest (freiwillig)</a>
+</section>
+
+<!-- ================= STATION 8 ================= -->
+<section class="station" id="s8">
+  <header class="st-head">
+    <p class="st-nr">Station 8</p>
+    <h2>Selbsttest</h2>
+    <p class="st-meta">freiwillig, ca. 10 + 15 Minuten, sinnvoll vor der Quellenstunde</p>
+  </header>
+  <div class="ziel">
+    <p><b>Ziel dieser Station.</b> Du kannst selbst überprüfen, ob dein Wissen für die Quellenarbeit ausreicht. Der Test wird nicht bewertet und ist freiwillig. Die Quellenarbeit im Unterricht beginnt unabhängig davon.</p>
+    <p>Teil A prüft das historische Wissen der Stationen 2–6, Teil B die Einordnung der Buchmaterialien. Bearbeite die Tests ohne Zurückblättern. Bei einem Fehler erhältst du einen Denkanstoß und einen zweiten Versuch. Punkte: 2 im ersten Versuch, 1 im zweiten, sonst 0. Die Auswertung nennt die Stationen, die du wiederholen solltest.</p>
+  </div>
+
+  <article class="abschnitt" id="s8-a">
+    <h3><span class="nr">8A</span>Wissenscheck zu den Stationen 2–6</h3>
+    <div class="test" data-id="t8a"></div>
+  </article>
+
+  <article class="abschnitt" id="s8-b">
+    <h3><span class="nr">8B</span>Materialien einordnen</h3>
+    <p>Wer ein Material analysieren will, muss es zuerst einordnen: Wann und von wem stammt es, was war vorher geschehen, und welches Wissen braucht man, um es zu verstehen?</p>
+    <div class="test" data-id="t8"></div>
+  </article>
+
+  <div class="task" data-id="8.T">
+    <p class="task-kopf"><span class="task-nr">8.T</span><span class="afb">AFB II</span><span class="form">Transfer</span><span class="form">freiwillig</span></p>
+    <p class="task-text">In der Quellenstunde erhältst du M4: die Chronik des Straßburger Geistlichen Jakob Twinger von Königshofen (1346–1420), begonnen 1382 und bis 1415 überarbeitet, über die Ereignisse von 1349 in Bern, Zofingen, Basel, Freiburg und Straßburg. <b>Ordne</b> die Quelle in 4–6 Sätzen in den historischen Zusammenhang <b>ein</b>. Nenne außerdem zwei Punkte, auf die du bei der Analyse besonders achten würdest.</p>
+    <textarea aria-label="Antwort zu Aufgabe 8.T"></textarea>
+    <div class="eh" hidden><b>Erwartungshorizont</b><ul>
+      <li><b>Zeitpunkt:</b> Twinger begann seine Chronik 1382 und arbeitete sie bis 1415 mehrfach um, also rund 35 bis 65 Jahre nach den Ereignissen. 1349 war er drei Jahre alt. Er knüpfte an die 1362 vollendete Chronik Fritsche Closeners an (M8).</li>
+      <li><b>Zusammenhang:</b> Die Pogromwelle zog seit 1348 von Südfrankreich über Savoyen und die Schweiz ins Reich. Basel und Freiburg verbrannten ihre Juden im Januar 1349, Straßburg am 14. Februar 1349, noch bevor die Pest die Stadt erreichte. Kurz zuvor war der Rat, der die Juden schützen wollte, gestürzt worden.</li>
+      <li><b>Hintergrund:</b> Vorwurf der Brunnenvergiftung, erfolterte „Geständnisse“, Verschuldung vieler Christen bei jüdischen Geldverleihern, Rolle König Karls IV.</li>
+      <li><b>Analysepunkte:</b> Standpunkt des Verfassers als Geistlicher; wie er Motive der Täter darstellt (Glaube, Angst oder Geld); Zahlenangaben im Vergleich mit der Einleitung; wie er die Verantwortung verteilt, etwa auf „das Volk“ oder auf die Obrigkeiten.</li>
+    </ul></div>
+  </div>
+
+  <details class="belege">
+    <summary>Belege zu dieser Station</summary>
+    <ul>
+      <li>Angaben zu den Materialien: Buch S. 62–69</li>
+      <li>Twinger: Chronik ab 1382, Überarbeitungen bis 1415, beeinflusst von Closener: <a href="https://www.deutsche-biographie.de/sfz99038.html">Allgemeine Deutsche Biographie</a>; Closener, Chronik 1362 vollendet, Vorläufer Twingers: <a href="https://hls-dhs-dss.ch/articles/018722">Historisches Lexikon der Schweiz</a>; Straßburg: <a href="https://de.wikipedia.org/wiki/Judenpogrom_in_Stra%C3%9Fburg_1349">Wikipedia: Judenpogrom in Straßburg 1349</a></li>
+      <li>Alle weiteren Angaben: siehe Belege der Stationen 1–7</li>
+    </ul>
+  </details>
+</section>
+
+
+<!-- ================= MATERIALKOMPASS ================= -->
+<section class="station" id="kompass">
+  <header class="st-head"><h2>Materialkompass</h2></header>
+  <p>Welcher Abschnitt dieser Seite bereitet welches Buchmaterial vor? In der Quellenarbeit führt der Weg auch zurück: Zu M8 findest du Hintergrundwissen in 3.3.</p>
+  <div class="tab-wrap"><table>
+    <thead><tr><th>Material</th><th>Art</th><th>Abschnitt</th></tr></thead>
+    <tbody id="kompass-body">
+      <tr data-m="M1"><td>M1</td><td>Quelle: Chronik, Florenz</td><td><a href="#s6-1">6.1</a></td></tr>
+      <tr data-m="M2"><td>M2</td><td>Quelle: Chronik, Florenz</td><td><a href="#s5-2">5.2</a></td></tr>
+      <tr data-m="M3"><td>M3</td><td>Darstellung, 2006</td><td><a href="#s5-1">5.1</a>, <a href="#s7-3">7.3</a></td></tr>
+      <tr data-m="S63"><td>Bild S. 63</td><td>Quelle: Holzschnitt, 1493</td><td><a href="#s4-1">4.1</a></td></tr>
+      <tr data-m="M4"><td>M4</td><td>Quelle: Chronik, Straßburg</td><td><a href="#s4-2">4.2</a>, Aufgabe 8.T</td></tr>
+      <tr data-m="M5"><td>M5</td><td>Quelle: Buchmalerei</td><td><a href="#s4-2">4.2</a></td></tr>
+      <tr data-m="M6"><td>M6</td><td>Quelle: Urkunde, Wildeshausen</td><td><a href="#s4-3">4.3</a></td></tr>
+      <tr data-m="M7"><td>M7</td><td>Darstellung, 1994</td><td><a href="#s4-3">4.3</a></td></tr>
+      <tr data-m="M8"><td>M8</td><td>Quelle: Chronik, Straßburg, 1362</td><td><a href="#s3-3">3.3</a></td></tr>
+      <tr data-m="M9"><td>M9</td><td>Darstellung, 2014</td><td><a href="#s2-1">2.1</a></td></tr>
+      <tr data-m="M10"><td>M10</td><td>Grafik, Schätzwerte</td><td><a href="#s2-4">2.4</a></td></tr>
+      <tr data-m="M11"><td>M11</td><td>Karte</td><td><a href="#s6-3">6.3</a></td></tr>
+      <tr data-m="M12"><td>M12</td><td>Grafik und Darstellung</td><td><a href="#s6-2">6.2</a></td></tr>
+      <tr data-m="M13"><td>M13</td><td>Darstellung, 1989</td><td><a href="#s6-3">6.3</a></td></tr>
+      <tr data-m="S56"><td>Bild S. 56</td><td>Gemälde, 1898</td><td><a href="#s3-5">3.5</a></td></tr>
+      <tr data-m="S57"><td>Bild S. 57</td><td>Buchmalerei, 15. Jh.</td><td><a href="#s3-2">3.2</a></td></tr>
+      <tr data-m="S59"><td>Bild S. 59</td><td>Holzschnitt, 1493</td><td><a href="#s3-3">3.3</a></td></tr>
+      <tr data-m="S60"><td>Tabelle S. 60</td><td>Zahlen nach einer Darstellung</td><td><a href="#s2-1">2.1</a>, Aufgabe 2.1</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- ================= GLOSSAR ================= -->
+<section class="station" id="glossar">
+  <header class="st-head"><h2>Glossar</h2></header>
+  <details class="info" id="glossar-details">
+  <summary>Glossar aufklappen (23 Begriffe)</summary>
+  <dl class="glossar">
+    <dt id="gl-agrarkrise">Agrarkrise</dt><dd>Langanhaltende Krise der Landwirtschaft mit Preisverfall, sinkenden Einnahmen und aufgegebenen Höfen; Begriff von Wilhelm Abel (1935).</dd>
+    <dt id="gl-ars">Ars moriendi</dt><dd>„Kunst des Sterbens“: Schriften des 15. Jahrhunderts, die auf einen guten, christlichen Tod vorbereiten sollten.</dd>
+    <dt id="gl-bulle">Bulle</dt><dd>Feierliche päpstliche Urkunde, benannt nach dem Siegel (lat. <i>bulla</i>).</dd>
+    <dt id="gl-darstellung">Darstellung</dt><dd>Nachträgliche Deutung der Vergangenheit, etwa durch Historiker, Schulbücher oder Erklärvideos.</dd>
+    <dt id="gl-endzeit">Endzeiterwartung</dt><dd>Überzeugung, das Weltende und das Jüngste Gericht stünden unmittelbar bevor.</dd>
+    <dt id="gl-geissler">Geißler (Flagellanten)</dt><dd>Büßer, die sich öffentlich mit Peitschen schlugen, um Gott zu versöhnen; von lat. <i>flagellum</i>, Geißel.</dd>
+    <dt id="gl-gutsherrschaft">Gutsherrschaft</dt><dd>Form der Grundherrschaft vor allem östlich der Elbe: Der Herr bewirtschaftete große Güter selbst, die Bauern waren an das Land gebunden und zu Diensten verpflichtet.</dd>
+    <dt id="gl-judenregal">Judenregal</dt><dd>Recht des Königs, Juden zu schützen und dafür Abgaben zu erheben. Es konnte verpfändet oder verkauft werden.</dd>
+    <dt id="gl-kammerknechte">Kammerknechte</dt><dd>Rechtsstellung der Juden im Reich seit 1236 (Friedrich II.): unmittelbar dem König unterstellt, von ihm geschützt, ihm abgabepflichtig und persönlich unfrei.</dd>
+    <dt id="gl-kirchenlehrer">Kirchenlehrer</dt><dd>Ehrentitel für Theologen, deren Lehre die Kirche als besonders bedeutend anerkennt.</dd>
+    <dt id="gl-kleiderordnung">Kleiderordnung</dt><dd>Vorschrift, welcher Stand welche Kleidung, Stoffe und welchen Schmuck tragen durfte.</dd>
+    <dt id="gl-konjunktion">Konjunktion</dt><dd>Stellung mehrerer Planeten, die von der Erde aus gesehen nahe beieinanderstehen. Nach mittelalterlicher Lehre beeinflusste sie irdische Ereignisse.</dd>
+    <dt id="gl-laien">Laien</dt><dd>Gläubige, die keine Weihe empfangen haben, also keine Priester, Mönche oder Nonnen sind.</dd>
+    <dt id="gl-miasma">Miasma</dt><dd>Verdorbene, krankmachende Luft; bis ins 19. Jahrhundert verbreitete Erklärung für Seuchen.</dd>
+    <dt id="gl-patriziat">Patriziat</dt><dd>Alteingesessene, wohlhabende Familien, die in mittelalterlichen Städten meist die Ratsämter innehatten.</dd>
+    <dt id="gl-pestheilige">Pestheilige</dt><dd>Heilige, die man gegen die Pest um Hilfe anrief, etwa Sebastian, Rochus oder Gregor der Große.</dd>
+    <dt id="gl-pogrom">Pogrom</dt><dd>Gewaltsame Ausschreitung gegen eine Minderheit, besonders gegen Juden (von russ. <i>pogrom</i>, Verwüstung).</dd>
+    <dt id="gl-preisschere">Preisschere</dt><dd>Gegenläufige Entwicklung zweier Preise, hier: fallende Getreidepreise bei hohen Löhnen.</dd>
+    <dt id="gl-quelle">Quelle</dt><dd>Überrest oder Zeugnis aus der untersuchten Zeit: Text, Bild, Gegenstand.</dd>
+    <dt id="gl-schisma">Schisma</dt><dd>Kirchenspaltung. Im Großen Abendländischen Schisma (1378–1417) beanspruchten zwei, zeitweise drei Päpste das Amt.</dd>
+    <dt id="gl-systemimmanent">systemimmanent</dt><dd>Innerhalb der bestehenden Ordnung. Eine systemimmanente Lösung verändert die Ordnung, ohne sie abzuschaffen.</dd>
+    <dt id="gl-totentanz">Totentanz</dt><dd>Bildfolge, in der der Tod Menschen aller Stände zum Tanz holt; Mahnung, dass der Tod alle gleich macht.</dd>
+    <dt id="gl-wuestung">Wüstung</dt><dd>Aufgegebene Siedlung oder nicht mehr genutzte Flur.</dd>
+    <dt id="gl-zunft">Zunft</dt><dd>Zusammenschluss der Handwerker eines Gewerbes in einer Stadt; regelte Ausbildung, Preise und Qualität und strebte nach politischer Mitsprache.</dd>
+  </dl>
+  </details>
+</section>
+
+<!-- ================= ERGEBNISSE SICHERN ================= -->
+<section class="station" id="sichern">
+  <header class="st-head"><h2>Ergebnisse sichern</h2></header>
+  <p>Hier sammelt die Seite deine Merksätze, Antworten, Ergebnisse der Verständnischecks und Selbsteinschätzungen. Kopiere den Text und füge ihn in deinen GoodNotes-Ordner ein. Die Eingaben sind nur auf diesem iPad gespeichert.</p>
+  <div class="task-bar">
+    <button type="button" class="btn voll" id="export-bauen">Ergebnisse sammeln</button>
+    <button type="button" class="btn" id="export-kopieren">Text kopieren</button>
+    <button type="button" class="btn gefahr" id="alles-loeschen">Alle Eingaben löschen</button>
+  </div>
+  <textarea id="export-text" readonly aria-label="Gesammelte Ergebnisse" style="margin-top:.8rem" placeholder="Tippe auf „Ergebnisse sammeln“."></textarea>
+
+  <details class="info" style="margin-top:2rem">
+    <summary>Hinweise für die Lehrkraft</summary>
+    <p><b>Version 1.0</b> (24. September 2026): vollständige Fassung mit den Stationen 1–8, Schüleranrede per Du, Materialauswahl M3, M4, M6, M7, M8, M9, M12. Alle Sachaussagen wurden gegen die angegebenen Belege geprüft.</p>
+    <p><b>Vierhaus.</b> Die Übersicht in 7.3 folgt Ihrem Tafelbild. Tippfehler wurden korrigiert (Epidemien, Administration, „beginnt der Prozess“), die Aussagen sind unverändert. Aufgabe 7.3 enthält jetzt eine Beispiellösung mit Verweisen auf die Abschnitte.</p>
+    <p><b>Anregung für die Quellenstunde.</b> Die Einleitung zu M4 nennt für Straßburg eine jüdische Gemeinde von 250–300 Personen, die Chronisten sprechen von etwa 2.000 Toten. Diese Abweichung eignet sich für die Quellenkritik; die Methodenbox in 4.4 bereitet sie vor, ohne sie vorwegzunehmen.</p>
+    <p><b>Faktencheck M1.</b> Die Einleitung zu M1 nennt Latein als Sprache der Chronik. Nach der kritischen Edition ist sie in italienischer Volkssprache verfasst (6.1).</p>
+    <p><b>Materialauswahl anpassen.</b> Im Quelltext steht am Anfang des Skripts die Liste <code>AKTIVE_M</code>. Materialien, die nicht in der Liste stehen, erscheinen in den Materialhinweisen gestrichelt mit dem Zusatz „Angebot im Buch“ und im Materialkompass blass.</p>
+    <p><b>Inhaltsgrundlage.</b> Buchner S. 56–69 (Schülerbuch); Cornelsen S. 68–71 nur in eigener Formulierung, ohne Zitate; ergänzend geprüfte Forschung (Belege je Station). Alle Darstellungstexte sind eigenständig formuliert.</p>
+    <p><b>Korrekturen am Schülerbuch.</b> Gregor „1295 heiliggesprochen“ (3.2, Faktencheck); Rückkehr nach Rom 1376/77 (3.2, Faktencheck); Turmuhr, Feuerwaffen und Humanismus unter „Religiöse Folgen“ als Darstellungskritik (Aufgabe 3.2); Tabelle S. 60 als Quellenkritik (Aufgabe 2.1); Sprache von M1 (6.1, Faktencheck).</p>
+    <p><b>Bewusst nicht vorweggenommen.</b> Materialhinweise nennen nur Nummer, Gattung, Ort und Zeit, keine Inhalte. Die Methodenbox in 2.4 bereitet die kritische Lektüre von M10 vor (ungleiche Abstände der Zeitachse), ohne M10 zu nennen.</p>
+    <p><b>Speicherung.</b> Eingaben liegen im <code>localStorage</code> des jeweiligen Browsers, getrennt pro Gerät. Es werden keine Daten übertragen.</p>
+  </details>
+</section>
+
+<p class="fuss">Version 1.0, Stand: 24. September 2026. Darstellungstexte eigenständig formuliert. Bildverweise beziehen sich auf das Schülerbuch.</p>
+</div>
+</main>
+</div>
+
+<script>
+/* ====== EINSTELLUNG FÜR DIE LEHRKRAFT ======
+   Materialien, die im Unterricht bearbeitet werden. Alle anderen erscheinen als „Angebot im Buch“.
+   Kürzel: M1–M13 sowie Buchseiten S56, S57, S59, S60, S63 */
+const AKTIVE_M = ["M3","M4","M6","M7","M8","M9","M12","S56","S57","S59","S60","S63"];
+
+/* ====== Speicher ====== */
+const KEY = "pestfolgen-lk12-v1";
+function leer(){ return {a:{}, q:{}, z:{}, amp:{}, f:{}}; }
+let state = (function(){
+  try { const s = JSON.parse(localStorage.getItem(KEY)); if (s && typeof s === "object") { const l = leer(); for (const k in l) if (!s[k]) s[k] = l[k]; return s; } } catch(e) {}
+  return leer();
+})();
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(state)); } catch(e) {} }
+
+/* ====== Daten: Verständnischecks ======
+   f = Frage, o = Optionen [Text, richtig], h = Denkanstoß nach erstem Fehler, e = Erklärung */
+const QUIZ = {
+  q1a: { f:"Welcher Erreger verursachte die Große Pest?",
+    o:[["Das Bakterium Yersinia pestis",1],["Ein Pockenvirus",0],["Das Cholera-Bakterium",0]],
+    h:"Es handelt sich um ein Bakterium, das über Flöhe von Nagetieren übertragen werden kann.",
+    e:"Yersinia pestis ist ein Bakterium. Es wird vor allem über Flöhe übertragen; die Lungenpest auch direkt von Mensch zu Mensch." },
+  q1b: { f:"Wo und wann erreichte die Pest zuerst Westeuropa?",
+    o:[["1350 über die Hansestädte an der Ostsee",0],["Im Herbst 1347 mit Handelsschiffen in Messina auf Sizilien",1],["1340 mit Pilgern in Santiago de Compostela",0]],
+    h:"Die Seuche kam über das Mittelmeer, auf den Wegen des Fernhandels.",
+    e:"Handelsschiffe brachten die Pest im Herbst 1347 nach Messina. Von dort breitete sie sich über die Handelswege aus." },
+  q1c: { f:"Welches Material ist eine Darstellung, keine Quelle?",
+    o:[["Die Chronik des Straßburger Geistlichen Fritsche Closener aus dem 14. Jahrhundert",0],["Ein Buch des britischen Historikers Ian Mortimer von 2014",1],["Die Urkunde eines Vogts aus Wildeshausen von 1350",0]],
+    h:"Quellen stammen aus der untersuchten Zeit. Wer schreibt hier mit großem Abstand?",
+    e:"Mortimer schreibt im 21. Jahrhundert über das 14. Jahrhundert. Sein Text ist eine Darstellung. Chronik und Urkunde entstanden in der Zeit selbst und sind Quellen." },
+  q2a: { f:"Warum gelten die Register, in denen Bischöfe neu besetzte Pfarrstellen verzeichneten, als verlässlicher als Chronistenzahlen?",
+    o:[["Sie erfassen die gesamte Bevölkerung eines Bistums.",0],["Ihre Verfasser waren bei jedem Todesfall Augenzeugen.",0],["Sie halten einzelne, überprüfbare Fälle fest, statt eine Gesamtzahl zu schätzen.",1]],
+    h:"Überlege, was genau in einem solchen Register steht – und wer darin nicht vorkommt.",
+    e:"Jede frei gewordene Stelle musste neu besetzt werden, also wurde jeder Fall einzeln verzeichnet. Die Register erfassen aber nur Geistliche mit Pfarrstelle. Für die übrige Bevölkerung muss man hochrechnen." },
+  q2b: { f:"Was misst die Pollenanalyse, mit der Forschende 2022 die Pestfolgen untersuchten?",
+    o:[["Veränderungen der Landnutzung, etwa Rückgang des Getreideanbaus",1],["Die Zahl der Toten in einer Region",0],["Die Verbreitung von Rattenflöhen",0]],
+    h:"Pollen stammen von Pflanzen. Was bedeutet es, wenn weniger Getreidepollen und mehr Baumpollen abgelagert werden?",
+    e:"Die Pollen zeigen, ob Felder weiter bestellt wurden oder verwilderten. Daraus schließt man indirekt auf fehlende Arbeitskräfte und damit auf die Sterblichkeit. Das ist eine Schlussfolgerung, keine Zählung." },
+  q2c: { f:"Warum wuchs die Bevölkerung nach 1351 lange nicht wieder?",
+    o:[["Weil große Teile der Bevölkerung nach Osteuropa auswanderten",0],["Weil die Pest ab 1361 in Abständen zurückkehrte und besonders junge Menschen traf",1],["Weil die Kirche nach der Pest keine Ehen mehr schloss",0]],
+    h:"Die erste Welle 1347–1351 war nicht die letzte.",
+    e:"Neue Wellen, beginnend 1361–1363, trafen immer wieder die nachwachsende Generation. Sie verhinderten, dass sich die Bevölkerung erholte." },
+  q3a: { f:"Wie erklärte das Gutachten der Pariser medizinischen Fakultät 1348 die Seuche?",
+    o:[["Mit der Übertragung durch Flöhe von Ratten",0],["Mit einer Konjunktion von Saturn, Jupiter und Mars 1345, die die Luft verdorben habe",1],["Mit einer Vergiftung der Brunnen",0]],
+    h:"Die Ärzte suchten eine ferne Ursache am Himmel und eine nahe Ursache in der Luft.",
+    e:"Ferne Ursache: die Planetenkonjunktion vom 20. März 1345. Nahe Ursache: verdorbene Luft (Miasma). Die Rolle der Flöhe erkannte man erst Ende des 19. Jahrhunderts." },
+  q3b: { f:"Warum verbot Papst Clemens VI. im Oktober 1349 die Geißlerzüge?",
+    o:[["Weil Laien ohne Priester Buße organisierten und sich der kirchlichen Kontrolle entzogen",1],["Weil die Geißler die jüdischen Gemeinden schützten",0],["Weil die Pest zu diesem Zeitpunkt überall vorbei war",0]],
+    h:"Wer leitete die Geißlerzüge – und wer beanspruchte sonst, zwischen Gott und den Menschen zu vermitteln?",
+    e:"Die Geißler beanspruchten, durch eigene Buße Heil zu erlangen, und wurden von Laien geleitet. Damit stellten sie die Vermittlerrolle der Kirche in Frage." },
+  e2a: { f:"Welche Spannweite nennt die Forschung für die Sterblichkeit in Europa während der ersten Welle?",
+    o:[["Etwa 5 bis 10 Prozent",0],["Etwa ein Drittel bis rund 60 Prozent",1],["Überall über 90 Prozent",0]],
+    h:"Denk an die vorsichtige Schulbuchzahl und an die hohe Schätzung Benedictows.",
+    e:"Vorsichtige Schätzungen nennen ein Drittel, Benedictow rund 60 Prozent. Regional waren die Unterschiede groß." },
+  e2b: { f:"Was ist der Holzschnitt mit zwei Geißlern (Buch S. 59) für die Geißlerzüge von 1349?",
+    o:[["Ein Augenzeugenbild aus dem Jahr 1349",0],["Eine spätere Darstellung aus der Schedelschen Weltchronik von 1493",1],["Eine Nachzeichnung aus dem 19. Jahrhundert",0]],
+    h:"Achte auf das Entstehungsjahr in der Bildunterschrift.",
+    e:"Der Holzschnitt entstand rund 140 Jahre nach den Geißlerzügen. Er zeigt die Vorstellung vom Ende des 15. Jahrhunderts." },
+  e2c: { f:"Welche nahe Ursache der Pest nannten die Pariser Ärzte 1348?",
+    o:[["Verdorbene Luft (Miasma)",1],["Flöhe von Ratten",0],["Vergiftete Brunnen",0]],
+    h:"Die ferne Ursache lag am Himmel. Was wurde dadurch verdorben?",
+    e:"Die Planetenkonjunktion von 1345 habe die Luft verdorben. Diese verdorbene Luft galt als nahe Ursache." },
+  q4a: { f:"Was bedeutete es, dass der König sein Schutzrecht über die Juden (Judenregal) verpfänden konnte?",
+    o:[["Juden erhielten dadurch das volle Bürgerrecht.",0],["Der Schutz der Juden wurde zu einer Einnahmequelle, die an Fürsten und Städte übergehen konnte.",1],["Die Kirche übernahm den Schutz der Juden.",0]],
+    h:"Wer verpfändet, erhält Geld. Was geschieht dann mit dem verpfändeten Recht?",
+    e:"Der Schutz war ein nutzbares Recht. Wer es erwarb, erhielt die Abgaben der Juden und bestimmte über ihren Schutz." },
+  q4b: { f:"Welcher Befund spricht dagegen, die Pogrome allein als Reaktion auf das Massensterben zu erklären?",
+    o:[["Die Pogrome begannen in Südfrankreich.",0],["Die Pest tötete auch viele Juden.",0],["Einige Pogrome fanden statt, bevor die Pest den Ort erreicht hatte.",1]],
+    h:"Wenn Menschen aus Angst vor dem Sterben handeln, müsste das Sterben vorher begonnen haben.",
+    e:"In Straßburg und anderswo wurden Juden ermordet, bevor die Seuche die Stadt erreichte. Die Pest erklärt den Zeitpunkt, nicht allein die Gewalt." },
+  q4c: { f:"Welche Rolle spielte König Karl IV.?",
+    o:[["Er regelte vorab, was mit dem Besitz ermordeter Juden geschehen sollte, und sicherte Straffreiheit zu.",1],["Er schützte die Juden im ganzen Reich erfolgreich.",0],["Er war an den Ereignissen nicht beteiligt.",0]],
+    h:"Denk an die Urkunden vom Juni 1349 für Frankfurt, Nürnberg und Rothenburg.",
+    e:"Karl IV. verpfändete sein Schutzrecht und vergab Freibriefe, zum Teil vor den Verfolgungen. Die Forschung sieht ihn deshalb als Mittäter." },
+  q5a: { f:"Was legte die englische Verordnung von 1349 fest?",
+    o:[["Eine Erhöhung aller Löhne um die Hälfte",0],["Arbeitspflicht für Arbeitsfähige unter 60 und Löhne auf dem Stand von 1346",1],["Das Ende der Leibeigenschaft",0]],
+    h:"Die Obrigkeit wollte den Zustand vor der Pest festhalten.",
+    e:"Die Ordinance of Labourers (1349) und das Statute of Labourers (1351) sollten die Löhne einfrieren. Sie wurden vielfach umgangen." },
+  q5b: { f:"Warum kam es in vielen Städten nach der Pest zu Zunftkämpfen?",
+    o:[["Die Zünfte wollten die Juden schützen.",0],["Die Kirche hatte die Zünfte verboten.",0],["Wirtschaftlich aufgestiegene Handwerker forderten Anteil an der politischen Macht.",1]],
+    h:"Wer hatte in den Städten das Geld, und wer hatte die Ämter?",
+    e:"Wirtschaftliches Gewicht und politische Macht passten nicht mehr zusammen. Die Zünfte verlangten Sitze im Rat, in Köln 1396 mit Erfolg." },
+  e3a: { f:"Warum wurden viele Pogrome später als spontane Taten des „Pöbels“ dargestellt?",
+    o:[["Um die Verantwortung von Obrigkeiten zu verschleiern",1],["Weil nachweislich nur Arme beteiligt waren",0],["Weil der Papst es so angeordnet hatte",0]],
+    h:"Wer schrieb die Berichte, und wer hatte ein Interesse daran, nicht als Täter dazustehen?",
+    e:"Die Verantwortlichen schoben die Schuld nachträglich auf Unterschichten und Fremde, etwa in Köln." },
+  e3b: { f:"Welche Motive spielten in Straßburg 1349 neben der Pestangst eine Rolle?",
+    o:[["Eine Hungersnot und Missernten",0],["Schulden bei jüdischen Geldverleihern und ein Machtkampf im Rat",1],["Ein Krieg mit Frankreich",0]],
+    h:"Was geschah kurz vor dem Pogrom mit dem Rat, der die Juden schützen wollte?",
+    e:"Rat und Meister, die die Juden schützen wollten, wurden gestürzt. Viele Beteiligte waren bei Juden verschuldet." },
+  e3c: { f:"Wozu dienten Kleiderordnungen nach der Pest?",
+    o:[["Sie sollten die Ansteckung verhindern.",0],["Sie sollten Wolle für den Export sparen.",0],["Sie sollten Standesunterschiede sichtbar halten.",1]],
+    h:"Wer trug nach der Pest plötzlich teure Kleidung?",
+    e:"Aufsteiger konnten sich teure Kleidung leisten. Die Obrigkeiten wollten die Stände weiterhin erkennbar trennen." },
+  q6a: { f:"Warum fielen die Getreidepreise etwa ab 1370/80?",
+    o:[["Weil mit der Bevölkerung die Nachfrage nach Getreide sank",1],["Weil billiges Getreide aus Übersee eingeführt wurde",0],["Weil die Löhne stark fielen",0]],
+    h:"Wer isst das Getreide, und wie viele davon gab es noch?",
+    e:"Weniger Menschen brauchten weniger Getreide. Die Preise fielen, während die Löhne wegen des Arbeitskräftemangels hoch blieben." },
+  q6b: { f:"Welche Aussage über die Wüstungen trifft zu?",
+    o:[["Sie entstanden ausschließlich durch die Pest.",0],["Sie haben mehrere mögliche Ursachen; die Agrarkrisentheorie ist eine davon.",1],["Sie waren überall gleich häufig.",0]],
+    h:"Denk an Fehlsiedlung, Kriege, Konzentration und Klima.",
+    e:"Die Forschung kennt mehrere Erklärungen, und das Ausmaß war regional sehr verschieden." },
+  q7a: { f:"Welcher Krisenbegriff nach Koselleck passt zur Deutung vieler Zeitgenossen, die Pest kündige das Weltende an?",
+    o:[["Dauerkrise",0],["Epochenschwelle",0],["Endkrise",1]],
+    h:"Welcher Begriff meint eine letzte, endgültige Entscheidung?",
+    e:"Die Endkrise meint das endgültige Gericht am Ende der Zeit. Die Forschung fragt dagegen nach Epochenschwelle oder Dauerkrise." },
+  q7b: { f:"Was ist die Pestepidemie selbst nach Vierhaus?",
+    o:[["Eine historische Krise im vollen Sinn",0],["Ein Naturprozess, der eine Krise auslösen kann",1],["Eine langfristige Kulturkrise",0]],
+    h:"Lies Merkmal 4 der Übersicht.",
+    e:"Epidemien sind Naturprozesse. Zur Krise werden sie, wenn Gesellschaft und Verwaltung ihre Folgen nicht mit den alten Mitteln bewältigen können." },
+  q3c: { f:"Welche Aussage über Pest und Kirchenkritik trifft zu?",
+    o:[["Die Pest löste die erste Kritik an der Kirche überhaupt aus.",0],["Nach der Pest verstummte die Kritik, weil die Kirche Trost spendete.",0],["Die Pest verstärkte eine Kritik, die schon vorher bestand.",1]],
+    h:"Denk an die Päpste in Avignon und an den Armutsstreit. Wann begannen sie?",
+    e:"Avignon (ab 1309) und der Armutsstreit (1323) liegen vor der Pest. Die Pest verstärkte vorhandene Zweifel, das Schisma ab 1378 vertiefte sie." }
+};
+
+/* ====== Daten: Zuordnung ====== */
+const ZUORD = {
+  z1: {
+    kats: [["vor","Vorgeschichte"],["kurz","kurzfristig"],["mittel","mittelfristig"],["lang","langfristig"]],
+    items: [
+      ["Große Hungersnot (1315–1317)",["vor"]],
+      ["Päpste in Avignon (ab 1309)",["vor"]],
+      ["Pogrom in Straßburg (Februar 1349)",["kurz"]],
+      ["Päpstliches Verbot der Geißlerzüge (Oktober 1349)",["kurz"]],
+      ["Zweite große Pestwelle (1361–1363)",["mittel"]],
+      ["Bauernaufstand in England (1381)",["mittel"]],
+      ["Großes Abendländisches Schisma (1378–1417)",["mittel","lang"]],
+      ["Fallende Getreidepreise (ca. 1370–1470)",["lang","mittel"]],
+      ["Totentanz in Lübeck (1463)",["lang"]]
+    ],
+    hinweis: "Schisma und Getreidepreise erstrecken sich über zwei Zeiträume. Beide Zuordnungen sind vertretbar. Genau deshalb markieren die Etiketten Schwerpunkte, keine Grenzen."
+  },
+  z5: {
+    kats: [["gew","eher Gewinner"],["verl","eher Verlierer"],["lage","je nach Lage"]],
+    items: [
+      ["Überlebende Tagelöhner und Knechte",["gew"]],
+      ["Erben herrenloser Häuser und Grundstücke",["gew"]],
+      ["Bauern, die freie Höfe zu besseren Bedingungen übernahmen",["gew"]],
+      ["Jüdische Gemeinden im Reich",["verl"]],
+      ["Grundherren mit vielen leerstehenden Höfen",["verl"]],
+      ["Arme in den Städten ohne Möglichkeit zur Flucht",["verl"]],
+      ["Kirchen und Klöster",["lage","gew"]],
+      ["Bauern, die im 15. Jahrhundert Getreide verkauften",["verl","lage"]],
+      ["Städtische Patrizier",["lage"]]
+    ],
+    hinweis: "Die Zuordnung vereinfacht. Kirchen und Klöster erhielten reiche Stiftungen, litten aber unter Priestermangel und Kritik. Getreidebauern verloren durch den Preisverfall, konnten aber auf Vieh oder Sonderkulturen umstellen. Patrizier behielten oft die Macht, mussten sie aber verteidigen."
+  },
+  z7: {
+    kats: [["quelle","Quelle"],["darst","Darstellung"],["grafik","Grafik oder Karte der Forschung"]],
+    items: [
+      ["M1 Chronik des Marchionne di Coppo Stefani, Florenz, ab ca. 1378",["quelle"]],
+      ["M2 Matteo Villani, Florentiner Kaufmann (um 1290–1363)",["quelle"]],
+      ["M3 Rolf Walter, Geschichte der Weltwirtschaft (2006)",["darst"]],
+      ["M4 Jakob Twinger von Königshofen, Chronik (um 1400)",["quelle"]],
+      ["M5 Buchmalerei in der Chronik des Li Muisis (um 1349)",["quelle"]],
+      ["M6 Urkunde des Vogts Liborius, Wildeshausen (1350)",["quelle"]],
+      ["M7 Klaus Bergdolt, Der Schwarze Tod in Europa (1994)",["darst"]],
+      ["M8 Chronik Fritsche Closeners, Straßburg (vollendet 1362)",["quelle"]],
+      ["M9 Ian Mortimer, Handbuch für Zeitreisende (2014)",["darst"]],
+      ["M10 Bevölkerungsentwicklung Europas 1050–1500 (Schätzwerte)",["grafik"]],
+      ["M11 Wüstungskarte nach Werner Rösener (1987)",["grafik"]],
+      ["M12 Roggenpreise und Löhne in Göttingen, nach Wilhelm Abel (1978)",["grafik","darst"]],
+      ["M13 Peter Moraw über die Agrarkrise (1989)",["darst"]]
+    ],
+    hinweis: "M12 verbindet eine Grafik mit einem erläuternden Text Abels; beide Zuordnungen sind vertretbar. Grafiken und Karten der Forschung beruhen auf Quellen, sind aber selbst Darstellungen: Jemand hat Daten ausgewählt, geschätzt und angeordnet. M9 ist zudem ein populärwissenschaftliches Buch."
+  }
+};
+
+/* ====== Daten: Abschlusstest ====== */
+const TEST = {
+  t8a: [
+    { st:"2", f:"Welche Aussage über die Opferzahlen der Pest trifft zu?",
+      o:[["Chronistenzahlen gelten als überhöht; belastbarer sind Verwaltungsquellen wie Steuerlisten oder Register.",1],["Chronisten zählten die Toten systematisch.",0],["Steuerlisten erfassen die gesamte Bevölkerung.",0]],
+      h:"Wer zählte, wer schätzte, und wer kommt in Verwaltungsquellen gar nicht vor?",
+      e:"Chronisten schätzten. Verwaltungsquellen halten Einzelfälle fest, erfassen aber nur Teile der Bevölkerung, etwa Steuerzahler oder Geistliche." },
+    { st:"2", f:"Was ergab die Pollenstudie von 2022?",
+      o:[["Die Pest traf ganz Europa gleich stark.",0],["Die Pest traf die Regionen sehr unterschiedlich; in manchen Gebieten blieb die Landwirtschaft unverändert.",1],["Die Pest erreichte Osteuropa gar nicht.",0]],
+      h:"Die Studie misst Landnutzung, kein Sterben. Was fand sie in Mittel- und Osteuropa?",
+      e:"In Skandinavien, Frankreich, Südwestdeutschland, Griechenland und Mittelitalien brach die Landwirtschaft ein, in weiten Teilen Mittel- und Osteuropas nicht." },
+    { st:"3", f:"Wie erklärte das Pariser Gutachten von 1348 die Seuche?",
+      o:[["Mit einer Planetenkonjunktion von 1345 und dadurch verdorbener Luft",1],["Mit Flöhen und Ratten",0],["Mit vergifteten Brunnen",0]],
+      h:"Ferne Ursache am Himmel, nahe Ursache in der Luft.",
+      e:"Ferne Ursache: Konjunktion von Saturn, Jupiter und Mars am 20. März 1345. Nahe Ursache: das Miasma, die verdorbene Luft." },
+    { st:"3", f:"Was kennzeichnet die Geißlerbewegung von 1348/49?",
+      o:[["Sie wurde von Bischöfen geleitet und vom Papst gefördert.",0],["Sie war eine Laienbewegung mit Bußfahrten, die Clemens VI. im Oktober 1349 verbot.",1],["Sie entstand erst nach dem Ende der Pest.",0]],
+      h:"Wer leitete die Züge, und wie reagierte die Amtskirche?",
+      e:"Laien organisierten Bußfahrten von 33½ Tagen. Weil sie die Heilsvermittlung der Kirche umgingen, verbot Clemens VI. sie am 20. Oktober 1349." },
+    { st:"3", f:"Welche Aussage über die Kritik an der Kirche trifft zu?",
+      o:[["Sie begann erst nach 1348.",0],["Sie bestand schon vorher, etwa wegen Avignon und des Armutsstreits, und wurde durch die Pest verstärkt.",1],["Sie richtete sich vor allem gegen die Geißler.",0]],
+      h:"Seit wann residierten die Päpste in Avignon?",
+      e:"Avignon ab 1309 und der Armutsstreit (1323) liegen vor der Pest. Priestermangel und Vertrauensverlust verstärkten die Kritik." },
+    { st:"4", f:"Was bedeutete die Stellung der Juden als „Kammerknechte“?",
+      o:[["Sie standen unter dem Schutz des Königs und zahlten dafür Abgaben; dieses Recht war verpfändbar.",1],["Sie waren Bedienstete am königlichen Hof.",0],["Sie hatten dieselben Rechte wie christliche Bürger.",0]],
+      h:"Denk an das Judenregal und daran, was der König damit tun konnte.",
+      e:"Der Schutz war ein Recht des Königs, das er verpfänden oder verkaufen konnte. Damit wurde Schutz zur Einnahmequelle." },
+    { st:"4", f:"Welche Aussage über die Pogrome von 1348–1350 trifft zu?",
+      o:[["Sie fanden immer erst nach dem Ausbruch der Pest am jeweiligen Ort statt.",0],["Haupttäter waren fast überall arme Landarbeiter.",0],["Mehrere Pogrome fanden statt, bevor die Pest den Ort erreichte; Haupttäter waren oft Obrigkeiten, Zünfte und Bürger.",1]],
+      h:"Erinnere dich an das Datum des Straßburger Pogroms und an die Rolle des Rates.",
+      e:"Straßburg wurde am 14. Februar 1349 zum Schauplatz eines Pogroms, bevor die Seuche eintraf. Städtische Obrigkeiten und Zünfte handelten, teils aus wirtschaftlichen Motiven." },
+    { st:"5", f:"Womit reagierten Obrigkeiten auf steigende Löhne?",
+      o:[["Mit Lohngesetzen wie in England 1349 und 1351 sowie mit Kleiderordnungen",1],["Mit der Abschaffung der Leibeigenschaft",0],["Mit der Gründung von Zünften",0]],
+      h:"Welche Maßnahmen sollten den Zustand vor der Pest festhalten?",
+      e:"Die englischen Gesetze froren die Löhne auf dem Stand von 1346 ein. Kleiderordnungen sollten Standesunterschiede sichtbar halten." },
+    { st:"6", f:"Was beschreibt die Preisschere des Spätmittelalters?",
+      o:[["Getreidepreise und Löhne stiegen gemeinsam.",0],["Die Getreidepreise fielen, während die Löhne hoch blieben.",1],["Getreide wurde teuer, Löhne fielen.",0]],
+      h:"Weniger Menschen brauchen weniger Getreide, aber Arbeitskräfte blieben knapp.",
+      e:"Sinkende Nachfrage senkte die Getreidepreise, der Arbeitskräftemangel hielt die Löhne hoch. Bauern und Grundherren gerieten dadurch unter Druck." },
+    { st:"6", f:"Wie erklärt die Forschung die spätmittelalterlichen Wüstungen?",
+      o:[["Ausschließlich mit der Pest",0],["Mit mehreren Ursachen: Agrarkrise, schlechte Böden, Kriege, Umsiedlung und Klima",1],["Mit der Auswanderung nach Übersee",0]],
+      h:"Abels Agrarkrisentheorie ist eine Erklärung unter mehreren.",
+      e:"Neben der Agrarkrise nennt die Forschung Fehlsiedlung, Kriege, Konzentration in größeren Orten und Klimaveränderungen. Das Ausmaß war regional sehr verschieden." }
+  ],
+  t8: [
+    { st:"1", f:"Welches Material ist eine Darstellung?",
+      o:[["M6: Urkunde des Vogts Liborius, Wildeshausen 1350",0],["M7: Klaus Bergdolt, Der Schwarze Tod in Europa, 1994",1],["M8: Chronik Fritsche Closeners, 1362",0]],
+      h:"Wer schreibt mit großem zeitlichem Abstand?", e:"Bergdolt ist ein Historiker des 20. Jahrhunderts. Urkunde und Chronik stammen aus der Zeit selbst." },
+    { st:"2", f:"Eine Tabelle nennt 14.000 Pesttote für Basel. Was prüfst du zuerst?",
+      o:[["Nichts, Zahlen in Schulbüchern sind geprüft",0],["Ob die Zahl durch tausend teilbar ist",0],["Woher die Zahl stammt und wie viele Menschen in der Stadt lebten",1]],
+      h:"Eine Zahl allein sagt wenig. Womit müsstest du sie vergleichen?", e:"Herkunft und Bezugsgröße entscheiden über die Aussagekraft. Runde Zahlen sind meist Schätzungen." },
+    { st:"2", f:"M10 zeigt Bevölkerungszahlen Europas von 1050 bis 1500. Was gilt für diese Werte?",
+      o:[["Es sind Schätzungen, und die Zeitachse muss genau geprüft werden.",1],["Es sind Ergebnisse mittelalterlicher Volkszählungen.",0],["Sie stammen aus Chroniken des 14. Jahrhunderts.",0]],
+      h:"Gab es im Mittelalter Volkszählungen?", e:"Die Werte sind Schätzungen der Forschung. Bei der Zeitachse ist zu prüfen, ob die Abstände gleich groß sind." },
+    { st:"3", f:"Der Holzschnitt mit Geißlern auf S. 59 entstand 1493. Was ist er für die Ereignisse von 1349?",
+      o:[["Ein Augenzeugenbild",0],["Eine spätere Darstellung, keine Augenzeugenquelle",1],["Eine genaue Kopie eines Bildes von 1349",0]],
+      h:"Rechne den Abstand zwischen Ereignis und Entstehung aus.", e:"Rund 140 Jahre liegen dazwischen. Das Bild zeigt die Vorstellung vom Ende des 15. Jahrhunderts." },
+    { st:"3", f:"M8: Fritsche Closener beschreibt die Geißler in Straßburg. Welches Vorwissen hilft bei der Einordnung?",
+      o:[["Die Geißler waren eine Laienbewegung, die Papst Clemens VI. im Oktober 1349 verbot.",1],["Die Geißler waren ein Orden, den der Papst gegründet hatte.",0],["Die Geißler traten erst im 15. Jahrhundert auf.",0]],
+      h:"Wer leitete die Züge, und wie reagierte der Papst?", e:"Die Geißlerzüge von 1348/49 wurden von Laien geleitet und am 20. Oktober 1349 verboten." },
+    { st:"4", f:"M4 berichtet über das Pogrom in Straßburg im Februar 1349. Was trifft zu?",
+      o:[["Das Pogrom folgte erst Jahre nach der Pest.",0],["Das Pogrom fand statt, bevor die Pest die Stadt erreichte.",1],["In Straßburg gab es kein Pogrom, nur eine Vertreibung.",0]],
+      h:"Vergleiche das Datum mit dem Verlauf der Pest am Oberrhein.", e:"Das Pogrom vom 14. Februar 1349 geschah vor Ankunft der Seuche, kurz nach dem Sturz des Rates." },
+    { st:"4", f:"M6: 1350 vertreibt der Rat von Wildeshausen die Juden und teilt ihren Besitz mit dem Erzbischof von Bremen. Welcher Befund der Station 4 passt dazu?",
+      o:[["Der Papst ordnete die Vertreibung an.",0],["Die Vertreibung war eine spontane Panikreaktion.",0],["Obrigkeiten handelten auch aus wirtschaftlichem Interesse.",1]],
+      h:"Wer profitierte vom Besitz der Vertriebenen?", e:"Rat und Landesherr teilten den Besitz. Das passt zu den wirtschaftlichen Motiven vieler Obrigkeiten." },
+    { st:"4", f:"Der Holzschnitt auf S. 63 (1493) zeigt eine angebliche Tötung eines Kindes. Worum handelt es sich?",
+      o:[["Um die Ritualmordlegende um Simon von Trient, 1475",1],["Um ein Pogrom des Jahres 1349",0],["Um eine Gerichtsszene aus Straßburg",0]],
+      h:"Das Bild entstand 1493. Auf welches Ereignis kurz davor bezieht es sich?", e:"Es zeigt Ritualmordpropaganda zum Fall Simon von Trient (1475), nicht die Pestzeit." },
+    { st:"5", f:"Ein Florentiner Chronist klagt nach der Pest, einfache Leute trügen die Kleider der Vornehmen. Womit hängt das zusammen?",
+      o:[["Mit einem Verbot, Wolle zu tragen",0],["Mit Erbschaften und höheren Löhnen, die einen Aufstieg ermöglichten",1],["Mit der Rückkehr der Päpste nach Rom",0]],
+      h:"Woher hatten einfache Leute plötzlich Geld?", e:"Erbschaften und höhere Löhne ermöglichten Aufstieg. Obrigkeiten reagierten mit Kleiderordnungen." },
+    { st:"6", f:"M12 zeigt Roggenpreise und Löhne in Göttingen von 1401 bis 1640. Was zeigt die Grafik nicht?",
+      o:[["Die Pestjahre 1347–1351 selbst",1],["Löhne im 15. Jahrhundert",0],["Preise im 16. Jahrhundert",0]],
+      h:"Prüfe, wann die Zeitachse beginnt.", e:"Die Grafik beginnt 1401. Sie zeigt die langfristigen Folgen, nicht die Pestjahre." },
+    { st:"6", f:"M13: Peter Moraw beschreibt Merkmale der Agrarkrise. Welches gehört dazu?",
+      o:[["Steigende Getreidepreise im ganzen 15. Jahrhundert",0],["Eine wachsende Landbevölkerung",0],["Preisverfall beim Getreide und aufgegebene Siedlungen",1]],
+      h:"Denk an die Preisschere und die Wüstungen.", e:"Preisverfall und Wüstungen sind die zentralen Merkmale der Agrarkrise." },
+    { st:"7", f:"M3 bezeichnet die Pest als „Fundamentalzäsur“. Welche Gegenposition vertritt ein Teil der Forschung?",
+      o:[["Die Pest verstärkte Entwicklungen, die schon vorher begonnen hatten.",1],["Die Pest hatte keinerlei Folgen.",0],["Die Pest war eine Endkrise, weil die Welt tatsächlich unterging.",0]],
+      h:"Denk an Kontinuitäten vor 1348.", e:"Die Gegenposition betont Kontinuitäten: Agrarprobleme, Kirchenkritik und Judenfeindschaft gab es schon vorher." }
+  ]
+};
+
+/* ====== Hilfsfunktionen ====== */
+const $ = (s, r=document) => r.querySelector(s);
+const $$ = (s, r=document) => Array.from(r.querySelectorAll(s));
+function btn(text, cls){ const b=document.createElement("button"); b.type="button"; b.className="btn"+(cls?" "+cls:""); b.textContent=text; return b; }
+function textOf(el){ return el ? el.textContent.replace(/\s+/g," ").trim() : ""; }
+async function kopiere(text, knopf){
+  let ok = false;
+  try { await navigator.clipboard.writeText(text); ok = true; }
+  catch(e){
+    const ta=document.createElement("textarea"); ta.value=text; ta.setAttribute("readonly",""); ta.style.position="fixed"; ta.style.top="0"; ta.style.opacity="0";
+    document.body.appendChild(ta); ta.focus(); ta.select(); ta.setSelectionRange(0,text.length);
+    try { ok = document.execCommand("copy"); } catch(e2){ ok=false; }
+    ta.remove();
+  }
+  if (knopf){ const alt=knopf.textContent; knopf.textContent = ok ? "Kopiert" : "Kopieren nicht möglich – bitte markieren"; setTimeout(()=>{knopf.textContent=alt;},1800); }
+  return ok;
+}
+
+/* ====== Zeitband ====== */
+const ZB_START=1300, ZB_ENDE=1500, pos = y => ((y-ZB_START)/(ZB_ENDE-ZB_START)*100)+"%";
+const ZNAME = {vor:"Vorgeschichte", kurz:"kurzfristig", mittel:"mittelfristig", lang:"langfristig"};
+$$(".zeitband").forEach(el=>{
+  const track=document.createElement("div"); track.className="zb-track";
+  (el.dataset.spans||"").split(",").filter(Boolean).forEach(s=>{
+    const [range,cls]=s.split(":"); const [a,b]=range.split("-").map(Number);
+    const seg=document.createElement("span"); seg.className="zb-seg "+cls; seg.style.left=pos(a); seg.style.width=((b-a)/(ZB_ENDE-ZB_START)*100)+"%"; track.appendChild(seg);
+  });
+  const p=document.createElement("span"); p.className="zb-pest"; p.style.left=pos(1347); p.title="1347: Beginn der ersten Pestwelle"; track.appendChild(p);
+  const ticks=document.createElement("div"); ticks.className="zb-ticks";
+  [1300,1350,1400,1450,1500].forEach(y=>{ const t=document.createElement("span"); t.style.left=pos(y); t.textContent=y; ticks.appendChild(t); });
+  el.setAttribute("role","img"); el.setAttribute("aria-label", el.dataset.label || "Zeitband");
+  el.append(track,ticks);
+  if (el.dataset.legende){
+    const lg=document.createElement("div"); lg.className="zb-legende"; lg.setAttribute("aria-hidden","true");
+    lg.innerHTML='<span><i style="background:var(--t-vor)"></i>Vorgeschichte</span><span><i style="background:var(--t-kurz)"></i>kurzfristig 1347–1351</span><span><i style="background:var(--t-mittel)"></i>mittelfristig bis ca. 1400</span><span><i style="background:var(--t-lang)"></i>langfristig 15. Jh.</span><span><i style="background:var(--pest);width:3px"></i>Pestbeginn 1347</span>';
+    el.appendChild(lg);
+  }
+});
+
+/* ====== Materialhinweise ====== */
+$$(".mhint[data-m]").forEach(m=>{ if (!AKTIVE_M.includes(m.dataset.m)) { m.classList.add("inaktiv"); m.title="Im Unterricht nicht vorgesehen – Materialangebot im Buch"; } });
+$$("#kompass-body tr[data-m]").forEach(tr=>{ if (!AKTIVE_M.includes(tr.dataset.m)) { tr.style.opacity=".5"; tr.title="Materialangebot im Buch"; } });
+
+/* ====== Verständnischecks ====== */
+$$(".mc[data-q]").forEach(box=>{
+  const id=box.dataset.q, d=QUIZ[id]; if(!d) return;
+  box.innerHTML='<p class="mc-kopf">Verständnischeck</p><p class="mc-frage"></p><div class="mc-opts"></div><p class="mc-fb" aria-live="polite"></p>';
+  $(".mc-frage",box).textContent=d.f;
+  const opts=$(".mc-opts",box), fb=$(".mc-fb",box);
+  let fehler=0, fertig=false;
+  const knoepfe=d.o.map(o=>{ const b=document.createElement("button"); b.type="button"; b.className="mc-opt"; b.textContent=o[0]; opts.appendChild(b); return b; });
+  function sperre(zeige){ knoepfe.forEach((b,i)=>{ b.disabled=true; if(zeige && d.o[i][1]) b.classList.add("ok"); }); }
+  function setFb(kopf, text){ fb.innerHTML=""; const s=document.createElement("strong"); s.textContent=kopf+" "; fb.append(s, document.createTextNode(text)); }
+  knoepfe.forEach((b,i)=>b.addEventListener("click",()=>{
+    if(fertig) return;
+    if(d.o[i][1]){ b.classList.add("ok"); fertig=true; sperre(false); setFb("Richtig.", d.e); state.q[id]= fehler===0 ? "richtig" : "richtig im 2. Versuch"; save(); }
+    else {
+      fehler++; b.classList.add("falsch"); b.disabled=true;
+      if(fehler===1){ setFb("Noch nicht.", "Denkanstoß: "+d.h); }
+      else { fertig=true; sperre(true); setFb("Auflösung:", d.e); state.q[id]="aufgelöst"; save(); }
+    }
+  }));
+  if(state.q[id]){ fertig=true; sperre(true); setFb("Bereits bearbeitet ("+state.q[id]+").", d.e); }
+});
+
+/* ====== Zuordnung ====== */
+$$(".zuord[data-z]").forEach(box=>{
+  const id=box.dataset.z, d=ZUORD[id]; if(!d) return;
+  const gespeichert = state.z[id] || {};
+  box.innerHTML='<div class="zuord-pool" aria-label="Noch nicht zugeordnet"></div><div class="zuord-spalten"></div><div class="task-bar"></div><p class="zuord-meldung" aria-live="polite"></p>';
+  const pool=$(".zuord-pool",box), spalten=$(".zuord-spalten",box), bar=$(".task-bar",box), meld=$(".zuord-meldung",box);
+  if (d.kats.length===3) spalten.classList.add("drei");
+  const felder={};
+  d.kats.forEach(([k,name])=>{
+    const sp=document.createElement("div"); sp.className="zuord-spalte";
+    const ziel=document.createElement("button"); ziel.type="button"; ziel.className="zuord-ziel "+k; ziel.textContent=name; ziel.setAttribute("aria-label","Ausgewähltes Ereignis hierher: "+name);
+    const feld=document.createElement("div"); feld.className="zuord-feld";
+    sp.append(ziel,feld); spalten.appendChild(sp); felder[k]=feld;
+    ziel.addEventListener("click",()=>{ if(!aktiv) { meld.textContent="Tippe zuerst ein Ereignis an."; return; } feld.appendChild(aktiv); zuordnen(aktiv,k); });
+  });
+  let aktiv=null;
+  const chips=d.items.map((it,i)=>{
+    const c=document.createElement("button"); c.type="button"; c.className="chip"; c.textContent=it[0]; c.dataset.i=i;
+    c.addEventListener("click",()=>{ if(aktiv) aktiv.classList.remove("aktiv"); if(aktiv===c){ aktiv=null; return; } aktiv=c; c.classList.add("aktiv"); meld.textContent=""; });
+    const ort=gespeichert[i]; (ort && felder[ort] ? felder[ort] : pool).appendChild(c); if(ort) c.dataset.k=ort;
+    return c;
+  });
+  function zuordnen(c,k){ c.dataset.k=k; c.classList.remove("aktiv","ok","falsch"); aktiv=null; const m=state.z[id]||{}; m[c.dataset.i]=k; state.z[id]=m; save(); meld.textContent=""; }
+  const pruef=btn("Zuordnung prüfen","voll"), reset=btn("Zurücksetzen");
+  pruef.addEventListener("click",()=>{
+    let r=0, offen=0;
+    chips.forEach(c=>{ c.classList.remove("ok","falsch"); const k=c.dataset.k; if(!k){offen++;return;} if(d.items[c.dataset.i][1].includes(k)){c.classList.add("ok");r++;} else c.classList.add("falsch"); });
+    meld.textContent = r+" von "+chips.length+" richtig"+(offen? ", "+offen+" noch offen":"")+". "+(r===chips.length ? d.hinweis : "Rot markierte Ereignisse kannst du neu zuordnen.");
+    state.q[id]=r+" von "+chips.length+" richtig"; save();
+  });
+  reset.addEventListener("click",()=>{ chips.forEach(c=>{ c.classList.remove("ok","falsch","aktiv"); delete c.dataset.k; pool.appendChild(c); }); aktiv=null; state.z[id]={}; delete state.q[id]; save(); meld.textContent=""; });
+  bar.append(pruef,reset);
+});
+
+/* ====== Wirkungsmatrix ====== */
+const MX_ZEILEN=["Demografie","Religion und Kirche","Judenverfolgungen","Gesellschaft","Wirtschaft"];
+const MX_SPALTEN=[["vor","Vorgeschichte"],["kurz","kurzfristig"],["mittel","mittelfristig"],["lang","langfristig"]];
+$$(".matrix[data-id]").forEach(m=>{
+  const id=m.dataset.id;
+  const wrap=document.createElement("div"); wrap.className="tab-wrap";
+  const t=document.createElement("table"); t.className="mx";
+  const kopf=document.createElement("tr"); kopf.appendChild(document.createElement("th"));
+  MX_SPALTEN.forEach(([k,n])=>{ const th=document.createElement("th"); th.className=k; th.textContent=n; kopf.appendChild(th); });
+  const thead=document.createElement("thead"); thead.appendChild(kopf); t.appendChild(thead);
+  const tb=document.createElement("tbody");
+  MX_ZEILEN.forEach((z,r)=>{
+    const tr=document.createElement("tr"); const th=document.createElement("th"); th.textContent=z; tr.appendChild(th);
+    MX_SPALTEN.forEach(([k,n],c)=>{
+      const td=document.createElement("td"); const ta=document.createElement("textarea");
+      const key=id+"|"+r+"|"+c; ta.value=state.a[key]||""; ta.setAttribute("aria-label",z+", "+n);
+      ta.addEventListener("input",()=>{ state.a[key]=ta.value; save(); });
+      td.appendChild(ta); tr.appendChild(td);
+    });
+    tb.appendChild(tr);
+  });
+  t.appendChild(tb); wrap.appendChild(t); m.appendChild(wrap);
+  const bar=document.createElement("div"); bar.className="task-bar"; const kb=btn("Matrix kopieren");
+  kb.addEventListener("click",()=>kopiere(matrixText(id),kb)); bar.appendChild(kb); m.appendChild(bar);
+});
+function matrixText(id){
+  const z=["Wirkungsmatrix"];
+  MX_ZEILEN.forEach((zeile,r)=>MX_SPALTEN.forEach(([k,n],c)=>{ const v=(state.a[id+"|"+r+"|"+c]||"").trim(); if(v) z.push(zeile+" / "+n+": "+v); }));
+  return z.length>1 ? z.join("\n") : "Wirkungsmatrix: noch leer";
+}
+
+/* ====== Kriterienliste Vierhaus ====== */
+const KRIT=["1 prinzipiell datierbar (Anfang, Höhepunkt, Ende)","2 ergebnisoffen: systemimmanent oder systemzerstörend gelöst","3 nicht zwangsläufig","4 kein Naturprozess, aber durch ihn ausgelöst (schwache Verwaltung)","5 objektiv belegbar, nicht nur Krisengefühl","6 Ergebnis bewusster und unbewusster Handlungen","7 nur schwer auf einzelne Ursachen zurückzuführen","Definition: alte Mittel reichen nicht, Reformen oder Revolution","Teilkrisen innerhalb einer Gesamtkrise"];
+$$(".kriterien[data-id]").forEach(k=>{
+  const id=k.dataset.id; const wrap=document.createElement("div"); wrap.className="tab-wrap";
+  const t=document.createElement("table"); t.className="kr";
+  t.innerHTML="<thead><tr><th>Merkmal nach Vierhaus</th><th>Beleg aus den Stationen 2–6 oder Einschränkung</th></tr></thead>";
+  const tb=document.createElement("tbody");
+  KRIT.forEach((m,i)=>{ const tr=document.createElement("tr"); const th=document.createElement("th"); th.textContent=m; const td=document.createElement("td"); const ta=document.createElement("textarea"); const key=id+"|"+i; ta.value=state.a[key]||""; ta.setAttribute("aria-label",m); ta.addEventListener("input",()=>{state.a[key]=ta.value; save();}); td.appendChild(ta); tr.append(th,td); tb.appendChild(tr); });
+  t.appendChild(tb); wrap.appendChild(t); k.appendChild(wrap);
+  const bar=document.createElement("div"); bar.className="task-bar"; const kb=btn("Prüfung kopieren"); kb.addEventListener("click",()=>kopiere(kriterienText(id),kb)); bar.appendChild(kb); k.appendChild(bar);
+});
+function kriterienText(id){
+  const z=["Prüfung nach Vierhaus (Aufgabe 7.3)"];
+  KRIT.forEach((m,i)=>{ const v=(state.a[id+"|"+i]||"").trim(); if(v) z.push(m+": "+v); });
+  return z.length>1 ? z.join("\n") : "Prüfung nach Vierhaus: noch leer";
+}
+$$("[data-kopiere]").forEach(b=>b.addEventListener("click",()=>{
+  const el=$(b.dataset.kopiere); if(!el) return;
+  const teile=[textOf($(".titel",el))]; $$("p:not(.titel):not(.querverweis), li",el).forEach(x=>{ if(!x.closest(".task-bar")) teile.push((x.tagName==="LI"?"• ":"")+textOf(x)); });
+  kopiere(teile.join("\n"), b);
+}));
+
+/* ====== Abschlusstest ====== */
+$$(".test[data-id]").forEach(box=>{
+  const id=box.dataset.id, qs=TEST[id]; if(!qs) return;
+  const ab=btn("Test auswerten","voll"); const erg=document.createElement("div");
+  const loes=document.createElement("details"); loes.className="info loesung"; loes.hidden=true;
+  function fertig(){ return qs.every((_,i)=>state.q[id+"-"+i]!==undefined); }
+  function upd(){ ab.disabled=!fertig(); }
+  qs.forEach((d,i)=>{
+    const k=id+"-"+i;
+    const q=document.createElement("div"); q.className="mc tq";
+    q.innerHTML='<p class="mc-kopf"></p><p class="mc-frage"></p><div class="mc-opts"></div><p class="mc-fb" aria-live="polite"></p>';
+    $(".mc-kopf",q).textContent="Frage "+(i+1)+" von "+qs.length; $(".mc-frage",q).textContent=d.f;
+    const opts=$(".mc-opts",q), fb=$(".mc-fb",q);
+    let fehler=0, zu=false;
+    const kn=d.o.map(o=>{ const b=document.createElement("button"); b.type="button"; b.className="mc-opt"; b.textContent=o[0]; opts.appendChild(b); return b; });
+    function sperre(zeige){ kn.forEach((b,j)=>{ b.disabled=true; if(zeige && d.o[j][1]) b.classList.add("ok"); }); }
+    function setFb(kopf,text){ fb.innerHTML=""; const s=document.createElement("strong"); s.textContent=kopf+" "; fb.append(s,document.createTextNode(text)); }
+    kn.forEach((b,j)=>b.addEventListener("click",()=>{
+      if(zu) return;
+      if(d.o[j][1]){ b.classList.add("ok"); zu=true; sperre(false); const pt=fehler===0?2:1; state.q[k]=pt; save(); setFb("Richtig ("+pt+" Punkte).", ""); upd(); }
+      else { fehler++; b.classList.add("falsch"); b.disabled=true;
+        if(fehler===1) setFb("Noch nicht.","Denkanstoß: "+d.h);
+        else { zu=true; sperre(true); state.q[k]=0; save(); setFb("Nicht gelöst (0 Punkte).","Die richtige Antwort ist markiert."); upd(); }
+      }
+    }));
+    if(state.q[k]!==undefined){ zu=true; sperre(true); setFb("Bereits beantwortet ("+state.q[k]+" Punkte).",""); }
+    box.appendChild(q);
+  });
+  const aus=document.createElement("div"); aus.className="test-aus";
+  const p=document.createElement("p"); p.style.margin="0"; p.textContent="Die Auswertung wird freigeschaltet, sobald alle Fragen beantwortet sind.";
+  aus.append(p,ab,erg); box.appendChild(aus); box.appendChild(loes);
+  ab.addEventListener("click",()=>{
+    let summe=0; const max=qs.length*2; const fehlt={};
+    qs.forEach((d,i)=>{ const pt=state.q[id+"-"+i]||0; summe+=pt; if(pt<2) fehlt[d.st]=(fehlt[d.st]||0)+(2-pt); });
+    state.q[id]=summe+" von "+max+" Punkten"; save();
+    erg.innerHTML="";
+    const e=document.createElement("p"); e.className="ergebnis"; e.textContent="Du hast "+summe+" von "+max+" Punkten erreicht."; erg.appendChild(e);
+    const st=Object.keys(fehlt).sort();
+    const r=document.createElement("p");
+    if(!st.length){ r.textContent="Du bist gut vorbereitet. Wiederhole vor der Quellenstunde nur deine Merksätze."; erg.appendChild(r); }
+    else {
+      r.textContent="Wiederhole vor der Quellenstunde diese Stationen:"; erg.appendChild(r);
+      const ul=document.createElement("ul");
+      st.forEach(s=>{ const li=document.createElement("li"); const a=document.createElement("a"); a.href="#s"+s; a.textContent="Station "+s+": "+textOf($("#s"+s+" h2")); li.append(a, document.createTextNode(" ("+fehlt[s]+" Punkte verloren)")); ul.appendChild(li); });
+      erg.appendChild(ul);
+    }
+    loes.innerHTML="<summary>Lösungsblatt zum Abschlusstest</summary>";
+    const ol=document.createElement("ol");
+    qs.forEach(d=>{ const li=document.createElement("li"); const b=document.createElement("b"); b.textContent=d.f+" "; const rt=d.o.find(o=>o[1]); li.append(b, document.createTextNode("Richtig: "+rt[0]+". "+d.e)); ol.appendChild(li); });
+    loes.appendChild(ol); loes.hidden=false;
+  });
+  upd();
+  if(state.q[id] && fertig()) ab.click();
+});
+
+/* ====== Schreibaufgaben ====== */
+$$(".task[data-id]").forEach(t=>{
+  if ($(".zuord",t)) return;
+  const id=t.dataset.id, ta=$("textarea",t), eh=$(".eh",t), hilfen=$$(".hilfe",t);
+  const bar=document.createElement("div"); bar.className="task-bar";
+  let ehKnopf=null, cb=null;
+  const hinweis=document.createElement("p"); hinweis.className="eh-hinweis";
+  function upd(){
+    if(!ehKnopf) return;
+    const frei=((ta && ta.value.trim().length>=15) || (cb && cb.checked));
+    ehKnopf.disabled=!frei;
+    hinweis.textContent = frei ? "" : "Der Erwartungshorizont öffnet sich, sobald du eine eigene Antwort geschrieben oder die Notiz in GoodNotes bestätigt hast.";
+  }
+  if(ta){ ta.value = state.a[id] || ""; ta.addEventListener("input",()=>{ state.a[id]=ta.value; save(); upd(); }); }
+  if(hilfen.length){
+    let n=0; const hb=btn("Hilfe 1: "+(hilfen[0].dataset.titel||"zeigen"));
+    hb.addEventListener("click",()=>{ hilfen[n].hidden=false; n++; if(n<hilfen.length){ hb.textContent="Hilfe "+(n+1)+": "+(hilfen[n].dataset.titel||"zeigen"); } else { hb.disabled=true; hb.textContent="Alle Hilfen geöffnet"; } });
+    bar.appendChild(hb);
+  }
+  if(eh){
+    ehKnopf=btn("Erwartungshorizont zeigen","voll");
+    ehKnopf.addEventListener("click",()=>{ eh.hidden=!eh.hidden; ehKnopf.textContent = eh.hidden ? "Erwartungshorizont zeigen" : "Erwartungshorizont ausblenden"; });
+    const lab=document.createElement("label"); lab.className="bestaetigen"; cb=document.createElement("input"); cb.type="checkbox";
+    cb.checked = !!state.f["gn"+id];
+    cb.addEventListener("change",()=>{ state.f["gn"+id]=cb.checked; save(); upd(); });
+    lab.append(cb, document.createTextNode("Antwort in GoodNotes notiert"));
+    bar.append(ehKnopf, lab, hinweis);
+  }
+  if(ta){ const kb=btn("Antwort kopieren"); kb.addEventListener("click",()=>kopiere("Aufgabe "+id+": "+textOf($(".task-text",t))+"\n\n"+(ta.value||"–"), kb)); bar.appendChild(kb); }
+  if(ta) ta.after(bar); else $(".task-text",t).after(bar);
+  upd();
+});
+
+/* ====== Das Wichtigste kopieren ====== */
+$$(".wichtig").forEach(w=>{
+  const sec=w.closest(".station"); const titel = textOf($(".st-nr",sec))+": "+textOf($("h2",sec));
+  const b=btn("Merksätze kopieren");
+  b.addEventListener("click",()=>kopiere(titel+"\n"+$$("li",w).map(li=>"• "+textOf(li)).join("\n"), b));
+  w.appendChild(b);
+});
+
+/* ====== Selbsteinschätzung ====== */
+const RAT = {
+  g:"Gut. Wiederhole die Merksätze vor der nächsten Stunde einmal aus dem Gedächtnis.",
+  y:"Lies die Abschnitte, bei denen du unsicher bist, noch einmal und schreibe die Merksätze in eigenen Worten neu.",
+  r:"Bearbeite die Verständnischecks erneut (über „Alle Eingaben löschen“ oder im Gespräch mit einem Partner) und notiere eine Frage für die nächste Stunde."
+};
+$$(".ampel[data-station]").forEach(a=>{
+  const s=a.dataset.station;
+  const f=document.createElement("p"); f.className="frage"; f.textContent="Wie sicher fühlst du dich mit den Inhalten von Station "+s+"?";
+  const rat=document.createElement("p"); rat.className="rat"; rat.setAttribute("aria-live","polite");
+  a.appendChild(f);
+  [["g","sicher"],["y","teilweise sicher"],["r","unsicher"]].forEach(([k,l])=>{
+    const b=document.createElement("button"); b.type="button"; b.className=k; b.textContent=l; b.setAttribute("aria-pressed", state.amp[s]===k ? "true":"false");
+    b.addEventListener("click",()=>{ state.amp[s]=k; save(); $$("button",a).forEach(x=>x.setAttribute("aria-pressed", x===b?"true":"false")); rat.textContent=RAT[k]; });
+    a.appendChild(b);
+  });
+  a.appendChild(rat); if(state.amp[s]) rat.textContent=RAT[state.amp[s]];
+});
+
+/* ====== Filter ====== */
+function setZf(z){
+  document.body.dataset.zf = z==="alle" ? "" : z;
+  if(z==="alle") delete document.body.dataset.zf;
+  $$(".seg button").forEach(b=>b.setAttribute("aria-pressed", b.dataset.zf===z ? "true":"false"));
+  const h=$("#zf-hinweis");
+  if(z==="alle"){ h.hidden=true; } else { h.hidden=false; $("#zf-text").textContent="Zeitfilter aktiv: Es werden nur Abschnitte mit dem Etikett „"+ZNAME[z]+"“ gezeigt. Aufgaben und Merksätze bleiben sichtbar."; }
+  state.f.zf=z; save();
+}
+$$(".seg button").forEach(b=>b.addEventListener("click",()=>setZf(b.dataset.zf)));
+$("#zf-aus").addEventListener("click",()=>setZf("alle"));
+function setVt(an){
+  document.body.classList.toggle("ohne-vertiefung", !an);
+  const s=$("#vt-schalter"); s.setAttribute("aria-pressed", an?"true":"false"); s.textContent = an ? "Vertiefungen sichtbar" : "Vertiefungen ausgeblendet";
+  state.f.vt = an ? 1 : 0; save();
+}
+$("#vt-schalter").addEventListener("click",()=>setVt(document.body.classList.contains("ohne-vertiefung")));
+setZf(state.f.zf || "alle");
+setVt(state.f.vt === 0 ? false : true);
+
+/* ====== Ergebnisse sammeln ====== */
+function sammle(){
+  const z=[];
+  z.push("Nach dem großen Sterben – Folgen der Großen Pest");
+  z.push("Stand: "+new Date().toLocaleString("de-DE"));
+  $$(".station[id^='s']").forEach(sec=>{
+    if(!/^s\d+$/.test(sec.id)) return;
+    const nr=sec.id.slice(1);
+    z.push("", "==== "+textOf($(".st-nr",sec))+": "+textOf($("h2",sec))+" ====");
+    const w=$(".wichtig",sec); if(w){ z.push("Das Wichtigste:"); $$("li",w).forEach(li=>z.push("• "+textOf(li))); }
+    const checks=$$(".mc[data-q]",sec).map(m=>m.dataset.q);
+    if(checks.length){ z.push("Verständnischecks: "+checks.map(q=>(state.q[q]||"offen")).join(", ")); }
+    $$(".zuord[data-z]",sec).forEach(zu=>z.push("Zuordnung: "+(state.q[zu.dataset.z]||"noch nicht geprüft")));
+    $$(".matrix[data-id]",sec).forEach(m=>z.push("", matrixText(m.dataset.id)));
+    $$(".kriterien[data-id]",sec).forEach(k=>z.push("", kriterienText(k.dataset.id)));
+    $$(".test[data-id]",sec).forEach(t=>z.push("Abschlusstest: "+(state.q[t.dataset.id]||"noch nicht ausgewertet")));
+    $$(".task[data-id]",sec).forEach(t=>{
+      const ta=$("textarea",t); if(!ta) return;
+      z.push("", "Aufgabe "+t.dataset.id+": "+textOf($(".task-text",t)));
+      z.push("Antwort: "+((state.a[t.dataset.id]||"").trim() || "–"));
+    });
+    if(state.amp[nr]) z.push("", "Selbsteinschätzung: "+({g:"sicher",y:"teilweise sicher",r:"unsicher"})[state.amp[nr]]);
+  });
+  return z.join("\n");
+}
+$("#export-bauen").addEventListener("click",()=>{ $("#export-text").value=sammle(); });
+$("#export-kopieren").addEventListener("click",e=>{ const t=$("#export-text"); if(!t.value) t.value=sammle(); kopiere(t.value, e.currentTarget); });
+/* ====== Fortschrittsanzeige ====== */
+const FS = (function(){
+  const fill=$("#fs-fill"), label=$("#fs-label");
+  const stationen=$$("section.station").filter(s=>/^s\d+$/.test(s.id));
+  const badges={};
+  stationen.forEach(s=>{
+    const a=$('nav.toc a[href="#'+s.id+'"]');
+    if(a){ const b=document.createElement("span"); b.className="pct"; a.appendChild(b); badges[s.id]=b; }
+  });
+  function aufgabenStand(sec){
+    let gesamt=0, fertig=0;
+    $$(".mc[data-q]",sec).forEach(m=>{ gesamt++; if(state.q[m.dataset.q]!==undefined) fertig++; });
+    $$(".zuord[data-z]",sec).forEach(z=>{ gesamt++; if(state.q[z.dataset.z]!==undefined) fertig++; });
+    $$(".task[data-id]",sec).forEach(t=>{ if(!$("textarea",t)) return; gesamt++; if((state.a[t.dataset.id]||"").trim().length>=15 || state.f["gn"+t.dataset.id]) fertig++; });
+    $$(".matrix[data-id], .kriterien[data-id]",sec).forEach(m=>{ gesamt++; const id=m.dataset.id; if(Object.keys(state.a).some(k=>k.indexOf(id+"|")===0 && (state.a[k]||"").trim())) fertig++; });
+    $$(".test[data-id]",sec).forEach(t=>{ const n=$$(".tq",t).length; gesamt+=n; for(let i=0;i<n;i++) if(state.q[t.dataset.id+"-"+i]!==undefined) fertig++; });
+    return [fertig,gesamt];
+  }
+  function aktualisieren(){
+    let g=0,f=0;
+    stationen.forEach(s=>{
+      const [a,b]=aufgabenStand(s); g+=b; f+=a;
+      const bd=badges[s.id]; if(!bd) return;
+      const pct = b ? Math.round(a/b*100) : 0;
+      bd.textContent = pct+" %"; bd.classList.toggle("voll", b>0 && a===b);
+      bd.title = a+" von "+b+" Aufgaben bearbeitet";
+    });
+    const hoehe=Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+    const gelesen=Math.min(100, Math.max(0, Math.round(window.scrollY/hoehe*100)));
+    fill.style.width = gelesen+"%";
+    let aktuell=null;
+    $$("section.station").forEach(s=>{ if(s.getBoundingClientRect().top<=140) aktuell=s; });
+    const name = aktuell ? (textOf($(".st-nr",aktuell)) || textOf($("h2",aktuell))) : "Seitenanfang";
+    label.textContent = name+", "+gelesen+" % der Seite gelesen, "+f+" von "+g+" Aufgaben bearbeitet";
+  }
+  let wartet=false;
+  const naechsterFrame = (typeof requestAnimationFrame==="function") ? requestAnimationFrame : (fn=>setTimeout(fn,16));
+  function anstossen(){ if(wartet) return; wartet=true; naechsterFrame(()=>{ wartet=false; aktualisieren(); }); }
+  window.addEventListener("scroll", anstossen, {passive:true});
+  window.addEventListener("resize", anstossen);
+  document.addEventListener("input", anstossen);
+  document.addEventListener("click", anstossen);
+  aktualisieren();
+  return {aktualisieren};
+})();
+
+$("#alles-loeschen").addEventListener("click",()=>{
+  if(!confirm("Alle Antworten, Ergebnisse und Einstellungen auf diesem iPad löschen? Das lässt sich nicht rückgängig machen.")) return;
+  try{ localStorage.removeItem(KEY); }catch(e){}
+  location.reload();
+});
+</script>
+</body>
+</html>
