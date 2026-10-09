@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Test 1 Fertigkeiten (Version 1.2)</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<style>
+:root{--slate:#42536A;--blue:#5C7A99;--light:#EDF0F3;--gold:#C9A227;--cream:#FBF3DD;--ink:#1F2328;--mute:#5F6368;--line:#D6DBE0;--ok:#2E7D5B;--okbg:#E4F2EB;--bad:#B5533C;--badbg:#F8E6E1;--paper:#F4F6F8}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--paper);color:var(--ink);font:18px/1.5 'IBM Plex Sans',Arial,Verdana,sans-serif}
+header{background:var(--slate);color:#fff;padding:18px 20px}
+header .in{max-width:860px;margin:0 auto;display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+header h1{font-size:22px;margin:0;font-weight:700}
+header .sub{font-size:15px;opacity:.85}
+main{max-width:860px;margin:0 auto;padding:22px 16px 60px}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px 24px;margin-bottom:18px}
+.info{background:var(--light);border-left:6px solid var(--blue);border-radius:0 10px 10px 0;padding:16px 20px;margin:16px 0}
+.merk{background:var(--cream);border-left:6px solid var(--gold);border-radius:0 10px 10px 0;padding:16px 20px;margin:16px 0}
+h2{font-size:26px;margin:0 0 10px;color:var(--slate)}
+h3{font-size:19px;margin:0 0 6px;color:var(--slate)}
+ul{margin:6px 0 6px;padding-left:22px}
+li{margin:3px 0}
+button{font:600 17px 'IBM Plex Sans',Arial,sans-serif;border:0;border-radius:10px;padding:12px 20px;cursor:pointer;background:var(--slate);color:#fff}
+button.sec{background:#fff;color:var(--slate);border:2px solid var(--slate)}
+button:disabled{opacity:.4;cursor:default}
+button:focus-visible,input:focus-visible+.opt,.dot:focus-visible{outline:3px solid #8FB0D1;outline-offset:2px}
+.row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.spread{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:18px}
+input[type=text]{font:inherit;padding:10px 12px;border:2px solid var(--line);border-radius:8px;width:100%;max-width:380px}
+.bar{height:10px;background:var(--line);border-radius:6px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--blue);transition:width .25s}
+.meta{display:flex;justify-content:space-between;font-size:15px;color:var(--mute);margin:8px 0 14px}
+.tag{display:inline-block;font-size:14px;font-weight:600;border:2px solid var(--blue);color:var(--slate);border-radius:999px;padding:0 10px;margin-right:8px}
+.qtext{font-size:21px;font-weight:600;line-height:1.4;margin:6px 0 14px}
+.hint{font-size:15px;color:var(--mute);margin:-6px 0 14px}
+label.o{display:block;cursor:pointer;margin:10px 0}
+label.o input{position:absolute;opacity:0;width:1px;height:1px}
+.opt{display:flex;gap:14px;align-items:flex-start;border:2px solid var(--line);border-radius:10px;padding:12px 14px;background:#fff}
+.opt .box{flex:none;width:26px;height:26px;border:2px solid var(--blue);border-radius:6px;margin-top:1px;display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;font-size:16px}
+input:checked+.opt{border-color:var(--slate);background:var(--light)}
+input:checked+.opt .box{background:var(--slate);border-color:var(--slate)}
+input:checked+.opt .box::after{content:"✓"}
+.dots{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 4px}
+.dot{width:36px;height:36px;border-radius:8px;padding:0;font-size:15px;background:#fff;color:var(--slate);border:2px solid var(--line)}
+.dot.done{background:var(--light);border-color:var(--blue)}
+.dot.cur{background:var(--slate);color:#fff;border-color:var(--slate)}
+.score{font-size:46px;font-weight:700;color:var(--slate);line-height:1.1}
+.rq{border:1px solid var(--line);border-radius:12px;background:#fff;padding:18px 20px;margin-bottom:16px}
+.rq.full{border-left:8px solid var(--ok)}
+.rq.part{border-left:8px solid var(--gold)}
+.rq.none{border-left:8px solid var(--bad)}
+.ro{display:flex;gap:10px;align-items:flex-start;border:2px solid var(--line);border-radius:8px;padding:8px 12px;margin:7px 0;background:#fff}
+.ro .mk{flex:none;min-width:26px;font-weight:700}
+.ro.right{background:var(--okbg);border-color:var(--ok)}
+.ro.wrong{background:var(--badbg);border-color:var(--bad)}
+.ro .st{font-size:14px;color:var(--mute);display:block}
+.expl{background:var(--light);border-left:6px solid var(--blue);padding:10px 14px;margin-top:10px;border-radius:0 8px 8px 0;font-size:16px}
+.pts{font-weight:700;color:var(--slate)}
+.hide{display:none !important}
+.big{background:var(--slate);color:#fff;border-radius:14px;padding:20px 16px 22px;text-align:center;margin-bottom:14px}
+.big .who{font-size:18px;opacity:.9}
+.big .num{font-size:clamp(88px,24vw,160px);font-weight:700;line-height:1.05;font-variant-numeric:tabular-nums}
+.big .num span{font-size:.42em;font-weight:600;opacity:.85}
+.big .lbl{font-size:clamp(20px,4.5vw,28px);font-weight:600}
+.pts2{font-size:19px;margin:0 0 12px;text-align:center}
+.clock{font-weight:700;font-size:20px;font-variant-numeric:tabular-nums;background:rgba(255,255,255,.15);border-radius:8px;padding:2px 12px}
+.clock.low{background:#C9A227;color:#1F2328}
+.clock.urgent{background:#B5533C;color:#fff}
+button.link{background:none;color:var(--slate);text-decoration:underline;padding:6px 4px;font-weight:500;font-size:16px}
+.skiptag{display:inline-block;font-size:14px;font-weight:600;background:var(--cream);border:2px solid var(--gold);border-radius:999px;padding:0 10px;margin-right:8px}
+.card.good{border:3px solid var(--ok);background:var(--okbg)}
+.card.bad{border:3px solid var(--bad);background:var(--badbg)}
+.fb{font-size:22px;font-weight:700;margin:14px 0 0;display:flex;align-items:center;gap:10px}
+.card.good .fb{color:var(--ok)}.card.bad .fb{color:var(--bad)}
+.fb .sym{font-size:30px;line-height:1}
+.card.good .opt,.card.bad .opt{background:rgba(255,255,255,.6)}
+input:disabled+.opt{cursor:default}
+footer{max-width:860px;margin:0 auto;padding:0 16px 30px;color:var(--mute);font-size:14px}
+@media print{header,.noprint,.spread,footer{display:none !important}body{background:#fff}.card,.rq{break-inside:avoid}}
+</style>
+</head>
+<body>
+<header><div class="in"><h1>Test 1 Fertigkeiten</h1><span class="sub">Sport P5 · Bewegungslehre · Thema 3 · Bewegungsfertigkeiten</span><span id="clock" class="clock"></span></div></header>
+<main id="main"></main>
+<footer>Version 1.2 · Test 1</footer>
+<script>
+(function(){
+var Q=[{"afb": "I", "q": "Welche Aussagen zur Bewegungsfertigkeit treffen zu?", "o": ["Sie muss erst erworben werden und lässt sich durch Übung gezielt verbessern.", "Sie ist eine erlernte, zielgerichtete Bewegung.", "Sie ist angeboren und von Geburt an vorhanden.", "Sie ist relativ stabil und verändert sich kaum."]}, {"afb": "I", "q": "Welche der folgenden Bewegungen sind keine Bewegungsfertigkeiten?", "o": ["Der Greifreflex von Säuglingen", "Der Kraularmzug", "Der Handstand", "Das Atmen"]}, {"afb": "I", "q": "Welche Aussage zur Einteilung nach dem Muskeleinsatz stimmt?", "o": ["Ein Dartwurf ist grobmotorisch, weil er große Muskelgruppen beansprucht.", "Grob- und Feinmotorik unterscheiden sich im zeitlichen Verlauf der Bewegung.", "Ein Dartwurf ist feinmotorisch, weil er einen hohen Präzisionsanspruch hat.", "Ein Weitsprung ist feinmotorisch, weil er große Muskelgruppen beansprucht."]}, {"afb": "I", "q": "Welche Zuordnungen nach dem zeitlichen Verlauf sind richtig?", "o": ["Schwimmen ist eine kontinuierliche Fertigkeit.", "Radfahren ist eine serielle Fertigkeit.", "Ein einzelner Wurf ist eine diskrete Fertigkeit.", "Eine Bodenkür aus mehreren verbundenen Übungen ist eine diskrete Fertigkeit."]}, {"afb": "I", "q": "Welche Aussage zu geschlossenen und offenen Fertigkeiten stimmt?", "o": ["Die Kippe am Reck ist ein Beispiel für eine offene Fertigkeit.", "Geschlossene Fertigkeiten finden immer in der Halle statt, offene immer im Freien.", "Bei offenen Fertigkeiten bleibt die Umgebung während der Bewegung unverändert.", "Offene Fertigkeiten müssen laufend an eine wechselnde Umgebung angepasst werden."]}, {"afb": "I", "q": "Aus welchen Dimensionen besteht das Raster nach Gentile?", "o": ["Handlungsfunktion", "Umgebungskontext", "Muskeleinsatz", "Zeitlicher Verlauf"]}, {"afb": "I", "q": "Was ist mit der Intertrial-Variabilität im Umgebungskontext gemeint?", "o": ["Ob ein Objekt gehandhabt werden muss.", "Ob große oder kleine Muskelgruppen beansprucht werden.", "Ob der eigene Körper transportiert werden muss.", "Ob die Bedingungen von Versuch zu Versuch gleich bleiben oder wechseln."]}, {"afb": "I", "q": "Welche Zuordnung aus der Tabelle zum Gentile-Raster ist NICHT richtig?", "o": ["Standweitsprung: stabile Umgebung, kein Objekt, mit Körpertransport.", "Kugelstoßen: stabile Umgebung, mit Objekt, mit Körpertransport.", "Tennis: stabile Umgebung, mit Objekt, mit Körpertransport.", "Handstand-Halt: stabile Umgebung, kein Objekt, kein Körpertransport."]}, {"afb": "II", "q": "Welche Einordnungen in das Raster nach Gentile stimmen (vereinfachte Tabelle)?", "o": ["Das Kugelstoßen verlangt keinen Körpertransport.", "Der Handstand-Halt hat weder Objektmanipulation noch Körpertransport.", "Der Standweitsprung verlangt Objektmanipulation.", "Das Kugelstoßen verlangt Objektmanipulation und Körpertransport bei stabiler Umgebung."]}, {"afb": "II", "q": "Welche Aussagen zur Komplexität nach Gentile sind richtig?", "o": ["Der Handstand-Halt ist einfacher als Tennis.", "Das Kugelstoßen ist einfacher als der Standweitsprung.", "Der Standweitsprung ist komplexer als der Handstand-Halt, weil Körpertransport hinzukommt.", "Der Standweitsprung und Tennis sind gleich komplex."]}, {"afb": "II", "q": "Welchen praktischen Nutzen hat das Raster nach Gentile?", "o": ["Es bestimmt, welche Sportart für eine Person geeignet ist.", "Man kann eine Progression von einfachen zu komplexen Anforderungen gezielt planen.", "Es misst, wie gut die koordinativen Fähigkeiten einer Person ausgeprägt sind.", "Es legt fest, wie viele Wiederholungen für eine Fertigkeit nötig sind."]}, {"afb": "II", "q": "Welche Aussagen unterscheiden Fähigkeiten und Fertigkeiten zutreffend?", "o": ["Fertigkeiten entstehen allein durch Üben und sind von Fähigkeiten unabhängig.", "Fertigkeiten werden gezielt erlernt, Fähigkeiten eher trainiert bzw. gefördert.", "Fähigkeiten wirken sportartübergreifend, eine Fertigkeit ist eine konkrete Lösung für eine bestimmte Aufgabe.", "Fähigkeiten lassen sich durch Training nicht verändern."]}, {"afb": "II", "q": "Welche Aussagen zum Zusammenhang von Fähigkeiten und Fertigkeiten treffen zu?", "o": ["Wer die Fähigkeiten hat, muss die Technik nicht mehr üben.", "Gute Fähigkeiten sind eine hinreichende Bedingung für eine gute Fertigkeit.", "Zwei Personen mit ähnlichen Fähigkeiten können bei derselben Fertigkeit unterschiedlich weit sein.", "Gute Fähigkeiten sind notwendig, reichen für eine gute Fertigkeit aber allein nicht aus."]}, {"afb": "II", "q": "Was bedeutet positiver Koordinationstransfer?", "o": ["Eine einmal gelernte Fertigkeit gelingt automatisch in jeder Sportart ohne Üben.", "Gut ausgeprägte Fähigkeiten erleichtern und beschleunigen das Erlernen neuer Fertigkeiten.", "Einseitig trainierte Fähigkeiten erleichtern jede neue Sportart am meisten.", "Eine breite koordinative Grundlage macht das Üben neuer Fertigkeiten überflüssig."]}, {"afb": "II", "q": "Ein Torwurf im Spiel wird von Abwehrspielern ständig verändert. Welche Einordnungen treffen zu?", "o": ["Es ist eine kontinuierliche Fertigkeit, weil das Spiel weiterläuft.", "Es ist eine offene Fertigkeit.", "Nach Gentile liegt eine sich verändernde Umgebung vor.", "Es ist eine geschlossene Fertigkeit."]}, {"afb": "III", "q": "Eine Lehrkraft plant im Volleyball eine Übungsreihe zum Zuspiel für Anfänger. Welche Planung ist nach dem Prinzip von Gentile sinnvoll?", "o": ["Sofort im Spiel sechs gegen sechs beginnen, damit alle Anforderungen von Anfang an geübt werden.", "Ausschließlich unter gleichbleibenden Bedingungen üben, damit sich nie etwas verändert.", "Zuerst im Stand mit gleichbleibenden Zuspielen üben, dann Laufwege und wechselnde Zuspiele ergänzen, zuletzt im Spiel gegen Gegner.", "Mit wechselnden Bedingungen beginnen und später auf gleichbleibende Bedingungen vereinfachen."]}, {"afb": "III", "q": "Eine Lehrkraft plant im Volleyball eine Übungsreihe zum Zuspiel für Anfänger. Welche Planungen sind nach dem Prinzip von Gentile sinnvoll?", "o": ["Sofort im Spiel sechs gegen sechs beginnen, damit alle Anforderungen von Anfang an geübt werden.", "Mit wechselnden Bedingungen beginnen und später auf gleichbleibende Bedingungen vereinfachen.", "Die Anforderungen zunächst verringern (feste Position, ruhiger Ball) und dann Schritt für Schritt erhöhen.", "Zuerst im Stand mit gleichbleibenden Zuspielen üben, dann Laufwege und wechselnde Zuspiele ergänzen, zuletzt im Spiel gegen Gegner."]}, {"afb": "III", "q": "Vergleiche den Freiwurf im Basketball (stehend, ohne Verteidiger) mit dem Korbleger gegen einen Verteidiger. Welche Aussagen sind zutreffend?", "o": ["Der Freiwurf ist nach Gentile komplexer, weil er mehr Präzision verlangt.", "Der Freiwurf ist nach Gentile einfacher: Die Umgebung ruht, die Bedingungen bleiben gleich, der Körper wird nicht transportiert.", "Beim Korbleger kommen Körpertransport und eine sich bewegende, wechselnde Umgebung hinzu, er ist daher komplexer.", "Beide sind gleich komplex, weil in beiden Fällen ein Ball geworfen wird."]}];
+var KEYB64="W3siYyI6IFswLCAxXSwgImUiOiAiRWluZSBCZXdlZ3VuZ3NmZXJ0aWdrZWl0IGlzdCBlaW5lIGVybGVybnRlLCB6aWVsZ2VyaWNodGV0ZSBCZXdlZ3VuZy4gQW5kZXJzIGFscyBkaWUgcmVsYXRpdiBzdGFiaWxlbiBGw6RoaWdrZWl0ZW4gbXVzcyBzaWUgZXJzdCBlcndvcmJlbiB3ZXJkZW4gdW5kIGzDpHNzdCBzaWNoIGdlemllbHQgZHVyY2ggw5xidW5nIHZlcmJlc3Nlcm4uIEFuZ2Vib3JlbiBzaW5kIFJlZmxleGUsIG5pY2h0IEZlcnRpZ2tlaXRlbi4ifSwgeyJjIjogWzAsIDNdLCAiZSI6ICJBbmdlYm9yZW5lIFJlZmxleGUgKHouIEIuIGRlciBHcmVpZnJlZmxleCkgdW5kIGVpbmZhY2hlIEdydW5kYmV3ZWd1bmdlbiB3aWUgZGFzIEF0bWVuIHNpbmQga2VpbmUgQmV3ZWd1bmdzZmVydGlna2VpdGVuLiBIYW5kc3RhbmQgdW5kIEtyYXVsYXJtenVnIHdlcmRlbiBlcmxlcm50IHVuZCBnZXppZWx0IGdlw7xidC4ifSwgeyJjIjogWzJdLCAiZSI6ICJGZWlubW90b3JpazogaG9oZXIgUHLDpHppc2lvbnNhbnNwcnVjaCAoRGFydHd1cmYpLiBHcm9ibW90b3JpazogZ3Jvw59lIE11c2tlbGdydXBwZW4gKFdlaXRzcHJ1bmcpLiBEZXIgemVpdGxpY2hlIFZlcmxhdWYgaXN0IGVpbiBhbmRlcmVzIEVpbnRlaWx1bmdza3JpdGVyaXVtIChkaXNrcmV0LCBzZXJpZWxsLCBrb250aW51aWVybGljaCkuIn0sIHsiYyI6IFswLCAyXSwgImUiOiAiRGlza3JldDoga2xhcmVyIEFuZmFuZyB1bmQgRW5kZSwgZWluIGVpbnplbG5lcyBFbGVtZW50IChlaW56ZWxuZXIgV3VyZiwgYXVjaCBlaW5lIGVpbnplbG5lIFJvbGxlIHZvcnfDpHJ0cykuIFNlcmllbGw6IEtldHRlIGRpc2tyZXRlciBFbGVtZW50ZSAoei4gQi4gZWluZSBCb2RlbmvDvHIgYXVzIG1laHJlcmVuIHZlcmJ1bmRlbmVuIMOcYnVuZ2VuKS4gS29udGludWllcmxpY2g6IGtlaW4gbmF0w7xybGljaGVzIEVuZGUgKFNjaHdpbW1lbiwgUmFkZmFocmVuKS4ifSwgeyJjIjogWzNdLCAiZSI6ICJNYcOfZ2VibGljaCBpc3QgZGllIFN0YWJpbGl0w6R0IGRlciBVbWdlYnVuZywgbmljaHQgZGVyIE9ydC4gQmVpc3BpZWxlIGF1cyBkZW0gTWF0ZXJpYWw6IEtpcHBlIGFtIFJlY2sgKGdlc2NobG9zc2VuLCBrb25zdGFudGUgdW5kIHZvcmhlcnNlaGJhcmUgQmVkaW5ndW5nZW4pIHVuZCBUb3J3dXJmIGltIFNwaWVsIChvZmZlbikuIn0sIHsiYyI6IFswLCAxXSwgImUiOiAiRGFzIFJhc3RlciBpc3QgendlaWRpbWVuc2lvbmFsOiBVbWdlYnVuZ3Nrb250ZXh0IHVuZCBIYW5kbHVuZ3NmdW5rdGlvbi4gTXVza2VsZWluc2F0eiB1bmQgemVpdGxpY2hlciBWZXJsYXVmIGdlaMO2cmVuIHp1IGRlbiBlaW5mYWNoZW4gS2xhc3NpZmlrYXRpb25lbi4ifSwgeyJjIjogWzNdLCAiZSI6ICJEZXIgVW1nZWJ1bmdza29udGV4dCBoYXQgendlaSBBc3Bla3RlOiBydWhlbmRlIG9kZXIgc2ljaCB2ZXLDpG5kZXJuZGUgVW1nZWJ1bmcgc293aWUgZ2xlaWNoZSBvZGVyIHdlY2hzZWxuZGUgQmVkaW5ndW5nZW4gdm9uIFZlcnN1Y2ggenUgVmVyc3VjaCAoSW50ZXJ0cmlhbC1WYXJpYWJpbGl0w6R0KS4gT2JqZWt0IHVuZCBLw7ZycGVydHJhbnNwb3J0IGdlaMO2cmVuIHp1ciBIYW5kbHVuZ3NmdW5rdGlvbi4ifSwgeyJjIjogWzJdLCAiZSI6ICJUZW5uaXMgKFLDvGNrc2NobGFnc3BpZWwpIGhhdCBlaW5lIHZhcmlhYmxlIFVtZ2VidW5nOiBHZWduZXJpbiB1bmQgQmFsbCBiZXdlZ2VuIHNpY2gsIHVuZCBkaWUgQmVkaW5ndW5nZW4gd2VjaHNlbG4gdm9uIFZlcnN1Y2ggenUgVmVyc3VjaC4gRGllIGFuZGVyZW4gZHJlaSBadW9yZG51bmdlbiBlbnRzcHJlY2hlbiBkZXIgVGFiZWxsZS4gRGllIFRhYmVsbGUgemVpZ3QgbnVyIHZpZXIgQmVpc3BpZWxlIGluIHZlcmVpbmZhY2h0ZXIgRm9ybS4ifSwgeyJjIjogWzEsIDNdLCAiZSI6ICJEZXIgU3RhbmR3ZWl0c3BydW5nIGhhdCBLw7ZycGVydHJhbnNwb3J0LCBhYmVyIGtlaW4gT2JqZWt0LiBCZWltIEt1Z2Vsc3Rvw59lbiBrb21tZW4gT2JqZWt0IHVuZCBLw7ZycGVydHJhbnNwb3J0IHp1c2FtbWVuIChzdGFiaWxlIFVtZ2VidW5nKS4ifSwgeyJjIjogWzAsIDJdLCAiZSI6ICJEYXMgS3VnZWxzdG/Dn2VuIHZlcmxhbmd0IHp1c8OkdHpsaWNoIGVpbiBPYmpla3QgdW5kIGlzdCBkYWhlciBrb21wbGV4ZXIgYWxzIGRlciBTdGFuZHdlaXRzcHJ1bmcuIFRlbm5pcyB2ZXJlaW50IGFsbGUgQW5mb3JkZXJ1bmdlbiB1bmQgaXN0IGRpZSBrb21wbGV4ZXN0ZSBkZXIgdmllciBCZWlzcGllbGUuIn0sIHsiYyI6IFsxXSwgImUiOiAiRGVyIE51dHplbiBsaWVndCBpbSBzeXN0ZW1hdGlzY2hlbiBUcmFpbmluZ3NhdWZiYXUgKFJlaGEsIFNjaHVsc3BvcnQpLiBEYXMgUmFzdGVyIGJlc2NocmVpYnQgZGllIEFuZm9yZGVydW5nZW4gZWluZXIgRmVydGlna2VpdCwgbmljaHQgZGllIEbDpGhpZ2tlaXRlbiBlaW5lciBQZXJzb24sIGRlbiDDnGJ1bmdzdW1mYW5nIG9kZXIgZGllIEVpZ251bmcgZsO8ciBlaW5lIFNwb3J0YXJ0LiJ9LCB7ImMiOiBbMSwgMl0sICJlIjogIkbDpGhpZ2tlaXRlbiBzaW5kIHJlbGF0aXYgc3RhYmlsLCBhYmVyIHRyYWluaWVyYmFyLiBGZXJ0aWdrZWl0ZW4gYmF1ZW4gYXVmIGlobmVuIGF1ZjogU2llIGVudHN0ZWhlbiBkdXJjaCBnZXppZWx0ZXMgw5xiZW4gYXVmIEJhc2lzIGRlciBGw6RoaWdrZWl0ZW4uIn0sIHsiYyI6IFsyLCAzXSwgImUiOiAiTm90d2VuZGlnLCBhYmVyIG5pY2h0IGhpbnJlaWNoZW5kOiBEaWUgRmVydGlna2VpdCBow6RuZ3QgenVzw6R0emxpY2ggdm9tIGluZGl2aWR1ZWxsZW4gw5xidW5nc3VtZmFuZyBhYiAoTWVya3NhdHo6IEd1dGUgRsOkaGlna2VpdGVuIGVyc2V0emVuIG5pZSBkYXMgw5xiZW4gZWluZXIgVGVjaG5paykuIn0sIHsiYyI6IFsxXSwgImUiOiAiUG9zaXRpdmVyIEtvb3JkaW5hdGlvbnN0cmFuc2ZlcjogRWluZSBicmVpdGUgR3J1bmRsYWdlIGVybGVpY2h0ZXJ0IHVuZCBiZXNjaGxldW5pZ3QgZGFzIExlcm5lbi4gw5xiZW4gYmxlaWJ0IHRyb3R6ZGVtIG7DtnRpZzsgZWluc2VpdGlnIHRyYWluaWVydGUgRsOkaGlna2VpdGVuIGJpZXRlbiBkaWVzZW4gVm9ydGVpbCBnZXJhZGUgbmljaHQuIn0sIHsiYyI6IFsxLCAyXSwgImUiOiAiRWluZSBsYXVmZW5kIHdlY2hzZWxuZGUgVW1nZWJ1bmcga2VubnplaWNobmV0IG9mZmVuZSBGZXJ0aWdrZWl0ZW4gKEJlaXNwaWVsIGltIE1hdGVyaWFsKS4gRGVyIGVpbnplbG5lIFd1cmYgc2VsYnN0IGhhdCBlaW5lbiBrbGFyZW4gQW5mYW5nIHVuZCBlaW4ga2xhcmVzIEVuZGUsIGlzdCBhbHNvIGRpc2tyZXQuIn0sIHsiYyI6IFsyXSwgImUiOiAiR2VudGlsZSBlcmxhdWJ0IGVpbmUgUHJvZ3Jlc3Npb24gdm9tIEVpbmZhY2hlbiB6dW0gS29tcGxleGVuLiBBbmbDpG5nZXIgc29sbGVuIG5pY2h0IGRpcmVrdCBtaXQgZGVyIGtvbXBsZXhlc3RlbiBWYXJpYW50ZSDDvGJlcmZvcmRlcnQgd2VyZGVuOyBkaWUgdW1nZWtlaHJ0ZSBSZWloZW5mb2xnZSB3aWRlcnNwcmljaHQgZGVtIFByaW56aXAuIn0sIHsiYyI6IFsyLCAzXSwgImUiOiAiR2VudGlsZSBlcmxhdWJ0IGVpbmUgUHJvZ3Jlc3Npb24gdm9tIEVpbmZhY2hlbiB6dW0gS29tcGxleGVuLiBBbmbDpG5nZXIgc29sbGVuIG5pY2h0IGRpcmVrdCBtaXQgZGVyIGtvbXBsZXhlc3RlbiBWYXJpYW50ZSDDvGJlcmZvcmRlcnQgd2VyZGVuOyBkaWUgdW1nZWtlaHJ0ZSBSZWloZW5mb2xnZSB3aWRlcnNwcmljaHQgZGVtIFByaW56aXAuIn0sIHsiYyI6IFsxLCAyXSwgImUiOiAiR2VudGlsZSBiZXdlcnRldCBkaWUgQW5mb3JkZXJ1bmdlbiBhdXMgVW1nZWJ1bmdza29udGV4dCB1bmQgSGFuZGx1bmdzZnVua3Rpb24sIG5pY2h0IGRlbiBQcsOkemlzaW9uc2Fuc3BydWNoLiBEZXIgS29yYmxlZ2VyIHZlcmVpbnQgT2JqZWt0LCBLw7ZycGVydHJhbnNwb3J0IHVuZCB2YXJpYWJsZSBVbWdlYnVuZy4ifV0=";
+var N=Q.length;
+var FB_MS=1400; // Dauer der kurzen Rückmeldung in Millisekunden
+var TIME_MIN=10; // Testzeit in Minuten
+var KEY=null; // wird beim Start entschlüsselt (nur kodiert, nicht geschützt)
+var st={view:'start',name:'',order:[],sel:[],done:[],skipped:[],pending:[],pos:0,res:null,finished:false,timedOut:false,timer:null,endAt:0,t0:0};
+var main=document.getElementById('main');
+
+function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+function h(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function fmt(x){return (Math.round(x*100)/100).toString().replace('.',',');}
+function decodeKey(){var bin=atob(KEYB64);var bytes=new Uint8Array(bin.length);for(var i=0;i<bin.length;i++)bytes[i]=bin.charCodeAt(i);return JSON.parse(new TextDecoder('utf-8').decode(bytes));}
+function answered(i){return st.sel[i].length>0;}
+
+function mmss(ms){ms=Math.max(0,ms);var t=Math.ceil(ms/1000),m=Math.floor(t/60),sec=t%60;return (m<10?'0':'')+m+':'+(sec<10?'0':'')+sec;}
+function setClock(txt,cls){var c=document.getElementById('clock');c.textContent=txt;c.className='clock'+(cls?' '+cls:'');}
+function tick(){
+  var rem=st.endAt-Date.now();
+  setClock('⏱ '+mmss(rem), rem<=60000?(rem<=30000?'urgent':'low'):'');
+  if(rem<=0)finish(true);
+}
+
+function start(){
+  st.view='start'; setClock('Zeit: '+TIME_MIN+' Minuten','');
+  main.innerHTML='<div class="card"><h2>Test zum Thema „Bewegungsfertigkeiten“ (Test 1 Fertigkeiten)</h2>'+
+  '<p>'+N+' Fragen zu Bewegungsfertigkeiten, ihren Klassifikationen und dem Gentile-Raster. Du hast <b>'+TIME_MIN+' Minuten</b>. Danach wird der Test automatisch beendet.</p>'+
+  '<div class="info"><h3>So funktioniert der Test</h3><ul>'+
+  '<li>Pro Frage ist <b>mindestens eine, höchstens zwei</b> Antwort richtig. Kreuze alle zutreffenden Antworten an.</li>'+
+  '<li>Mit <b>„Weiter“</b> wird deine Antwort festgehalten. Sie leuchtet kurz <b style="color:#2E7D5B">grün</b> auf, wenn sie vollständig richtig ist, und <b style="color:#B5533C">rot</b>, wenn eine falsche Antwort dabei ist oder eine richtige fehlt. Danach ist die Antwort gesperrt.</li>'+
+  '<li>Mit <b>„Überspringen“</b> gibst du eine Frage weiter: Es wird nichts festgehalten, und du siehst keine Rückmeldung. Übersprungene Fragen kommen am Ende noch einmal, solange die Zeit reicht.</li>'+
+  '<li><b>Nur festgehaltene Antworten zählen.</b> Angekreuzte, aber nicht mit „Weiter“ bestätigte Antworten werden bei Zeitablauf nicht gewertet. Du musst nicht alle Fragen schaffen.</li>'+
+  '<li>Nach dem Test erscheint dein Ergebnis. Danach kannst du dir die richtigen Antworten und Erklärungen ansehen.</li></ul></div>'+
+  '<div class="merk"><h3>Bewertung</h3><p style="margin:0">Jede Frage zählt höchstens 1 Punkt. Für jede richtig angekreuzte Antwort gibt es einen Anteil, für jede falsch angekreuzte Antwort wird ein Anteil abgezogen (nie weniger als 0 Punkte pro Frage). Beispiel bei zwei richtigen Antworten: eine richtig = 0,5 Punkte (die Rückmeldung ist dann rot), beide richtig = 1 Punkt (grün), beide richtig plus eine falsche = 0,5 Punkte (rot). Nicht bearbeitete Fragen zählen 0 Punkte.</p></div>'+
+  '<p><label for="nm"><b>Name (optional, erscheint nur auf deinem Ergebnis):</b></label><br><input type="text" id="nm" autocomplete="off" value="'+h(st.name)+'"></p>'+
+  '<div class="spread" style="justify-content:flex-start"><button id="go">Test starten (Zeit läuft ab dem Klick)</button></div></div>';
+  document.getElementById('go').onclick=function(){
+    st.name=document.getElementById('nm').value.trim();
+    KEY=decodeKey();
+    st.order=Q.map(function(q){return q.o.map(function(_,i){return i;});}); // feste Reihenfolge je Gruppe
+    st.sel=Q.map(function(){return [];}); st.done=Q.map(function(){return false;}); st.skipped=Q.map(function(){return false;});
+    st.pending=Q.map(function(_,i){return i;}); st.pos=0; st.finished=false; st.timedOut=false;
+    st.t0=Date.now(); st.endAt=st.t0+TIME_MIN*60000;
+    tick(); st.timer=setInterval(tick,250);
+    quiz();
+  };
+}
+
+function quiz(){
+  st.view='quiz'; st.busy=false; var i=st.pending[st.pos], q=Q[i], doneCnt=st.done.filter(Boolean).length;
+  var opts=st.order[i].map(function(oi){
+    var on=st.sel[i].indexOf(oi)>=0;
+    return '<label class="o"><input type="checkbox" value="'+oi+'"'+(on?' checked':'')+'><span class="opt"><span class="box"></span><span>'+h(q.o[oi])+'</span></span></label>';
+  }).join('');
+  main.innerHTML='<div class="card" id="qc"><div class="bar"><i style="width:'+Math.round(doneCnt/N*100)+'%"></i></div>'+
+  '<div class="meta"><span>Frage '+(i+1)+' von '+N+'</span><span>Festgehalten: '+doneCnt+' · offen: '+st.pending.length+'</span></div>'+
+  '<p style="margin:12px 0 0">'+(st.skipped[i]?'<span class="skiptag">übersprungen, noch offen</span>':'')+'<span class="tag">Anforderungsbereich '+q.afb+'</span></p>'+
+  '<p class="qtext">'+h(q.q)+'</p><p class="hint">Eine oder zwei Antworten sind richtig. Kreuze alle zutreffenden an.</p>'+opts+
+  '<div id="fb" class="fb hide" role="status" aria-live="polite"></div>'+
+  '<div class="spread"><button class="sec" id="skip"'+(st.pending.length<2?' disabled':'')+'>Überspringen</button>'+
+  '<button id="next"'+(st.sel[i].length?'':' disabled')+'>Weiter →</button></div>'+
+  '<div style="margin-top:14px"><button class="link" id="end">Test jetzt beenden</button></div></div>';
+  var nx=document.getElementById('next'), sk=document.getElementById('skip');
+  [].forEach.call(main.querySelectorAll('input[type=checkbox]'),function(cb){
+    cb.onchange=function(){var v=+cb.value,a=st.sel[i],p=a.indexOf(v);if(cb.checked&&p<0)a.push(v);if(!cb.checked&&p>=0)a.splice(p,1);nx.disabled=(a.length===0);};
+  });
+  sk.onclick=function(){
+    if(st.busy||st.pending.length<2)return;
+    st.skipped[i]=true; st.sel[i]=[]; st.pos=(st.pos+1)%st.pending.length; quiz(); window.scrollTo(0,0);
+  };
+  document.getElementById('end').onclick=function(){
+    if(st.busy)return;
+    if(window.confirm('Test jetzt beenden? Nicht festgehaltene Fragen zählen 0 Punkte.'))finish(false);
+  };
+  nx.onclick=function(){
+    if(st.busy||!st.sel[i].length)return; st.busy=true; nx.disabled=true; sk.disabled=true;
+    [].forEach.call(main.querySelectorAll('input[type=checkbox]'),function(cb){cb.disabled=true;});
+    st.done[i]=true;
+    var c=KEY[i].c, s=st.sel[i];
+    var ok=(s.length===c.length)&&s.every(function(v){return c.indexOf(v)>=0;});
+    var card=document.getElementById('qc'), fb=document.getElementById('fb');
+    card.classList.add(ok?'good':'bad');
+    fb.innerHTML=ok?'<span class="sym">✓</span><span>Richtig</span>':'<span class="sym">✗</span><span>Nicht vollständig richtig</span>';
+    fb.classList.remove('hide');
+    setTimeout(function(){
+      if(st.finished)return;
+      st.pending.splice(st.pos,1);
+      if(!st.pending.length){finish(false);return;}
+      if(st.pos>=st.pending.length)st.pos=0;
+      quiz(); window.scrollTo(0,0);
+    }, FB_MS);
+  };
+}
+
+function finish(timedOut){
+  if(st.finished)return; st.finished=true; st.timedOut=timedOut;
+  if(st.timer){clearInterval(st.timer);st.timer=null;}
+  st.used=Math.min(Date.now()-st.t0,TIME_MIN*60000);
+  setClock(timedOut?'⏱ Zeit abgelaufen':'⏱ Beendet','');
+  submit(); window.scrollTo(0,0);
+}
+
+function submit(){
+  var pts=[],tot=0;
+  for(var i=0;i<N;i++){
+    var c=KEY[i].c,s=st.done[i]?st.sel[i]:[],r=0,f=0;
+    s.forEach(function(v){if(c.indexOf(v)>=0)r++;else f++;});
+    var p=Math.max(0,(r-f)/c.length); pts.push(p); tot+=p;
+  }
+  st.res={pts:pts,tot:tot,date:new Date().toLocaleDateString('de-DE'),time:new Date().toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'})};
+  result();
+}
+
+function result(){
+  st.view='result'; var r=st.res, pc=Math.round(r.tot/N*1000)/10;
+  var full=r.pts.filter(function(p){return p>=0.999;}).length, part=r.pts.filter(function(p){return p>0&&p<0.999;}).length, zero=N-full-part;
+  var wrong=[];for(var q=0;q<N;q++){if(r.pts[q]<0.999)wrong.push(String(q+1)+(st.done[q]?'':' (nicht bearbeitet)'));}
+  var sheet='ERGEBNISBLATT · Test 1 Fertigkeiten (v1.2)\n'+
+    'Name: '+(st.name||'(nicht angegeben)')+'\n'+
+    'Datum: '+r.date+', '+r.time+' Uhr\n'+
+    'Zeit: '+mmss(st.used)+' von '+TIME_MIN+':00 Minuten'+(st.timedOut?' (Zeit abgelaufen)':'')+'\n'+
+    'Ergebnis: '+full+' von '+N+' Fragen vollständig richtig\n'+
+    'Punkte: '+fmt(r.tot)+' von '+N+' ('+fmt(pc)+' %)\n'+
+    'Fehler bei Aufgabe: '+(wrong.length?wrong.join(', '):'keine');
+  st.sheet=sheet;
+  main.innerHTML='<div class="card"><div class="big"><div class="who">'+(st.name?h(st.name)+' · ':'')+r.date+', '+r.time+' Uhr</div>'+
+  '<div class="num">'+full+'<span> / '+N+'</span></div><div class="lbl">Fragen vollständig richtig</div></div>'+
+  '<p class="pts2">Punkte mit Teilpunkten: <b>'+fmt(r.tot)+' von '+N+'</b> ('+fmt(pc)+' %)</p>'+
+  '<div class="bar"><i style="width:'+pc+'%"></i></div>'+
+  '<p style="margin-top:14px">Voll richtig: <b>'+full+'</b> · Teilweise richtig: <b>'+part+'</b> · Nicht gepunktet: <b>'+zero+'</b></p>'+
+  '<p style="margin:4px 0 0">Festgehalten: <b>'+st.done.filter(Boolean).length+'</b> von '+N+' Fragen · Nicht bearbeitet: <b>'+st.done.filter(function(d){return !d;}).length+'</b> · Bearbeitungszeit: <b>'+mmss(st.used)+'</b> von '+TIME_MIN+':00 Minuten</p>'+
+  (st.timedOut?'<div class="merk"><b>Die Zeit ist abgelaufen.</b> Der Test wurde automatisch beendet. Nur festgehaltene Antworten wurden gewertet.</div>':'')+
+  '<div class="merk"><h3>Ergebnisblatt zum Abgeben</h3><pre id="sheet" style="white-space:pre-wrap;font-family:inherit;margin:0 0 10px;font-size:15px;line-height:1.5">'+h(sheet)+'</pre><button id="cp2">Ergebnisblatt kopieren</button> <span class="hint">Zum Abschicken: kopieren und einfügen oder einen Screenshot machen. Die Nummern beziehen sich auf die Aufgaben in deinem Test.</span></div>'+
+  '<div class="info">Möchtest du sehen, welche Antworten richtig waren, und die Begründungen lesen? Dann öffne die Auswertung.</div>'+
+  '<div class="row"><button id="rev">Richtige Antworten und Erklärungen ansehen</button><button class="sec noprint" id="cp">Ergebnis kopieren</button></div><p id="cpm" class="hint" style="margin-top:10px"></p></div>';
+  document.getElementById('rev').onclick=function(){review(false);window.scrollTo(0,0);};
+  var cpf=function(){
+    var t=st.sheet;
+    var m=document.getElementById('cpm');
+    function ok(){m.textContent='Kopiert: '+t;document.getElementById('cp2').textContent='Kopiert ✓';}
+    function fb(){var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok();}catch(e){m.textContent=t;}document.body.removeChild(ta);}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb);}else{fb();}
+  };
+  document.getElementById('cp').onclick=cpf; document.getElementById('cp2').onclick=cpf;
+}
+
+function review(onlyWrong){
+  st.view='review'; var r=st.res, html='';
+  html+='<div class="card noprint"><h2>Auswertung</h2><p>Grün: richtige Antworten. Rot: von dir angekreuzt, aber falsch. Der Randbalken zeigt: grün = voll richtig, gelb = teilweise, rot = nicht gepunktet.</p>'+
+  '<div class="row"><button class="sec" id="rb">← Zum Ergebnis</button><button class="sec" id="fl">'+(onlyWrong?'Alle Fragen anzeigen':'Nur nicht voll richtige Fragen anzeigen')+'</button><button class="sec" id="pr">Drucken / als PDF speichern</button></div></div>';
+  for(var i=0;i<N;i++){
+    var p=r.pts[i]; if(onlyWrong&&p>=0.999)continue;
+    var c=KEY[i].c, dn=st.done[i], s=dn?st.sel[i]:[];
+    var opts=st.order[i].map(function(oi){
+      var right=c.indexOf(oi)>=0, chosen=s.indexOf(oi)>=0, cls='ro', mk='', sub='';
+      if(right){cls+=' right';mk='✓';sub=chosen?'richtig, von dir angekreuzt':(dn?'richtig, von dir nicht angekreuzt':'richtig');}
+      else if(chosen){cls+=' wrong';mk='✗';sub='falsch, von dir angekreuzt';}
+      return '<div class="'+cls+'"><span class="mk">'+mk+'</span><span>'+h(Q[i].o[oi])+(sub?'<span class="st">'+sub+'</span>':'')+'</span></div>';
+    }).join('');
+    html+='<div class="rq '+(p>=0.999?'full':(p>0?'part':'none'))+'"><p style="margin:0 0 4px"><span class="tag">Frage '+(i+1)+'</span><span class="tag">AFB '+Q[i].afb+'</span><span class="pts">'+fmt(p)+' von 1 Punkt'+(dn?'':' (nicht bearbeitet)')+'</span></p>'+
+    '<p class="qtext" style="margin-top:8px">'+h(Q[i].q)+'</p>'+opts+'<div class="expl"><b>Erklärung:</b> '+h(KEY[i].e)+'</div></div>';
+  }
+  if(onlyWrong&&html.indexOf('class="rq')<0)html+='<div class="card">Alle Fragen waren voll richtig.</div>';
+  main.innerHTML=html;
+  document.getElementById('rb').onclick=function(){result();window.scrollTo(0,0);};
+  document.getElementById('fl').onclick=function(){review(!onlyWrong);window.scrollTo(0,0);};
+  document.getElementById('pr').onclick=function(){window.print();};
+}
+
+window.addEventListener('beforeunload',function(e){if(st.view==='quiz'&&!st.finished){e.preventDefault();e.returnValue='';}});
+start();
+})();
+</script>
+</body>
+</html>
