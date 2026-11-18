@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PH2 Phasierung sportlicher Bewegungen (Version 1.0)</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<style>
+:root{--slate:#42536A;--blue:#5C7A99;--light:#EDF0F3;--gold:#C9A227;--cream:#FBF3DD;--ink:#1F2328;--mute:#5F6368;--line:#D6DBE0;--ok:#2E7D5B;--okbg:#E4F2EB;--bad:#B5533C;--badbg:#F8E6E1;--paper:#F4F6F8}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--paper);color:var(--ink);font:18px/1.5 'IBM Plex Sans',Arial,Verdana,sans-serif}
+header{background:var(--slate);color:#fff;padding:18px 20px}
+header .in{max-width:860px;margin:0 auto;display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+header h1{font-size:22px;margin:0;font-weight:700}
+header .sub{font-size:15px;opacity:.85}
+main{max-width:860px;margin:0 auto;padding:22px 16px 60px}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px 24px;margin-bottom:18px}
+.info{background:var(--light);border-left:6px solid var(--blue);border-radius:0 10px 10px 0;padding:16px 20px;margin:16px 0}
+.merk{background:var(--cream);border-left:6px solid var(--gold);border-radius:0 10px 10px 0;padding:16px 20px;margin:16px 0}
+h2{font-size:26px;margin:0 0 10px;color:var(--slate)}
+h3{font-size:19px;margin:0 0 6px;color:var(--slate)}
+ul{margin:6px 0 6px;padding-left:22px}
+li{margin:3px 0}
+button{font:600 17px 'IBM Plex Sans',Arial,sans-serif;border:0;border-radius:10px;padding:12px 20px;cursor:pointer;background:var(--slate);color:#fff}
+button.sec{background:#fff;color:var(--slate);border:2px solid var(--slate)}
+button:disabled{opacity:.4;cursor:default}
+button:focus-visible,input:focus-visible+.opt,.dot:focus-visible{outline:3px solid #8FB0D1;outline-offset:2px}
+.row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.spread{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:18px}
+input[type=text]{font:inherit;padding:10px 12px;border:2px solid var(--line);border-radius:8px;width:100%;max-width:380px}
+.bar{height:10px;background:var(--line);border-radius:6px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--blue);transition:width .25s}
+.meta{display:flex;justify-content:space-between;font-size:15px;color:var(--mute);margin:8px 0 14px}
+.tag{display:inline-block;font-size:14px;font-weight:600;border:2px solid var(--blue);color:var(--slate);border-radius:999px;padding:0 10px;margin-right:8px}
+.qtext{font-size:21px;font-weight:600;line-height:1.4;margin:6px 0 14px}
+.hint{font-size:15px;color:var(--mute);margin:-6px 0 14px}
+label.o{display:block;cursor:pointer;margin:10px 0}
+label.o input{position:absolute;opacity:0;width:1px;height:1px}
+.opt{display:flex;gap:14px;align-items:flex-start;border:2px solid var(--line);border-radius:10px;padding:12px 14px;background:#fff}
+.opt .box{flex:none;width:26px;height:26px;border:2px solid var(--blue);border-radius:6px;margin-top:1px;display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;font-size:16px}
+input:checked+.opt{border-color:var(--slate);background:var(--light)}
+input:checked+.opt .box{background:var(--slate);border-color:var(--slate)}
+input:checked+.opt .box::after{content:"✓"}
+.dots{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 4px}
+.dot{width:36px;height:36px;border-radius:8px;padding:0;font-size:15px;background:#fff;color:var(--slate);border:2px solid var(--line)}
+.dot.done{background:var(--light);border-color:var(--blue)}
+.dot.cur{background:var(--slate);color:#fff;border-color:var(--slate)}
+.score{font-size:46px;font-weight:700;color:var(--slate);line-height:1.1}
+.rq{border:1px solid var(--line);border-radius:12px;background:#fff;padding:18px 20px;margin-bottom:16px}
+.rq.full{border-left:8px solid var(--ok)}
+.rq.part{border-left:8px solid var(--gold)}
+.rq.none{border-left:8px solid var(--bad)}
+.ro{display:flex;gap:10px;align-items:flex-start;border:2px solid var(--line);border-radius:8px;padding:8px 12px;margin:7px 0;background:#fff}
+.ro .mk{flex:none;min-width:26px;font-weight:700}
+.ro.right{background:var(--okbg);border-color:var(--ok)}
+.ro.wrong{background:var(--badbg);border-color:var(--bad)}
+.ro .st{font-size:14px;color:var(--mute);display:block}
+.expl{background:var(--light);border-left:6px solid var(--blue);padding:10px 14px;margin-top:10px;border-radius:0 8px 8px 0;font-size:16px}
+.pts{font-weight:700;color:var(--slate)}
+.hide{display:none !important}
+.big{background:var(--slate);color:#fff;border-radius:14px;padding:20px 16px 22px;text-align:center;margin-bottom:14px}
+.big .tid{font-size:14px;letter-spacing:.09em;text-transform:uppercase;opacity:.8;margin-bottom:6px}
+.big .who{font-size:clamp(28px,7.5vw,46px);font-weight:700;line-height:1.15;margin-bottom:4px}
+.big .meta2{font-size:clamp(14px,3.4vw,18px);opacity:.92;margin-top:12px;line-height:1.5}
+.big .num{font-size:clamp(88px,24vw,160px);font-weight:700;line-height:1.05;font-variant-numeric:tabular-nums}
+.big .num span{font-size:.42em;font-weight:600;opacity:.85}
+.big .lbl{font-size:clamp(20px,4.5vw,28px);font-weight:600}
+.pts2{font-size:19px;margin:0 0 12px;text-align:center}
+.clock{font-weight:700;font-size:20px;font-variant-numeric:tabular-nums;background:rgba(255,255,255,.15);border-radius:8px;padding:2px 12px}
+.clock.low{background:#C9A227;color:#1F2328}
+.clock.urgent{background:#B5533C;color:#fff}
+button.link{background:none;color:var(--slate);text-decoration:underline;padding:6px 4px;font-weight:500;font-size:16px}
+.skiptag{display:inline-block;font-size:14px;font-weight:600;background:var(--cream);border:2px solid var(--gold);border-radius:999px;padding:0 10px;margin-right:8px}
+.card.good{border:3px solid var(--ok);background:var(--okbg)}
+.card.bad{border:3px solid var(--bad);background:var(--badbg)}
+.fb{font-size:22px;font-weight:700;margin:14px 0 0;display:flex;align-items:center;gap:10px}
+.card.good .fb{color:var(--ok)}.card.bad .fb{color:var(--bad)}
+.fb .sym{font-size:30px;line-height:1}
+.card.good .opt,.card.bad .opt{background:rgba(255,255,255,.6)}
+input:disabled+.opt{cursor:default}
+footer{max-width:860px;margin:0 auto;padding:0 16px 30px;color:var(--mute);font-size:14px}
+@media print{header,.noprint,.spread,footer{display:none !important}body{background:#fff}.card,.rq{break-inside:avoid}}
+</style>
+</head>
+<body>
+<header><div class="in"><h1>PH2 · Phasierung</h1><span class="sub">Sport P5 · Bewegungslehre · Thema 5 · Phasierung sportlicher Bewegungen</span><span id="clock" class="clock"></span></div></header>
+<main id="main"></main>
+<footer>Version 1.0 · PH2</footer>
+<script>
+(function(){
+var Q=[{"afb": "III", "q": "Welche Gegenüberstellung der beiden Modelle ist richtig?", "o": ["Meinel/Schnabel beschreibt den räumlich-zeitlichen Ablauf, Göhner fragt nach der Funktion für das Bewegungsziel.", "Die beiden Modelle widersprechen einander; nur eines kann zutreffen.", "Göhners Modell zielt auf eine möglichst genaue Trainings- und Fehleranalyse einzelner Techniken.", "Göhners Einteilung ist an eine feste zeitliche Abfolge gebunden."]}, {"afb": "II", "q": "Was kennzeichnet die Vorbereitungsphase?", "o": ["Sie verläuft typischerweise als Gegenbewegung zur Hauptbewegungsrichtung.", "Sie führt die Bewegung in einen stabilen Gleichgewichtszustand zurück.", "In ihr wird die eigentliche Bewegungsaufgabe bewältigt.", "Sie erzeugt optimale Voraussetzungen für die Hauptphase."]}, {"afb": "I", "q": "Welche Größen gehören zu den fünf Bezugsgrößen der Aufgabenklassifikation?", "o": ["Regelbedingungen", "Movendumattribute", "Phasenrelationen", "Bewegungsmerkmale"]}, {"afb": "I", "q": "Wie heißen die drei Phasen einer azyklischen Bewegung mit ihren Zweitbezeichnungen?", "o": ["Vorbereitungsphase (Akzent) – Hauptphase (Auftakt) – Endphase (Abtakt)", "Vorbereitungsphase (Auftakt) – Hauptphase (Akzent) – Endphase (Abfangen/Abtakt)", "Anlaufphase – Flugphase – Landephase", "Einleitung – Hauptteil – Schluss"]}, {"afb": "II", "q": "Welche Zuordnungen von Hilfsfunktionsphase und Beispiel stimmen?", "o": ["Vorbereitend – der Anlauf beim Weitsprung, um Schwung aufzubauen", "Unterstützend – der Armeinsatz beim Absprung, der die Sprungkraft der Beine verstärkt", "Unterstützend – das Abfangen des Körpers nach der Landung", "Überleitend – das Ausholen zum Schlag"]}, {"afb": "II", "q": "Was bedeutet „asynchron-alternierend“?", "o": ["Beispiel: das Rudern.", "Beispiel: der Diagonalschritt im Skilanglauf.", "Die beiden Körperseiten arbeiten gleichzeitig.", "Arm- und Beinaktion folgen unterschiedlichen Rhythmen."]}, {"afb": "I", "q": "Welche Zuordnung der drei Bewegungstypen nach Meinel ist richtig?", "o": ["Kombiniert: eine Bewegung, bei der mehrere Personen zusammenwirken", "Azyklisch: mit Gerät ausgeführt; zyklisch: ohne Gerät ausgeführt", "Azyklisch: einmalig und in sich geschlossen; zyklisch: derselbe Ablauf wiederholt sich fortlaufend", "Zyklisch: besonders schnell; azyklisch: besonders kraftvoll"]}, {"afb": "II", "q": "Welche Zuordnungen der Ordnungen beim Handball-Sprungwurf sind richtig?", "o": ["Anlaufen – 1. Ordnung, weil es am Anfang der Bewegung steht", "Landen – 2. Ordnung, weil es auf den Wurf folgt", "Abspringen/Hochführen – 1. Ordnung, weil es die Wurfphase unmittelbar auslöst", "Anlaufen – 2. Ordnung, weil es den Absprung vorbereitet"]}, {"afb": "II", "q": "Welche Begriffe kommen in der Einteilung zyklischer Bewegungen NICHT vor?", "o": ["„asynchron-alternierend“", "„asymmetrisch“", "„synchron“", "„alternierend“"]}, {"afb": "II", "q": "Was kennzeichnet die Hauptfunktionsphase?", "o": ["Sie ist immer der zeitlich längste Abschnitt des Ablaufs.", "Sie steht immer am Ende des Bewegungsablaufs.", "Wird sie weggelassen, ersetzt oder umgestaltet, verändert sich die Bewegung in ihrem Wesen.", "Ihre Funktion lässt sich beschreiben, ohne auf eine andere Phase Bezug zu nehmen."]}, {"afb": "III", "q": "Warum lässt sich das Brustschwimmen nicht eindeutig einordnen?", "o": ["Weil es nach der Körperseiten-Frage symmetrisch, nach der Arm-Bein-Frage asynchron ist.", "Weil die drei Begriffe zwei verschiedene Fragen beantworten und in einer Reihe stehen.", "Weil das Brustschwimmen keine zyklische Bewegung ist.", "Weil die Einteilung zyklischer Bewegungen grundsätzlich beliebig ist."]}, {"afb": "II", "q": "Welche Aussagen über Phasengrenzen treffen zu?", "o": ["Sie sind Entscheidungen, keine Messwerte.", "Für eine Fehleranalyse fallen sie stärker ins Gewicht als für eine Bewegungsbeschreibung.", "In der Fachliteratur sind sie eindeutig und überschneidungsfrei festgelegt.", "Bei Meinel/Schnabel verlaufen die Übergänge abrupt."]}, {"afb": "II", "q": "Warum eignet sich das Phasenmodell besonders für die Bewegungsbeobachtung?", "o": ["Weil es auch auf unbekannte oder gerade erst erlernte Bewegungen unmittelbar anwendbar ist.", "Weil es Messgeräte in der Bewegungsanalyse überflüssig macht.", "Weil es kein Vorwissen über die Funktion der einzelnen Abschnitte voraussetzt.", "Weil es die Ursache eines Fehlers genauer eingrenzt als andere Modelle."]}, {"afb": "III", "q": "Welche Aussagen zur Zuordnung von Haupt- und Hilfsfunktion treffen zu?", "o": ["Die Zuordnung ergibt sich eindeutig aus der zeitlichen Abfolge.", "Jede Bewegung hat genau eine Hauptfunktionsphase.", "Eine Bewegung kann mehr als eine Hauptfunktionsphase besitzen.", "Ob ein Abschnitt Haupt- oder Hilfsfunktion hat, kann sich je nach Kontext verschieben."]}, {"afb": "II", "q": "Göhner gliedert den Weitsprung in vier Abschnitte. Welche Zuordnungen stimmen?", "o": ["Fliegen – Hilfsfunktionsphase, vorbereitend", "Landen – Hauptfunktionsphase", "Anlaufen – Hilfsfunktionsphase, vorbereitend", "Abspringen – Hauptfunktionsphase"]}, {"afb": "II", "q": "Welche Aussagen zu den Bewegungszielen treffen zu?", "o": ["Zur Trefferoptimierung als Vergleichsziel zählt der Korbwurf.", "Vergleichs- und Erreichungsziele schließen einander aus.", "Vergleichsziele zielen auf Überbietung und Rangordnung.", "Erreichungsziele liegen immer dann vor, wenn ein bestimmtes Ergebnis erreicht werden soll."]}, {"afb": "II", "q": "Wie ist eine zyklische Bewegung nach Meinel/Schnabel aufgebaut?", "o": ["Jeder Zyklus enthält zwei getrennte Vorbereitungsphasen.", "Auf die Zwischenphase folgt jeweils wieder die Hauptphase.", "Die Hauptphase entfällt, weil sich der Ablauf wiederholt.", "Vorbereitungs- und Endphase verschmelzen zu einer sich wiederholenden Zwischenphase."]}, {"afb": "I", "q": "Welche Aussagen zu Meinel und Schnabel treffen zu?", "o": ["Die beiden entwickelten zwei konkurrierende Phasenmodelle.", "Schnabel gehörte seit 1954 zu Meinels Mitarbeitern und wurde 1964 sein Nachfolger als Institutsleiter.", "„Meinel/Schnabel“ bezeichnet ein einziges, über Jahrzehnte fortgeschriebenes Werk.", "Das Buch erschien erstmals 2007."]}, {"afb": "II", "q": "Was geschieht bei einer Täuschungshandlung mit der Vorbereitungsphase?", "o": ["Beim Fake im Basketball wird sie überbetont und dann abgebrochen.", "Sie wird durch eine zweite Hauptphase ersetzt.", "Beim schnellen Wurf unter Gegnerdruck wird sie unterdrückt.", "Sie bleibt unverändert; verändert wird nur die Endphase."]}, {"afb": "III", "q": "Wann ist eine Phasengliederung vertretbar?", "o": ["Wenn sich zu jedem Abschnitt sagen lässt, wozu er ausgeführt wird (Um-zu-Test).", "Wenn sie durch eine Videoanalyse messtechnisch bestätigt wurde.", "Wenn jeder Abschnitt einen klaren Anfangs- und Endzustand hat und für sich betrachtet sinnvoll ist.", "Nur wenn sie mit der Gliederung der Lehrkraft übereinstimmt."]}, {"afb": "I", "q": "Wie definiert Göhner eine Funktionsphase, und wie heißen diese Abschnitte in der heutigen Fachsprache?", "o": ["Zunehmend als Teilhandlungen statt als Phasen.", "Zunehmend als Bewegungsmerkmale statt als Phasen.", "Als zeitlich gleich langen Abschnitt eines Bewegungsablaufs.", "Als Geschehensabschnitt, für den sich eine bestimmte Funktion im Hinblick auf das Bewegungsziel zeigen lässt."]}, {"afb": "II", "q": "Welche Aussagen zu Movendum- und Bewegerattributen treffen zu?", "o": ["Das Movendum ist das zu bewegende System – ein Gerät, ein Gegner oder der eigene Körper.", "„Aktiv-selbstbewegend“ bezeichnet ein Gerät, das sich von allein weiterbewegt.", "Beweger können natürlich oder instrumentell unterstützt sein.", "Ein Gegner kann niemals das Movendum sein."]}, {"afb": "II", "q": "Welche Aussagen zur überleitenden Hilfsfunktionsphase treffen zu?", "o": ["Sie bezieht sich auf eine bereits abgelaufene Phase.", "Sie läuft gleichzeitig mit einer anderen Phase ab und verstärkt sie.", "Sie schafft die Voraussetzungen für eine nachfolgende Phase.", "Sie überführt den Bewegungszustand in einen neuen – in die nächste Hauptfunktionsphase oder in die Ruhe."]}, {"afb": "II", "q": "Welche Aussagen zu kombinierten Bewegungen treffen zu?", "o": ["Bei der Sukzessivkombination laufen die Teilbewegungen nacheinander ab.", "Bei der Simultankombination laufen sie gleichzeitig ab.", "Kombiniert werden nur Teilbewegungen desselben Bewegungstyps.", "Der Hürdenlauf ist eine rein zyklische Bewegung."]}];
+var KEYB64="W3siYyI6IFswLCAyXSwgImUiOiAiRGFzIOKAnldpZeKAnCB1bmQgZGFzIOKAnldvenXigJwgc2luZCB6d2VpIHZlcnNjaGllZGVuZSBGcmFnZW4gYW4gZGllc2VsYmUgQmV3ZWd1bmcg4oCTIGRpZSBNb2RlbGxlIGVyZ8OkbnplbiBzaWNoLiBHZXJhZGUgd2VpbCBHw7ZobmVyIG5hY2ggZGVtIFp3ZWNrIHVuZCBuaWNodCBuYWNoIGRlciBBYmZvbGdlIGVpbnRlaWx0LCBsw6Rzc3Qgc2ljaCBkaWUgZmVobGVyaGFmdGUgVGVpbGhhbmRsdW5nIGVpbmdyZW56ZW4uIn0sIHsiYyI6IFswLCAzXSwgImUiOiAiU2Nod3VuZ2F1ZmJhdSwgbXVza3Vsw6RyZSBWb3JkZWhudW5nIHVuZCBlaW5lIGfDvG5zdGlnZSBBdXNnYW5nc3Bvc2l0aW9uIHNjaGFmZmVuIGRpZSBWb3JhdXNzZXR6dW5nZW4g4oCTIGtlbm50bGljaCBhbiBkZXIgR2VnZW5iZXdlZ3VuZyAoQXVzaG9sZW4gYmVpbSBTcGVlcnd1cmYpLiBEaWUgQmV3w6RsdGlndW5nIGRlciBBdWZnYWJlIGdlaMO2cnQgenVyIEhhdXB0cGhhc2UsIGRpZSBSw7xja2bDvGhydW5nIGlucyBHbGVpY2hnZXdpY2h0IHp1ciBFbmRwaGFzZS4ifSwgeyJjIjogWzAsIDFdLCAiZSI6ICJEaWUgZsO8bmYgQmV6dWdzZ3LDtsOfZW4gc2luZCBCZXdlZ3VuZ3N6aWVsZSwgTW92ZW5kdW1hdHRyaWJ1dGUsIEJld2VnZXJhdHRyaWJ1dGUsIFVtZ2VidW5nc2JlZGluZ3VuZ2VuIHVuZCBSZWdlbGJlZGluZ3VuZ2VuLiBCZXdlZ3VuZ3NtZXJrbWFsZSBnZWjDtnJlbiB6dXIgQmV3ZWd1bmdzYmVvYmFjaHR1bmcgKFRoZW1hIDQpLiJ9LCB7ImMiOiBbMV0sICJlIjogIkRpZSBIYXVwdHBoYXNlIHRyw6RndCBkZW4gQWt6ZW50LCB3ZWlsIGluIGlociBkaWUgZWlnZW50bGljaGUgQmV3ZWd1bmdzYXVmZ2FiZSBiZXfDpGx0aWd0IHdpcmQuIEFubGF1ZmVu4oCTRmxpZWdlbuKAk0xhbmRlbiBpc3QgZGFnZWdlbiBkaWUgQWt0aW9uc3NraXp6ZSBkZXMgV2VpdHNwcnVuZ3MsIGtlaW5lIFBoYXNlbmJlemVpY2hudW5nLiJ9LCB7ImMiOiBbMCwgMV0sICJlIjogIlVudGVyc3TDvHR6ZW5kZSBIaWxmc2Z1bmt0aW9uc3BoYXNlbiBsYXVmZW4gZ2xlaWNoemVpdGlnIG1pdCBlaW5lciBhbmRlcmVuIFBoYXNlIGFiLCB2b3JiZXJlaXRlbmRlIGdlaGVuIGlociB2b3JhdXMuIERhcyBBdXNob2xlbiBpc3Qgdm9yYmVyZWl0ZW5kLCBkYXMgQWJmYW5nZW4gbmFjaCBkZXIgTGFuZHVuZyDDvGJlcmxlaXRlbmQuIn0sIHsiYyI6IFsxLCAzXSwgImUiOiAiSGllciBnZWh0IGVzIG5pY2h0IHVtIGxpbmtzL3JlY2h0cywgc29uZGVybiB1bSBkYXMgVmVyaMOkbHRuaXMgdm9uIEFybS0gdW5kIEJlaW5ha3Rpb246IEJlaW0gS3JhdWxzY2h3aW1tZW4gd2VjaHNlbG4gZGllIEFybWUgbGlua3MtcmVjaHRzLCBkaWUgQmVpbmUgc2NobGFnZW4gaW0gRHJlaWVyLSBvZGVyIFNlY2hzZXItUmh5dGhtdXMuIFJ1ZGVybiBpc3Qgc3ltbWV0cmlzY2guIn0sIHsiYyI6IFsyXSwgImUiOiAiQXp5a2xpc2NoZSBCZXdlZ3VuZ2VuIGxhdWZlbiBlaW5tYWxpZyBhYiAoU3BlZXJ3dXJmLCBXZWl0c3BydW5nKSwgenlrbGlzY2hlIHdpZWRlcmhvbGVuIGRlbnNlbGJlbiBBYmxhdWYgZm9ydGxhdWZlbmQgKExhdWZlbiwgU2Nod2ltbWVuLCBSdWRlcm4pLiBLb21iaW5pZXJ0ZSBCZXdlZ3VuZ2VuIHZlcmtldHRlbiBtZWhyZXJlIFRlaWxiZXdlZ3VuZ2VuLCBhdWNoIHR5cMO8YmVyZ3JlaWZlbmQuIn0sIHsiYyI6IFsyLCAzXSwgImUiOiAiRGllIE9yZG51bmcgcmljaHRldCBzaWNoIGRhbmFjaCwgd29yYXVmIHNpY2ggZGllIEhpbGZlIGJlemllaHQg4oCTIG5pY2h0IG5hY2ggZGVyIFBvc2l0aW9uIGltIEFibGF1Zi4gMS4gT3JkbnVuZyBiZXppZWh0IHNpY2ggdW5taXR0ZWxiYXIgYXVmIGRpZSBIYXVwdGZ1bmt0aW9uc3BoYXNlLCAyLiBPcmRudW5nIGF1ZiBlaW5lIEhpbGZzcGhhc2UgMS4gT3JkbnVuZy4ifSwgeyJjIjogWzEsIDJdLCAiZSI6ICJEaWUgRWludGVpbHVuZyBrZW5udCBudXIgc3ltbWV0cmlzY2ggKGF1Y2gg4oCebmljaHQtYWx0ZXJuaWVyZW5k4oCcIGdlbmFubnQpLCBhbHRlcm5pZXJlbmQgdW5kIGFzeW5jaHJvbi1hbHRlcm5pZXJlbmQuIEVpbiBHZWdlbmJlZ3JpZmYg4oCec3luY2hyb27igJwgdW5kIGVpbmUgRm9ybSDigJ5hc3ltbWV0cmlzY2jigJwgZXhpc3RpZXJlbiBkYXJpbiBuaWNodC4ifSwgeyJjIjogWzIsIDNdLCAiZSI6ICJNYcOfZ2VibGljaCBpc3QgZGllIGZ1bmt0aW9uYWxlIFVuYWJow6RuZ2lna2VpdCwgbmljaHQgRGF1ZXIgb2RlciBQb3NpdGlvbi4gQmVpbSBXZWl0c3BydW5nIGlzdCBkZXIgQWJzcHJ1bmcgZGllIEhhdXB0ZnVua3Rpb25zcGhhc2UsIG9id29obCBkZXIgQW5sYXVmIGRldXRsaWNoIGzDpG5nZXIgZGF1ZXJ0LiJ9LCB7ImMiOiBbMCwgMV0sICJlIjogIkRpZSBLYXRlZ29yaWVuIG1pc2NoZW4gendlaSBLcml0ZXJpZW4uIEJydXN0c2Nod2ltbWVuIGVyZsO8bGx0IG5hY2ggZGVtIGVpbmVuIEtyaXRlcml1bSDigJ5zeW1tZXRyaXNjaOKAnCwgbmFjaCBkZW0gYW5kZXJlbiDigJ5hc3luY2hyb27igJwg4oCTIGRlc2hhbGIgd2lyZCBlcyBpbiBkZXIgTGl0ZXJhdHVyIHVuZWluaGVpdGxpY2ggZWluc29ydGllcnQuIEJlbGllYmlnIGlzdCBkaWUgRWludGVpbHVuZyBkZXN3ZWdlbiBuaWNodC4ifSwgeyJjIjogWzAsIDFdLCAiZSI6ICJTZWxic3QgaW0gRm9zYnVyeS1GbG9wLUJlaXNwaWVsIGRlcyBmdW5rdGlvbmFsZW4gQW5zYXR6ZXMgZ2Vow7ZyZW4gendlaSBFaW56ZWxiaWxkZXIgZ2xlaWNoemVpdGlnIHp1IHp3ZWkgQWJzY2huaXR0ZW4uIEJlaSBNZWluZWwvU2NobmFiZWwgdmVybGF1ZmVuIGRpZSDDnGJlcmfDpG5nZSBhdXNkcsO8Y2tsaWNoIGZsaWXDn2VuZDsgZGllIEdyZW56ZSBlbnRzY2hlaWRldCwgd2VsY2hlbiBBYnNjaG5pdHQgbWFuIGtvcnJpZ2llcnQuIn0sIHsiYyI6IFswLCAyXSwgImUiOiAiRGllIEVpbnRlaWx1bmcgc2V0enQgZ2FueiDDvGJlcndpZWdlbmQgYW0gc2ljaHRiYXJlbiB6ZWl0bGljaGVuIFZlcmxhdWYgYW4uIERpZSBnZW5hdWUgRWluZ3Jlbnp1bmcgdm9uIEZlaGxlcnVyc2FjaGVuIGlzdCBkYWdlZ2VuIGRpZSBTdMOkcmtlIHZvbiBHw7ZobmVycyBGdW5rdGlvbnNwaGFzZW5tb2RlbGwuIn0sIHsiYyI6IFsyLCAzXSwgImUiOiAiRWluIFN0w7x0esO8YmVyc2NobGFnIHLDvGNrd8OkcnRzIGhhdCBpc29saWVydCBnZXplaWd0IGVpbmUgZWlnZW5lIEhhdXB0ZnVua3Rpb25zcGhhc2UsIGFscyBWb3JiZXdlZ3VuZyB6dW0gU2FsdG8gZGFnZWdlbiBudXIgdm9yYmVyZWl0ZW5kZSBIaWxmc2Z1bmt0aW9uLiBNZWhyZXJlIEhhdXB0ZnVua3Rpb25zcGhhc2VuIHRyZXRlbiB6LiBCLiBpbiBlaW5lciBUdXJua8O8ciBhdWYuIn0sIHsiYyI6IFsyLCAzXSwgImUiOiAiRGFzIEFic3ByaW5nZW4gZXJ6ZXVndCBkZW4gw5xiZXJnYW5nIGluIGRlbiBGbHVnIOKAkyBvaG5lIGVzIGdpYnQgZXMga2VpbmVuIFNwcnVuZy4gRGFzIEZsaWVnZW4gaXN0IHVudGVyc3TDvHR6ZW5kIChLw7ZycGVybGFnZSB1bmQgUm90YXRpb24ga29udHJvbGxpZXJlbiksIGRhcyBMYW5kZW4gw7xiZXJsZWl0ZW5kLiJ9LCB7ImMiOiBbMCwgMl0sICJlIjogIlZlcmdsZWljaHN6aWVsZSBnbGllZGVybiBzaWNoIGluIFplaXRtaW5pbWllcnVuZywgRGlzdGFuem1heGltaWVydW5nLCBUcmVmZmVyb3B0aW1pZXJ1bmcgc293aWUgU2Nod2llcmlna2VpdHMtIHVuZCBWZXJsYXVmc29wdGltaWVydW5nLiBFcnJlaWNodW5nc3ppZWxlIHppZWxlbiBhdWYgZGFzIEJld8OkbHRpZ2VuIGVpbmVyIEF1ZmdhYmUgKGVpbmVuIEJlcmcgYmVzdGVpZ2VuKS4gQmVpZGVzIGthbm4gdmVyYnVuZGVuIHdlcmRlbiDigJMgaW0gR2Vyw6R0dHVybmVuIMO8YmVyIGRlbiBDb2RlIGRlIFBvaW50YWdlLiJ9LCB7ImMiOiBbMSwgM10sICJlIjogIkRpZSBFbmRwaGFzZSBlaW5lcyBaeWtsdXMgZsOkbGx0IG1pdCBkZXIgVm9yYmVyZWl0dW5nc3BoYXNlIGRlcyBmb2xnZW5kZW4genVzYW1tZW4g4oCTIGJlaWRlIHZlcnNjaG1lbHplbiB6dXIgWndpc2NoZW5waGFzZS4gRGllIEhhdXB0cGhhc2UgYmxlaWJ0IGVyaGFsdGVuOyBkZXIgQWJsYXVmIGlzdCDigKYgSCDigJMgWncg4oCTIEgg4oCmIn0sIHsiYyI6IFsxLCAyXSwgImUiOiAiTWVpbmVscyBCdWNoIGVyc2NoaWVuIDE5NjA7IFNjaG5hYmVsIGFyYmVpdGV0ZSBiZXJlaXRzIGFuIGRlciBlcnN0ZW4gQXVmbGFnZSBtaXQgdW5kIMO8YmVybmFobSBhYiBkZXIgendlaXRlbiBkaWUgQXV0b3JlbnNjaGFmdC4gMjAwNyBpc3QgZGFzIEphaHIgZGVyIGFrdHVlbGxlbiAxMS4gQXVmbGFnZSwgbmljaHQgZGVyIEVyc3RhdXNnYWJlLiJ9LCB7ImMiOiBbMCwgMl0sICJlIjogIkVzIGdpYnQgendlaSBnZWdlbmzDpHVmaWdlIFZhcmlhbnRlbjogZGllIGRldXRsaWNoIHNpY2h0YmFyZSwgZGFubiBhYmdlYnJvY2hlbmUgQXVzaG9sYmV3ZWd1bmcgKEZha2UpIHVuZCBkZW4gV3VyZiBvaG5lIGVpZ2VuZXMgQXVzaG9sZW4gdW50ZXIgRHJ1Y2suIEJlaWRlcyBiZXRyaWZmdCBkaWUgVm9yYmVyZWl0dW5nc3BoYXNlLiJ9LCB7ImMiOiBbMCwgMl0sICJlIjogIkJlc3RlaGVuIHp3ZWkgR2xpZWRlcnVuZ2VuIGJlaWRlIFByw7xmdW5nZW4sIHNpbmQgYmVpZGUgdmVydGVpZGlnYmFyLiBNZXNzdW5nZW4ga8O2bm5lbiBlaW5lIEdyZW56ZSBvcGVyYXRpb25hbGlzaWVyZW4sIGFiZXIgbmljaHQgZW50c2NoZWlkZW4sIHdlbGNoZSBHbGllZGVydW5nIGRpZSByaWNodGlnZSBpc3QuIn0sIHsiYyI6IFswLCAzXSwgImUiOiAiRW50c2NoZWlkZW5kIGlzdCBkZXIgRnVua3Rpb25zYmV6dWcgenVtIEJld2VndW5nc3ppZWwsIG5pY2h0IGRpZSBEYXVlci4gRGVyIEJlZ3JpZmYg4oCeVGVpbGhhbmRsdW5n4oCcIHNldHp0IHNpY2ggZHVyY2gsIHdlaWwg4oCeUGhhc2XigJwgZWluZW4gWmVpdGFic2Nobml0dCBtaXQgZmVzdGVuIFLDpG5kZXJuIG5haGVsZWd0LCBkZW4gZXMgc28gbmljaHQgZ2lidC4ifSwgeyJjIjogWzAsIDJdLCAiZSI6ICJQYXNzaXYtcmVha3RpdiByZWFnaWVydCBudXIgYXVmIMOkdcOfZXJlIEtyYWZ0ZWlud2lya3VuZywgYWt0aXYtcmVha3RpdiByZWFnaWVydCBzZWxic3QgYXVmIGRpZSBVbWdlYnVuZyAoZWluIEdlZ25lciksIGFrdGl2LXNlbGJzdGJld2VnZW5kIG1laW50IGRlbiBlaWdlbmVuIEvDtnJwZXIuIEJlaSBkZW4gQmV3ZWdlcmF0dHJpYnV0ZW4ga29tbXQgaGluenUsIG9iIG9obmUgR2VnZW7DvGJlciwgbWl0IFBhcnRuZXJpbiBvZGVyIGdlZ2VuIGVpbmVuIEdlZ25lciBnZWhhbmRlbHQgd2lyZC4ifSwgeyJjIjogWzAsIDNdLCAiZSI6ICJEZXIgUsO8Y2tiZXp1ZyBhdWYgZWluZSBhYmdlbGF1ZmVuZSBQaGFzZSB1bnRlcnNjaGVpZGV0IHNpZSB2b24gZGVyIHZvcmJlcmVpdGVuZGVuLCBkaWUgTmFjaGVpbmFuZGVyc2NoYWx0dW5nIHZvbiBkZXIgdW50ZXJzdMO8dHplbmRlbi4gQmVpbSBIw7xyZGVubGF1ZiBsZWl0ZXQgc2llIGluIGRpZSBuw6RjaHN0ZSBIYXVwdGZ1bmt0aW9uc3BoYXNlIMO8YmVyLiJ9LCB7ImMiOiBbMCwgMV0sICJlIjogIktvbWJpbmllcnRlIEJld2VndW5nZW4gdmVya2V0dGVuIFRlaWxiZXdlZ3VuZ2VuIGF1Y2ggdHlww7xiZXJncmVpZmVuZCDigJMgenlrbGlzY2gtYXp5a2xpc2NoLCBhenlrbGlzY2gtYXp5a2xpc2NoIG9kZXIgenlrbGlzY2gtenlrbGlzY2guIERlciBIw7xyZGVubGF1ZiBpc3QgZ2VuYXUgZGVzaGFsYiBlaW4gQmVpc3BpZWwgZsO8ciBlaW5lIGtvbWJpbmllcnRlIEJld2VndW5nLiJ9XQ==";
+var N=Q.length;
+var FB_MS=1400; // Dauer der kurzen Rückmeldung in Millisekunden
+var TIME_MIN=15; // Testzeit in Minuten
+var KEY=null; // wird beim Start entschlüsselt (nur kodiert, nicht geschützt)
+var st={view:'start',name:'',order:[],sel:[],done:[],skipped:[],pending:[],pos:0,res:null,finished:false,timedOut:false,timer:null,endAt:0,t0:0};
+var main=document.getElementById('main');
+
+function h(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function fmt(x){return (Math.round(x*100)/100).toString().replace('.',',');}
+function decodeKey(){var bin=atob(KEYB64);var bytes=new Uint8Array(bin.length);for(var i=0;i<bin.length;i++)bytes[i]=bin.charCodeAt(i);return JSON.parse(new TextDecoder('utf-8').decode(bytes));}
+
+function mmss(ms){ms=Math.max(0,ms);var t=Math.ceil(ms/1000),m=Math.floor(t/60),sec=t%60;return (m<10?'0':'')+m+':'+(sec<10?'0':'')+sec;}
+function setClock(txt,cls){var c=document.getElementById('clock');c.textContent=txt;c.className='clock'+(cls?' '+cls:'');}
+function tick(){
+  var rem=st.endAt-Date.now();
+  setClock('⏱ '+mmss(rem), rem<=60000?(rem<=30000?'urgent':'low'):'');
+  if(rem<=0)finish(true);
+}
+
+function start(){
+  st.view='start'; setClock('Zeit: '+TIME_MIN+' Minuten','');
+  main.innerHTML='<div class="card"><h2>Test zum Thema „Phasierung sportlicher Bewegungen“ (PH2)</h2>'+
+  '<p>'+N+' Fragen zu den beiden Phasierungsmodellen, zu Haupt- und Hilfsfunktionsphasen und zu den fünf Bezugsgrößen der Aufgabenklassifikation. Du hast <b>'+TIME_MIN+' Minuten</b>. Danach wird der Test automatisch beendet.</p>'+
+  '<div class="info"><h3>So funktioniert der Test</h3><ul>'+
+  '<li>Pro Frage ist <b>mindestens eine, höchstens zwei</b> Antwort richtig. Kreuze alle zutreffenden Antworten an.</li>'+
+  '<li>Mit <b>„Weiter“</b> wird deine Antwort festgehalten. Sie leuchtet kurz <b style="color:#2E7D5B">grün</b> auf, wenn sie vollständig richtig ist, und <b style="color:#B5533C">rot</b>, wenn eine falsche Antwort dabei ist oder eine richtige fehlt. Danach ist die Antwort gesperrt.</li>'+
+  '<li>Mit <b>„Überspringen“</b> gibst du eine Frage weiter: Es wird nichts festgehalten, und du siehst keine Rückmeldung. Übersprungene Fragen kommen am Ende noch einmal, solange die Zeit reicht.</li>'+
+  '<li><b>Nur festgehaltene Antworten zählen.</b> Angekreuzte, aber nicht mit „Weiter“ bestätigte Antworten werden bei Zeitablauf nicht gewertet. Du musst nicht alle Fragen schaffen.</li>'+
+  '<li>Nach dem Test erscheint dein Ergebnis. Danach kannst du dir die richtigen Antworten und Erklärungen ansehen.</li></ul></div>'+
+  '<div class="merk"><h3>Bewertung</h3><p style="margin:0">Jede Frage zählt höchstens 1 Punkt. Für jede richtig angekreuzte Antwort gibt es einen Anteil, für jede falsch angekreuzte Antwort wird ein Anteil abgezogen (nie weniger als 0 Punkte pro Frage). Beispiel bei zwei richtigen Antworten: eine richtig = 0,5 Punkte (die Rückmeldung ist dann rot), beide richtig = 1 Punkt (grün), beide richtig plus eine falsche = 0,5 Punkte (rot). Nicht bearbeitete Fragen zählen 0 Punkte.</p></div>'+
+  '<p><label for="nm"><b>Dein Name</b> (erscheint groß auf dem Ergebnis – bitte eintragen):</label><br><input type="text" id="nm" autocomplete="off" value="'+h(st.name)+'"></p>'+
+  '<div class="spread" style="justify-content:flex-start"><button id="go">Test starten (Zeit läuft ab dem Klick)</button></div></div>';
+  document.getElementById('go').onclick=function(){
+    st.name=document.getElementById('nm').value.trim();
+    if(!st.name&&!window.confirm('Ohne Namen lässt sich dein Ergebnis später nicht zuordnen. Trotzdem starten?'))return;
+    KEY=decodeKey();
+    st.order=Q.map(function(q){return q.o.map(function(_,i){return i;});}); // feste Reihenfolge je Gruppe
+    st.sel=Q.map(function(){return [];}); st.done=Q.map(function(){return false;}); st.skipped=Q.map(function(){return false;});
+    st.pending=Q.map(function(_,i){return i;}); st.pos=0; st.finished=false; st.timedOut=false;
+    st.t0=Date.now(); st.endAt=st.t0+TIME_MIN*60000;
+    tick(); st.timer=setInterval(tick,250);
+    quiz();
+  };
+}
+
+function quiz(){
+  st.view='quiz'; st.busy=false; var i=st.pending[st.pos], q=Q[i], doneCnt=st.done.filter(Boolean).length;
+  var opts=st.order[i].map(function(oi){
+    var on=st.sel[i].indexOf(oi)>=0;
+    return '<label class="o"><input type="checkbox" value="'+oi+'"'+(on?' checked':'')+'><span class="opt"><span class="box"></span><span>'+h(q.o[oi])+'</span></span></label>';
+  }).join('');
+  main.innerHTML='<div class="card" id="qc"><div class="bar"><i style="width:'+Math.round(doneCnt/N*100)+'%"></i></div>'+
+  '<div class="meta"><span>Frage '+(i+1)+' von '+N+'</span><span>Festgehalten: '+doneCnt+' · offen: '+st.pending.length+'</span></div>'+
+  '<p style="margin:12px 0 0">'+(st.skipped[i]?'<span class="skiptag">übersprungen, noch offen</span>':'')+'<span class="tag">Anforderungsbereich '+q.afb+'</span></p>'+
+  '<p class="qtext">'+h(q.q)+'</p><p class="hint">Eine oder zwei Antworten sind richtig. Kreuze alle zutreffenden an.</p>'+opts+
+  '<div id="fb" class="fb hide" role="status" aria-live="polite"></div>'+
+  '<div class="spread"><button class="sec" id="skip"'+(st.pending.length<2?' disabled':'')+'>Überspringen</button>'+
+  '<button id="next"'+(st.sel[i].length?'':' disabled')+'>Weiter →</button></div>'+
+  '<div style="margin-top:14px"><button class="link" id="end">Test jetzt beenden</button></div></div>';
+  var nx=document.getElementById('next'), sk=document.getElementById('skip');
+  [].forEach.call(main.querySelectorAll('input[type=checkbox]'),function(cb){
+    cb.onchange=function(){var v=+cb.value,a=st.sel[i],p=a.indexOf(v);if(cb.checked&&p<0)a.push(v);if(!cb.checked&&p>=0)a.splice(p,1);nx.disabled=(a.length===0);};
+  });
+  sk.onclick=function(){
+    if(st.busy||st.pending.length<2)return;
+    st.skipped[i]=true; st.sel[i]=[]; st.pos=(st.pos+1)%st.pending.length; quiz(); window.scrollTo(0,0);
+  };
+  document.getElementById('end').onclick=function(){
+    if(st.busy)return;
+    if(window.confirm('Test jetzt beenden? Nicht festgehaltene Fragen zählen 0 Punkte.'))finish(false);
+  };
+  nx.onclick=function(){
+    if(st.busy||!st.sel[i].length)return; st.busy=true; nx.disabled=true; sk.disabled=true;
+    [].forEach.call(main.querySelectorAll('input[type=checkbox]'),function(cb){cb.disabled=true;});
+    st.done[i]=true;
+    var c=KEY[i].c, s=st.sel[i];
+    var ok=(s.length===c.length)&&s.every(function(v){return c.indexOf(v)>=0;});
+    var card=document.getElementById('qc'), fb=document.getElementById('fb');
+    card.classList.add(ok?'good':'bad');
+    fb.innerHTML=ok?'<span class="sym">✓</span><span>Richtig</span>':'<span class="sym">✗</span><span>Nicht vollständig richtig</span>';
+    fb.classList.remove('hide');
+    setTimeout(function(){
+      if(st.finished)return;
+      st.pending.splice(st.pos,1);
+      if(!st.pending.length){finish(false);return;}
+      if(st.pos>=st.pending.length)st.pos=0;
+      quiz(); window.scrollTo(0,0);
+    }, FB_MS);
+  };
+}
+
+function finish(timedOut){
+  if(st.finished)return; st.finished=true; st.timedOut=timedOut;
+  if(st.timer){clearInterval(st.timer);st.timer=null;}
+  st.used=Math.min(Date.now()-st.t0,TIME_MIN*60000);
+  setClock(timedOut?'⏱ Zeit abgelaufen':'⏱ Beendet','');
+  submit(); window.scrollTo(0,0);
+}
+
+function submit(){
+  var pts=[],tot=0;
+  for(var i=0;i<N;i++){
+    var c=KEY[i].c,s=st.done[i]?st.sel[i]:[],r=0,f=0;
+    s.forEach(function(v){if(c.indexOf(v)>=0)r++;else f++;});
+    var p=Math.max(0,(r-f)/c.length); pts.push(p); tot+=p;
+  }
+  st.res={pts:pts,tot:tot,date:new Date().toLocaleDateString('de-DE'),time:new Date().toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'})};
+  result();
+}
+
+function result(){
+  st.view='result'; var r=st.res, pc=Math.round(r.tot/N*1000)/10;
+  var full=r.pts.filter(function(p){return p>=0.999;}).length, part=r.pts.filter(function(p){return p>0&&p<0.999;}).length, zero=N-full-part;
+  var wrong=[];for(var q=0;q<N;q++){if(r.pts[q]<0.999)wrong.push(String(q+1)+(st.done[q]?'':' (nicht bearbeitet)'));}
+  var sheet='ERGEBNISBLATT · Phasierung sportlicher Bewegungen PH2 (v1.0)\n'+
+    'Name: '+(st.name||'(nicht angegeben)')+'\n'+
+    'Datum: '+r.date+', '+r.time+' Uhr\n'+
+    'Zeit: '+mmss(st.used)+' von '+TIME_MIN+':00 Minuten'+(st.timedOut?' (Zeit abgelaufen)':'')+'\n'+
+    'Ergebnis: '+full+' von '+N+' Fragen vollständig richtig\n'+
+    'Punkte: '+fmt(r.tot)+' von '+N+' ('+fmt(pc)+' %)\n'+
+    'Fehler bei Aufgabe: '+(wrong.length?wrong.join(', '):'keine');
+  st.sheet=sheet;
+  main.innerHTML='<div class="card"><div class="big"><div class="tid">PH2 · Phasierung sportlicher Bewegungen</div><div class="who">'+(st.name?h(st.name):'Name nicht angegeben')+'</div>'+
+  '<div class="num">'+full+'<span> / '+N+'</span></div><div class="lbl">Fragen vollständig richtig</div><div class="meta2">'+fmt(r.tot)+' von '+N+' Punkten · '+fmt(pc)+' %<br>'+r.date+', '+r.time+' Uhr</div></div>'+
+  '<div class="bar"><i style="width:'+pc+'%"></i></div>'+
+  '<p style="margin-top:14px">Voll richtig: <b>'+full+'</b> · Teilweise richtig: <b>'+part+'</b> · Nicht gepunktet: <b>'+zero+'</b></p>'+
+  '<p style="margin:4px 0 0">Festgehalten: <b>'+st.done.filter(Boolean).length+'</b> von '+N+' Fragen · Nicht bearbeitet: <b>'+st.done.filter(function(d){return !d;}).length+'</b> · Bearbeitungszeit: <b>'+mmss(st.used)+'</b> von '+TIME_MIN+':00 Minuten</p>'+
+  (st.timedOut?'<div class="merk"><b>Die Zeit ist abgelaufen.</b> Der Test wurde automatisch beendet. Nur festgehaltene Antworten wurden gewertet.</div>':'')+
+  '<div class="merk"><h3>Ergebnisblatt zum Abgeben</h3><pre id="sheet" style="white-space:pre-wrap;font-family:inherit;margin:0 0 10px;font-size:15px;line-height:1.5">'+h(sheet)+'</pre><button id="cp2">Ergebnisblatt kopieren</button> <span class="hint">Zum Abschicken genügt ein Screenshot der Ergebnisanzeige oben. Die Nummern beziehen sich auf die Aufgaben in deinem Test.</span></div>'+
+  '<div class="info">Möchtest du sehen, welche Antworten richtig waren, und die Begründungen lesen? Dann öffne die Auswertung.</div>'+
+  '<div class="row"><button id="rev">Richtige Antworten und Erklärungen ansehen</button><button class="sec noprint" id="cp">Ergebnis kopieren</button></div><p id="cpm" class="hint" style="margin-top:10px"></p></div>';
+  document.getElementById('rev').onclick=function(){review(false);window.scrollTo(0,0);};
+  var cpf=function(){
+    var t=st.sheet;
+    var m=document.getElementById('cpm');
+    function ok(){m.textContent='Kopiert: '+t;document.getElementById('cp2').textContent='Kopiert ✓';}
+    function fb(){var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok();}catch(e){m.textContent=t;}document.body.removeChild(ta);}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb);}else{fb();}
+  };
+  document.getElementById('cp').onclick=cpf; document.getElementById('cp2').onclick=cpf;
+}
+
+function review(onlyWrong){
+  st.view='review'; var r=st.res, html='';
+  html+='<div class="card noprint"><h2>Auswertung</h2><p>Grün: richtige Antworten. Rot: von dir angekreuzt, aber falsch. Der Randbalken zeigt: grün = voll richtig, gelb = teilweise, rot = nicht gepunktet.</p>'+
+  '<div class="row"><button class="sec" id="rb">← Zum Ergebnis</button><button class="sec" id="fl">'+(onlyWrong?'Alle Fragen anzeigen':'Nur nicht voll richtige Fragen anzeigen')+'</button><button class="sec" id="pr">Drucken / als PDF speichern</button></div></div>';
+  for(var i=0;i<N;i++){
+    var p=r.pts[i]; if(onlyWrong&&p>=0.999)continue;
+    var c=KEY[i].c, dn=st.done[i], s=dn?st.sel[i]:[];
+    var opts=st.order[i].map(function(oi){
+      var right=c.indexOf(oi)>=0, chosen=s.indexOf(oi)>=0, cls='ro', mk='', sub='';
+      if(right){cls+=' right';mk='✓';sub=chosen?'richtig, von dir angekreuzt':(dn?'richtig, von dir nicht angekreuzt':'richtig');}
+      else if(chosen){cls+=' wrong';mk='✗';sub='falsch, von dir angekreuzt';}
+      return '<div class="'+cls+'"><span class="mk">'+mk+'</span><span>'+h(Q[i].o[oi])+(sub?'<span class="st">'+sub+'</span>':'')+'</span></div>';
+    }).join('');
+    html+='<div class="rq '+(p>=0.999?'full':(p>0?'part':'none'))+'"><p style="margin:0 0 4px"><span class="tag">Frage '+(i+1)+'</span><span class="tag">AFB '+Q[i].afb+'</span><span class="pts">'+fmt(p)+' von 1 Punkt'+(dn?'':' (nicht bearbeitet)')+'</span></p>'+
+    '<p class="qtext" style="margin-top:8px">'+h(Q[i].q)+'</p>'+opts+'<div class="expl"><b>Erklärung:</b> '+h(KEY[i].e)+'</div></div>';
+  }
+  if(onlyWrong&&html.indexOf('class="rq')<0)html+='<div class="card">Alle Fragen waren voll richtig.</div>';
+  main.innerHTML=html;
+  document.getElementById('rb').onclick=function(){result();window.scrollTo(0,0);};
+  document.getElementById('fl').onclick=function(){review(!onlyWrong);window.scrollTo(0,0);};
+  document.getElementById('pr').onclick=function(){window.print();};
+}
+
+window.addEventListener('beforeunload',function(e){if(st.view==='quiz'&&!st.finished){e.preventDefault();e.returnValue='';}});
+start();
+})();
+</script>
+</body>
+</html>
